@@ -10,8 +10,8 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 def predict_future_sales():
     try:
         # Load and clean data from the existing CSV file
-        df = pd.read_csv('vgsales.csv')
-        print(f"Loaded {len(df)} records from vgsales.csv")
+        df = pd.read_csv('vgchartz-2024.csv')
+        print(f"Loaded {len(df)} records from vgchartz-2024.csv")
         
         # Clean the data - remove rows with missing Year or Global_Sales
         df = df.dropna(subset=['Year', 'Global_Sales'])
