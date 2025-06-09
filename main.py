@@ -13,21 +13,25 @@ def predict_future_sales():
         df = pd.read_csv('vgchartz-2024.csv')
         print(f"Loaded {len(df)} records from vgchartz-2024.csv")
         
-        # Clean the data - remove rows with missing Year or Global_Sales
-        df = df.dropna(subset=['Year', 'Global_Sales'])
+        # Clean the data - remove rows with missing release_date or total_sales
+        df = df.dropna(subset=['release_date', 'total_sales'])
         
-        # Convert Year to integer and filter out invalid years
-        df['Year'] = pd.to_numeric(df['Year'], errors='coerce')
-        df = df.dropna(subset=['Year'])
-        df['Year'] = df['Year'].astype(int)
+        # Extract year from release_date
+        df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
+        df = df.dropna(subset=['release_date'])
+        df['Year'] = df['release_date'].dt.year
         
         # Filter out years that seem unrealistic (before 1970 or after current year)
-        df = df[(df['Year'] >= 1970) & (df['Year'] <= 2020)]
+        df = df[(df['Year'] >= 1970) & (df['Year'] <= 2024)]
+        
+        # Convert total_sales to numeric
+        df['total_sales'] = pd.to_numeric(df['total_sales'], errors='coerce')
+        df = df.dropna(subset=['total_sales'])
         
         print(f"After cleaning: {len(df)} records")
         
         # Aggregate total global sales per year
-        sales_by_year = df.groupby('Year')['Global_Sales'].sum().reset_index()
+        sales_by_year = df.groupby('Year')['total_sales'].sum().reset_index()
         sales_by_year = sales_by_year.sort_values('Year')
         
         print(f"Years covered: {sales_by_year['Year'].min()} to {sales_by_year['Year'].max()}")
@@ -35,7 +39,7 @@ def predict_future_sales():
         
         # Prepare features and labels for linear regression
         X = sales_by_year[['Year']]
-        y = sales_by_year['Global_Sales']
+        y = sales_by_year['total_sales']
         
         # Fit linear regression model
         model = LinearRegression()
@@ -58,7 +62,7 @@ def predict_future_sales():
         plt.figure(figsize=(14, 8))
         
         # Plot historical data
-        plt.plot(sales_by_year['Year'], sales_by_year['Global_Sales'], 
+        plt.plot(sales_by_year['Year'], sales_by_year['total_sales'], 
                 marker='o', linewidth=2, markersize=4, label='Historical Sales', color='blue')
         
         # Plot predicted data
@@ -106,14 +110,25 @@ def predict_future_sales():
         
         # Print summary statistics
         print(f"\nSummary Statistics:")
-        print(f"Average historical sales per year: {sales_by_year['Global_Sales'].mean():.2f} million")
+        print(f"Average historical sales per year: {sales_by_year['total_sales'].mean():.2f} million")
         print(f"Predicted average for next 5 years: {future_sales.mean():.2f} million")
         print(f"Trend: {'Increasing' if model.coef_[0] > 0 else 'Decreasing'} by {abs(model.coef_[0]):.2f} million units per year")
+        
+        # Additional analysis with console breakdown
+        print(f"\nTop 10 Consoles by Total Sales:")
+        console_sales = df.groupby('console')['total_sales'].sum().sort_values(ascending=False).head(10)
+        for console, sales in console_sales.items():
+            print(f"{console}: {sales:.2f} million")
+        
+        print(f"\nTop 10 Publishers by Total Sales:")
+        publisher_sales = df.groupby('publisher')['total_sales'].sum().sort_values(ascending=False).head(10)
+        for publisher, sales in publisher_sales.items():
+            print(f"{publisher}: {sales:.2f} million")
         
         return model, sales_by_year, future_years, future_sales
         
     except FileNotFoundError:
-        print("Error: vgsales.csv file not found in the current directory.")
+        print("Error: vgchartz-2024.csv file not found in the current directory.")
         return None, None, None, None
     except Exception as e:
         print(f"An error occurred: {str(e)}")
