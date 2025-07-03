@@ -19,9 +19,26 @@
 
         <main class="analysis-page">
             <div class="analysis-controls">
-                <button id="runAnalysisBtn" class="btn btn-analytical" onclick="runAnalysis('analytical')">
-                    Generate Sales Analysis
-                </button>
+                <div class="analysis-buttons-grid">
+                    <button id="salesByGenreBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('genre')">
+                        Sales by Genre
+                    </button>
+                    <button id="regionalBreakdownBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('regional')">
+                        Regional Breakdown
+                    </button>
+                    <button id="platformPerformanceBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('platform')">
+                        Platform Performance
+                    </button>
+                    <button id="publisherRankingsBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('publisher')">
+                        Publisher Rankings
+                    </button>
+                    <button id="historicalTrendsBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('historical')">
+                        Historical Trends
+                    </button>
+                    <button id="runAllAnalysisBtn" class="btn btn-analytical btn-primary" onclick="runSpecificAnalysis('all')">
+                        Generate All Analysis
+                    </button>
+                </div>
                 <div id="loadingSpinner" class="loading hidden">
                     <div class="spinner"></div>
                     <p>Analyzing data...</p>

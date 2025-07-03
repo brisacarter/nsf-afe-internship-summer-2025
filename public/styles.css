@@ -1,4 +1,3 @@
-
 /* Import Montserrat font */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
@@ -231,8 +230,27 @@ body {
 }
 
 .analysis-controls {
+    margin: 2rem 0;
     text-align: center;
-    margin-bottom: 30px;
+}
+
+.analysis-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    font-weight: bold;
+    grid-column: 1 / -1;
+    max-width: 300px;
+    justify-self: center;
 }
 
 .loading {
@@ -349,28 +367,37 @@ body {
     .header h1 {
         font-size: 2rem;
     }
-    
+
     .analysis-options {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .dataset-info {
         grid-template-columns: 1fr;
     }
-    
+
     .nav {
         flex-direction: column;
         gap: 15px;
     }
-    
+
     .nav h1 {
         order: -1;
         margin-bottom: 10px;
     }
-    
+
     .option-card {
         padding: 30px 20px;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .project-card, .tech-card, .author-section {
+        padding: 20px;
     }
 }
 
@@ -565,7 +592,7 @@ body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .author-content {
         flex-direction: column;
         text-align: center;
@@ -576,7 +603,7 @@ body {
         width: 150px;
         height: 150px;
     }
-    
+
     .dataset-details {
         grid-template-columns: 1fr;
     }
@@ -586,24 +613,24 @@ body {
     .container {
         padding: 15px;
     }
-    
+
     .header h1 {
         font-size: 1.8rem;
     }
-    
+
     .subtitle {
         font-size: 1rem;
     }
-    
+
     .option-card {
         padding: 25px 15px;
     }
-    
+
     .btn {
         padding: 12px 25px;
         font-size: 0.9rem;
     }
-    
+
     .project-card, .tech-card, .author-section {
         padding: 20px;
     }

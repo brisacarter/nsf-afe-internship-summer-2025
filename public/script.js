@@ -20,6 +20,117 @@ function goHome() {
     window.location.href = '/';
 }
 
+// Specific analysis execution function
+async function runSpecificAnalysis(specificType) {
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const resultsSection = document.getElementById('resultsSection');
+    const analysisOutput = document.getElementById('analysisOutput');
+    const visualizationContainer = document.getElementById('visualizationContainer');
+    
+    // Get the clicked button
+    const buttonMap = {
+        'genre': 'salesByGenreBtn',
+        'regional': 'regionalBreakdownBtn',
+        'platform': 'platformPerformanceBtn',
+        'publisher': 'publisherRankingsBtn',
+        'historical': 'historicalTrendsBtn',
+        'all': 'runAllAnalysisBtn'
+    };
+    
+    const runBtn = document.getElementById(buttonMap[specificType]);
+    
+    // Show loading state
+    if (loadingSpinner) {
+        loadingSpinner.classList.remove('hidden');
+    }
+    if (runBtn) {
+        runBtn.disabled = true;
+        runBtn.textContent = 'Analyzing...';
+    }
+    if (resultsSection) {
+        resultsSection.classList.add('hidden');
+    }
+    
+    try {
+        const response = await fetch('/api/run-specific-analysis', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ analysisType: specificType })
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Display output
+            if (analysisOutput) {
+                analysisOutput.textContent = result.output;
+            }
+            
+            // Display visualization if available
+            if (visualizationContainer && result.hasImage) {
+                const img = document.createElement('img');
+                const imageName = result.imageName || 'sales_analysis.png';
+                img.src = `/api/image/${imageName}?` + new Date().getTime(); // Cache busting
+                img.alt = 'Sales Analysis Visualization';
+                img.style.maxWidth = '100%';
+                img.style.height = 'auto';
+                
+                visualizationContainer.innerHTML = '';
+                visualizationContainer.appendChild(img);
+            }
+            
+            // Show results
+            if (resultsSection) {
+                resultsSection.classList.remove('hidden');
+            }
+            
+            // Scroll to results
+            if (resultsSection) {
+                resultsSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+            
+        } else {
+            if (analysisOutput) {
+                analysisOutput.textContent = 'Error: ' + (result.error || 'Analysis failed');
+            }
+            if (resultsSection) {
+                resultsSection.classList.remove('hidden');
+            }
+        }
+        
+    } catch (error) {
+        console.error('Error running analysis:', error);
+        if (analysisOutput) {
+            analysisOutput.textContent = 'Error: Failed to connect to server';
+        }
+        if (resultsSection) {
+            resultsSection.classList.remove('hidden');
+        }
+    } finally {
+        // Hide loading state
+        if (loadingSpinner) {
+            loadingSpinner.classList.add('hidden');
+        }
+        if (runBtn) {
+            runBtn.disabled = false;
+            const originalTexts = {
+                'genre': 'Sales by Genre',
+                'regional': 'Regional Breakdown',
+                'platform': 'Platform Performance',
+                'publisher': 'Publisher Rankings',
+                'historical': 'Historical Trends',
+                'all': 'Generate All Analysis'
+            };
+            runBtn.textContent = originalTexts[specificType];
+        }
+    }
+}
+
 // Analysis execution function
 async function runAnalysis(analysisType) {
     const loadingSpinner = document.getElementById('loadingSpinner');
