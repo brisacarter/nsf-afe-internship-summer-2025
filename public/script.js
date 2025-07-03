@@ -150,6 +150,11 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Navigation functions
+function navigateToAbout() {
+    window.location.href = 'about.html';
+}
+
 // Error handling for images
 document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('img');
