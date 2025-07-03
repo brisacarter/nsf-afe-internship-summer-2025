@@ -29,8 +29,11 @@ app.post('/api/run-analysis', (req, res) => {
     const { analysisType } = req.body;
     
     let scriptToRun = 'main.py';
+    let expectedImage = 'sales_prediction.png';
+    
     if (analysisType === 'analytical') {
         scriptToRun = 'main_sales.py';
+        expectedImage = 'sales_analysis.png';
     }
     
     const python = spawn('python3', [scriptToRun]);
@@ -51,7 +54,8 @@ app.post('/api/run-analysis', (req, res) => {
             res.json({ 
                 success: true, 
                 output: output,
-                hasImage: fs.existsSync('sales_prediction.png')
+                hasImage: fs.existsSync(expectedImage),
+                imageName: expectedImage
             });
         } else {
             res.json({ 

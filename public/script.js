@@ -55,7 +55,8 @@ async function runAnalysis(analysisType) {
             // Display visualization if available
             if (visualizationContainer && result.hasImage) {
                 const img = document.createElement('img');
-                img.src = '/api/image/sales_prediction.png?' + new Date().getTime(); // Cache busting
+                const imageName = result.imageName || 'sales_prediction.png';
+                img.src = `/api/image/${imageName}?` + new Date().getTime(); // Cache busting
                 img.alt = 'Sales Analysis Visualization';
                 img.style.maxWidth = '100%';
                 img.style.height = 'auto';

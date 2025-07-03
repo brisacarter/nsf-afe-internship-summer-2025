@@ -1,11 +1,10 @@
 
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend
 from sklearn.linear_model import LinearRegression
 import numpy as np
-import io
-import base64
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
 def predict_future_sales():
     try:
@@ -105,8 +104,8 @@ def predict_future_sales():
         plt.savefig('sales_prediction.png', dpi=300, bbox_inches='tight')
         print(f"\nPlot saved as 'sales_prediction.png'")
         
-        # Display the plot
-        plt.show()
+        # Don't display plot in web interface - just save it
+        plt.close()  # Close the figure to free memory
         
         # Print summary statistics
         print(f"\nSummary Statistics:")
