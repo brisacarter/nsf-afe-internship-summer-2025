@@ -73,15 +73,30 @@ async function runSpecificAnalysis(specificType) {
             
             // Display visualization if available
             if (visualizationContainer && result.hasImage) {
-                const img = document.createElement('img');
-                const imageName = result.imageName || 'sales_analysis.png';
-                img.src = `/api/image/${imageName}?` + new Date().getTime(); // Cache busting
-                img.alt = 'Sales Analysis Visualization';
-                img.style.maxWidth = '100%';
-                img.style.height = 'auto';
-                
-                visualizationContainer.innerHTML = '';
-                visualizationContainer.appendChild(img);
+                // For 'all' analysis, show HTML summary instead of image
+                if (specificType === 'all') {
+                    const summaryContainer = document.getElementById('analysisSummaryContainer');
+                    if (summaryContainer) {
+                        visualizationContainer.innerHTML = '';
+                        summaryContainer.classList.remove('hidden');
+                    }
+                } else {
+                    const img = document.createElement('img');
+                    const imageName = result.imageName || 'sales_analysis.png';
+                    img.src = `/api/image/${imageName}?` + new Date().getTime(); // Cache busting
+                    img.alt = 'Sales Analysis Visualization';
+                    img.style.maxWidth = '100%';
+                    img.style.height = 'auto';
+                    
+                    visualizationContainer.innerHTML = '';
+                    visualizationContainer.appendChild(img);
+                    
+                    // Hide summary container for other analysis types
+                    const summaryContainer = document.getElementById('analysisSummaryContainer');
+                    if (summaryContainer) {
+                        summaryContainer.classList.add('hidden');
+                    }
+                }
             }
             
             // Show results
