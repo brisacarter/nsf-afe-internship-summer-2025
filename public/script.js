@@ -12,6 +12,14 @@ function goHome() {
     window.location.href = '/';
 }
 
+function goToAbout() {
+    window.location.href = '/about.html';
+}
+
+function goHome() {
+    window.location.href = '/';
+}
+
 // Analysis execution function
 async function runAnalysis(analysisType) {
     const loadingSpinner = document.getElementById('loadingSpinner');
