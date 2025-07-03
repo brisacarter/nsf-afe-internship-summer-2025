@@ -30,6 +30,17 @@ def load_and_clean_data():
         
         print(f"Loaded {len(df)} records from {used_file}")
         
+        # Filter for past 25 years (1999-2024)
+        if 'Year' in df.columns:
+            df = df[df['Year'] >= 1999]
+        elif 'release_date' in df.columns:
+            df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
+            df = df.dropna(subset=['release_date'])
+            df['Year'] = df['release_date'].dt.year
+            df = df[df['Year'] >= 1999]
+        
+        print(f"After filtering to past 25 years (1999-2024): {len(df)} records")
+        
         # Check available columns and adapt accordingly
         available_cols = df.columns.tolist()
         print(f"Available columns: {available_cols}")
@@ -329,7 +340,7 @@ def analyze_publisher_rankings(df, available_cols):
 def analyze_historical_trends(df, available_cols):
     """Analyze sales trends over time"""
     print("\n" + "="*50)
-    print("HISTORICAL TRENDS ANALYSIS")
+    print("HISTORICAL TRENDS ANALYSIS (1999-2024)")
     print("="*50)
     
     # Determine year and sales columns
@@ -427,7 +438,7 @@ def analyze_historical_trends(df, available_cols):
 
 def run_all_analysis():
     """Run all analysis types"""
-    print("VIDEO GAME SALES COMPREHENSIVE ANALYSIS")
+    print("VIDEO GAME SALES COMPREHENSIVE ANALYSIS (1999-2024)")
     print("=" * 60)
     
     # Load data
@@ -473,7 +484,7 @@ def run_all_analysis():
     plt.axis('off')
     
     # Title with app colors
-    plt.title('Video Game Sales Analysis Summary', 
+    plt.title('Video Game Sales Analysis Summary (1999-2024)', 
               fontsize=24, fontweight='bold', pad=30, 
               color='#455d7a', fontfamily='sans-serif')
     

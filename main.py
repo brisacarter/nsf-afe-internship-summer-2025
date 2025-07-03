@@ -21,8 +21,10 @@ def predict_future_sales():
         df = df.dropna(subset=['release_date'])
         df['Year'] = df['release_date'].dt.year
         
-        # Filter out years that seem unrealistic (before 1970 or after current year)
-        df = df[(df['Year'] >= 1970) & (df['Year'] <= 2024)]
+        # Filter for past 25 years (1999-2024)
+        df = df[(df['Year'] >= 1999) & (df['Year'] <= 2024)]
+        
+        print(f"After filtering to past 25 years (1999-2024): {len(df)} records")
         
         # Convert total_sales to numeric
         df['total_sales'] = pd.to_numeric(df['total_sales'], errors='coerce')
@@ -76,7 +78,7 @@ def predict_future_sales():
                 linestyle=':', alpha=0.7, color='green', label='Trend Line')
         
         # Customize the plot
-        plt.title('Global Video Game Sales Prediction\n(Historical Data and 5-Year Forecast)', 
+        plt.title('Global Video Game Sales Prediction (1999-2024)\n(Historical Data and 5-Year Forecast)', 
                  fontsize=16, fontweight='bold', pad=20)
         plt.xlabel('Year', fontsize=12, fontweight='bold')
         plt.ylabel('Global Sales (millions of units)', fontsize=12, fontweight='bold')
@@ -136,7 +138,7 @@ def predict_future_sales():
 
 # Run the prediction
 if __name__ == "__main__":
-    print("Video Game Sales Prediction Analysis")
+    print("Video Game Sales Prediction Analysis (1999-2024)")
     print("=" * 40)
     model, historical_data, future_years, predictions = predict_future_sales()
     

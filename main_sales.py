@@ -27,6 +27,17 @@ def visualize_sales_analysis():
         
         print(f"Loaded {len(df)} records from {used_file}")
         
+        # Filter for past 25 years (1999-2024)
+        if 'Year' in df.columns:
+            df = df[df['Year'] >= 1999]
+        elif 'release_date' in df.columns:
+            df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
+            df = df.dropna(subset=['release_date'])
+            df['Year'] = df['release_date'].dt.year
+            df = df[df['Year'] >= 1999]
+        
+        print(f"After filtering to past 25 years (1999-2024): {len(df)} records")
+        
         # Check available columns and adapt accordingly
         available_cols = df.columns.tolist()
         print(f"Available columns: {available_cols}")
@@ -74,7 +85,7 @@ def visualize_sales_analysis():
         bars = plt.bar(top_genres.index, top_genres.values, color=colors)
         
         # Customize the plot
-        plt.title('Top 10 Genres by Global Sales', fontsize=16, fontweight='bold', pad=20)
+        plt.title('Top 10 Genres by Global Sales (1999-2024)', fontsize=16, fontweight='bold', pad=20)
         plt.xlabel('Genre', fontsize=12, fontweight='bold')
         plt.ylabel('Global Sales (millions)', fontsize=12, fontweight='bold')
         plt.xticks(rotation=45, ha='right')
