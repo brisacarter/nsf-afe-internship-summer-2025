@@ -91,7 +91,7 @@ body {
 /* Option Cards */
 .option-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 40px 30px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -191,7 +191,7 @@ body {
 /* Features Section */
 .features-section {
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     margin-bottom: 30px;
@@ -221,7 +221,7 @@ body {
 /* Analysis Page Styles */
 .analysis-page {
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     margin-bottom: 30px;
@@ -381,7 +381,7 @@ body {
 
 .project-card, .tech-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     position: relative;
@@ -436,7 +436,7 @@ body {
 
 .author-section {
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     margin-bottom: 30px;
@@ -525,7 +525,7 @@ body {
 
 .dataset-section {
     background: white;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 30px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     position: relative;
