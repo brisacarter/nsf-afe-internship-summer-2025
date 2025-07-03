@@ -156,9 +156,9 @@ body {
 
 /* Buttons */
 .btn {
-    padding: 15px 30px;
+    padding: 16px 30px;
     border: none;
-    border-radius: 25px;
+    border-radius: 36px;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
@@ -170,6 +170,7 @@ body {
 .btn-analytical {
     background: #455d7a;
     color: white;
+      padding: 16px 30px;
 }
 
 .btn-analytical:hover {
@@ -245,7 +246,7 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #f44336 0%, #f44336 100%);
     border: none;
     font-weight: bold;
     grid-column: 1 / -1;
