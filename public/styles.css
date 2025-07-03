@@ -235,6 +235,67 @@ body {
     text-align: center;
 }
 
+.year-range-toggle {
+    background: #e3e3e3;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    border: 2px solid #455d7a;
+}
+
+.year-range-toggle h3 {
+    color: #455d7a;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.toggle-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: white;
+    border: 2px solid #455d7a;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.toggle-option:hover {
+    background: #455d7a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.toggle-option input[type="radio"] {
+    margin-right: 10px;
+    accent-color: #455d7a;
+}
+
+.toggle-option input[type="radio"]:checked + .toggle-label {
+    font-weight: bold;
+}
+
+.toggle-option:has(input:checked) {
+    background: #455d7a;
+    color: white;
+    box-shadow: 0 5px 15px rgba(69, 93, 122, 0.3);
+}
+
+.toggle-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
 .analysis-buttons-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

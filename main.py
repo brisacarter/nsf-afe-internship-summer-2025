@@ -6,8 +6,9 @@ import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
 from sklearn.linear_model import LinearRegression
 import numpy as np
+import sys
 
-def predict_future_sales():
+def predict_future_sales(year_range='25'):
     try:
         # Load and clean data from the existing CSV file
         df = pd.read_csv('vgchartz-2024.csv')
@@ -21,10 +22,21 @@ def predict_future_sales():
         df = df.dropna(subset=['release_date'])
         df['Year'] = df['release_date'].dt.year
         
-        # Filter for past 25 years (1999-2024)
-        df = df[(df['Year'] >= 1999) & (df['Year'] <= 2024)]
+        # Determine year range based on parameter
+        if year_range == '44':
+            start_year = 1980
+            year_desc = "past 44 years (1980-2024)"
+        elif year_range == '22':
+            start_year = 2002
+            year_desc = "past 22 years (2002-2024)"
+        else:  # default to 25 years
+            start_year = 1999
+            year_desc = "past 25 years (1999-2024)"
         
-        print(f"After filtering to past 25 years (1999-2024): {len(df)} records")
+        # Filter for selected year range
+        df = df[(df['Year'] >= start_year) & (df['Year'] <= 2024)]
+        
+        print(f"After filtering to {year_desc}: {len(df)} records")
         
         # Convert total_sales to numeric
         df['total_sales'] = pd.to_numeric(df['total_sales'], errors='coerce')
@@ -138,9 +150,20 @@ def predict_future_sales():
 
 # Run the prediction
 if __name__ == "__main__":
-    print("Video Game Sales Prediction Analysis (1999-2024)")
+    year_range = '25'  # default
+    
+    if len(sys.argv) > 1:
+        year_range = sys.argv[1]
+    
+    year_desc = {
+        '44': '1980-2024',
+        '22': '2002-2024',
+        '25': '1999-2024'
+    }.get(year_range, '1999-2024')
+    
+    print(f"Video Game Sales Prediction Analysis ({year_desc})")
     print("=" * 40)
-    model, historical_data, future_years, predictions = predict_future_sales()
+    model, historical_data, future_years, predictions = predict_future_sales(year_range)
     
     if model is not None:
         print("\nAnalysis completed successfully!")

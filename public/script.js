@@ -1,4 +1,3 @@
-
 // Navigation functions
 function navigateToAnalytical() {
     window.location.href = '/analytical';
@@ -26,7 +25,7 @@ async function runSpecificAnalysis(specificType) {
     const resultsSection = document.getElementById('resultsSection');
     const analysisOutput = document.getElementById('analysisOutput');
     const visualizationContainer = document.getElementById('visualizationContainer');
-    
+
     // Get the clicked button
     const buttonMap = {
         'genre': 'salesByGenreBtn',
@@ -36,12 +35,12 @@ async function runSpecificAnalysis(specificType) {
         'historical': 'historicalTrendsBtn',
         'all': 'runAllAnalysisBtn'
     };
-    
+
     const runBtn = document.getElementById(buttonMap[specificType]);
-    
+
     // Update active button state
     setActiveButton(runBtn);
-    
+
     // Show loading state
     if (loadingSpinner) {
         loadingSpinner.classList.remove('hidden');
@@ -53,7 +52,7 @@ async function runSpecificAnalysis(specificType) {
     if (resultsSection) {
         resultsSection.classList.add('hidden');
     }
-    
+
     try {
         const response = await fetch('/api/run-specific-analysis', {
             method: 'POST',
@@ -62,15 +61,15 @@ async function runSpecificAnalysis(specificType) {
             },
             body: JSON.stringify({ analysisType: specificType })
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
             // Display output
             if (analysisOutput) {
                 analysisOutput.textContent = result.output;
             }
-            
+
             // Display visualization if available
             if (visualizationContainer && result.hasImage) {
                 // For 'all' analysis, show HTML summary instead of image
@@ -87,10 +86,10 @@ async function runSpecificAnalysis(specificType) {
                     img.alt = 'Sales Analysis Visualization';
                     img.style.maxWidth = '100%';
                     img.style.height = 'auto';
-                    
+
                     visualizationContainer.innerHTML = '';
                     visualizationContainer.appendChild(img);
-                    
+
                     // Hide summary container for other analysis types
                     const summaryContainer = document.getElementById('analysisSummaryContainer');
                     if (summaryContainer) {
@@ -98,12 +97,12 @@ async function runSpecificAnalysis(specificType) {
                     }
                 }
             }
-            
+
             // Show results
             if (resultsSection) {
                 resultsSection.classList.remove('hidden');
             }
-            
+
             // Scroll to results
             if (resultsSection) {
                 resultsSection.scrollIntoView({ 
@@ -111,7 +110,7 @@ async function runSpecificAnalysis(specificType) {
                     block: 'start' 
                 });
             }
-            
+
         } else {
             if (analysisOutput) {
                 analysisOutput.textContent = 'Error: ' + (result.error || 'Analysis failed');
@@ -120,7 +119,7 @@ async function runSpecificAnalysis(specificType) {
                 resultsSection.classList.remove('hidden');
             }
         }
-        
+
     } catch (error) {
         console.error('Error running analysis:', error);
         if (analysisOutput) {
@@ -155,40 +154,41 @@ async function runAnalysis(analysisType) {
     const resultsSection = document.getElementById('resultsSection');
     const analysisOutput = document.getElementById('analysisOutput');
     const visualizationContainer = document.getElementById('visualizationContainer');
-    const runBtn = analysisType === 'analytical' ? 
-        document.getElementById('runAnalysisBtn') : 
-        document.getElementById('runPredictionBtn');
-    
+    const runBtn = document.getElementById(analysisType === 'analytical' ? 'runAnalyticalBtn' : 'runInferentialBtn');
+
+    // Get selected year range if available
+    const selectedYearRange = document.querySelector('input[name="yearRange"]:checked');
+    const yearRange = selectedYearRange ? selectedYearRange.value : '25';
+
     // Show loading state
     if (loadingSpinner) {
         loadingSpinner.classList.remove('hidden');
     }
     if (runBtn) {
         runBtn.disabled = true;
-        runBtn.textContent = analysisType === 'analytical' ? 
-            'Analyzing...' : 'Generating Predictions...';
+        runBtn.textContent = 'Analyzing...';
     }
     if (resultsSection) {
         resultsSection.classList.add('hidden');
     }
-    
+
     try {
-        const response = await fetch('/api/run-analysis', {
+        const response = await fetch(`/api/run-${analysisType}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ analysisType })
+            body: JSON.stringify({ yearRange: yearRange })
         });
-        
+
         const result = await response.json();
-        
+
         if (result.success) {
             // Display output
             if (analysisOutput) {
                 analysisOutput.textContent = result.output;
             }
-            
+
             // Display visualization if available
             if (visualizationContainer && result.hasImage) {
                 const img = document.createElement('img');
@@ -197,16 +197,16 @@ async function runAnalysis(analysisType) {
                 img.alt = 'Sales Analysis Visualization';
                 img.style.maxWidth = '100%';
                 img.style.height = 'auto';
-                
+
                 visualizationContainer.innerHTML = '';
                 visualizationContainer.appendChild(img);
             }
-            
+
             // Show results
             if (resultsSection) {
                 resultsSection.classList.remove('hidden');
             }
-            
+
             // Scroll to results
             if (resultsSection) {
                 resultsSection.scrollIntoView({ 
@@ -214,7 +214,7 @@ async function runAnalysis(analysisType) {
                     block: 'start' 
                 });
             }
-            
+
         } else {
             if (analysisOutput) {
                 analysisOutput.textContent = 'Error: ' + (result.error || 'Analysis failed');
@@ -223,7 +223,7 @@ async function runAnalysis(analysisType) {
                 resultsSection.classList.remove('hidden');
             }
         }
-        
+
     } catch (error) {
         console.error('Error running analysis:', error);
         if (analysisOutput) {
@@ -252,7 +252,7 @@ function setActiveButton(activeBtn) {
     allAnalysisButtons.forEach(btn => {
         btn.classList.remove('btn-active');
     });
-    
+
     // Add active class to clicked button
     if (activeBtn) {
         activeBtn.classList.add('btn-active');
@@ -266,14 +266,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (defaultActiveBtn) {
         setActiveButton(defaultActiveBtn);
     }
-    
+
     // Add entrance animations
     const cards = document.querySelectorAll('.option-card');
     cards.forEach((card, index) => {
         card.style.animationDelay = `${index * 0.2}s`;
         card.style.animation = 'fadeInUp 0.6s ease forwards';
     });
-    
+
     // Add hover effects for better interactivity
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(button => {
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.style.transform = 'translateY(-2px) scale(1.05)';
             }
         });
-        
+
         button.addEventListener('mouseleave', function() {
             if (!this.classList.contains('btn-active')) {
                 this.style.transform = 'translateY(0) scale(1)';
@@ -304,7 +304,7 @@ style.textContent = `
             transform: translateY(0);
         }
     }
-    
+
     .option-card {
         opacity: 0;
     }

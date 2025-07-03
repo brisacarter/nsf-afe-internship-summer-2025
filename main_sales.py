@@ -7,7 +7,7 @@ matplotlib.use('Agg')  # Use non-interactive backend
 import sys
 import os
 
-def visualize_sales_analysis():
+def visualize_sales_analysis(year_range='25'):
     try:
         # Try different possible file paths
         possible_files = ['vgchartz-2024.csv', 'vgsales.csv']
@@ -27,16 +27,27 @@ def visualize_sales_analysis():
         
         print(f"Loaded {len(df)} records from {used_file}")
         
-        # Filter for past 25 years (1999-2024)
+        # Determine year range based on parameter
+        if year_range == '44':
+            start_year = 1980
+            year_desc = "past 44 years (1980-2024)"
+        elif year_range == '22':
+            start_year = 2002
+            year_desc = "past 22 years (2002-2024)"
+        else:  # default to 25 years
+            start_year = 1999
+            year_desc = "past 25 years (1999-2024)"
+        
+        # Filter for selected year range
         if 'Year' in df.columns:
-            df = df[df['Year'] >= 1999]
+            df = df[df['Year'] >= start_year]
         elif 'release_date' in df.columns:
             df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
             df = df.dropna(subset=['release_date'])
             df['Year'] = df['release_date'].dt.year
-            df = df[df['Year'] >= 1999]
+            df = df[df['Year'] >= start_year]
         
-        print(f"After filtering to past 25 years (1999-2024): {len(df)} records")
+        print(f"After filtering to {year_desc}: {len(df)} records")
         
         # Check available columns and adapt accordingly
         available_cols = df.columns.tolist()

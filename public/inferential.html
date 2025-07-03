@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +18,27 @@
 
         <main class="analysis-page">
             <div class="analysis-controls">
-                <button id="runPredictionBtn" class="btn btn-inferential" onclick="runAnalysis('inferential')">
+                <div class="year-range-toggle">
+                    <h3>Select Analysis Time Period</h3>
+                    <div class="toggle-container">
+                        <label class="toggle-option">
+                            <input type="radio" name="yearRange" value="25" checked>
+                            <span class="toggle-label">Past 25 Years (1999-2024)</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="radio" name="yearRange" value="44">
+                            <span class="toggle-label">Past 44 Years (1980-2024)</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="radio" name="yearRange" value="22">
+                            <span class="toggle-label">Past 22 Years (2002-2024)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <p>This analysis uses machine learning to predict future video game sales trends based on historical data. The model analyzes patterns and generates forecasts for the next 5 years.</p>
+
+                <button id="runInferentialBtn" class="btn btn-inferential" onclick="runAnalysis('inferential')">
                     Generate Predictions
                 </button>
                 <div id="loadingSpinner" class="loading hidden">
@@ -32,7 +51,7 @@
                 <div class="results-header">
                     <h2>Prediction Results</h2>
                 </div>
-                
+
                 <div id="outputContainer" class="output-container">
                     <pre id="analysisOutput"></pre>
                 </div>

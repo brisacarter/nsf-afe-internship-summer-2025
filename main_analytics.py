@@ -10,7 +10,7 @@ import sys
 import os
 from collections import Counter
 
-def load_and_clean_data():
+def load_and_clean_data(year_range='25'):
     """Load and clean the video game sales data"""
     try:
         # Try different possible file paths
@@ -30,16 +30,27 @@ def load_and_clean_data():
         
         print(f"Loaded {len(df)} records from {used_file}")
         
-        # Filter for past 25 years (1999-2024)
+        # Determine year range based on parameter
+        if year_range == '44':
+            start_year = 1980
+            year_desc = "past 44 years (1980-2024)"
+        elif year_range == '22':
+            start_year = 2002
+            year_desc = "past 22 years (2002-2024)"
+        else:  # default to 25 years
+            start_year = 1999
+            year_desc = "past 25 years (1999-2024)"
+        
+        # Filter for selected year range
         if 'Year' in df.columns:
-            df = df[df['Year'] >= 1999]
+            df = df[df['Year'] >= start_year]
         elif 'release_date' in df.columns:
             df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
             df = df.dropna(subset=['release_date'])
             df['Year'] = df['release_date'].dt.year
-            df = df[df['Year'] >= 1999]
+            df = df[df['Year'] >= start_year]
         
-        print(f"After filtering to past 25 years (1999-2024): {len(df)} records")
+        print(f"After filtering to {year_desc}: {len(df)} records")
         
         # Check available columns and adapt accordingly
         available_cols = df.columns.tolist()
@@ -436,13 +447,19 @@ def analyze_historical_trends(df, available_cols):
     plt.savefig('historical_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
 
-def run_all_analysis():
-    """Run all analysis types"""
-    print("VIDEO GAME SALES COMPREHENSIVE ANALYSIS (1999-2024)")
+def run_all_analysis_with_range(year_range='25'):
+    """Run all analysis types with specified year range"""
+    year_desc = {
+        '44': '1980-2024',
+        '22': '2002-2024',
+        '25': '1999-2024'
+    }.get(year_range, '1999-2024')
+    
+    print(f"VIDEO GAME SALES COMPREHENSIVE ANALYSIS ({year_desc})")
     print("=" * 60)
     
     # Load data
-    df, available_cols = load_and_clean_data()
+    df, available_cols = load_and_clean_data(year_range)
     if df is None:
         return
     
@@ -455,6 +472,10 @@ def run_all_analysis():
     analyze_platform_performance(df, available_cols)
     analyze_publisher_rankings(df, available_cols)
     analyze_historical_trends(df, available_cols)
+
+def run_all_analysis():
+    """Run all analysis types with default 25-year range"""
+    run_all_analysis_with_range('25')
     
     # Create a combined summary visualization
     plt.figure(figsize=(16, 10))
@@ -503,28 +524,32 @@ def run_all_analysis():
     print("All individual analysis charts have been generated.")
 
 if __name__ == "__main__":
+    year_range = '25'  # default
+    analysis_type = 'all'  # default
+    
     if len(sys.argv) > 1:
         analysis_type = sys.argv[1].lower()
-        
-        # Load data once
-        df, available_cols = load_and_clean_data()
-        if df is None:
-            sys.exit(1)
-        
-        if analysis_type == 'genre':
-            analyze_sales_by_genre(df, available_cols)
-        elif analysis_type == 'regional':
-            analyze_regional_breakdown(df, available_cols)
-        elif analysis_type == 'platform':
-            analyze_platform_performance(df, available_cols)
-        elif analysis_type == 'publisher':
-            analyze_publisher_rankings(df, available_cols)
-        elif analysis_type == 'historical':
-            analyze_historical_trends(df, available_cols)
-        elif analysis_type == 'all':
-            run_all_analysis()
-        else:
-            print(f"Unknown analysis type: {analysis_type}")
-            print("Available types: genre, regional, platform, publisher, historical, all")
+    
+    if len(sys.argv) > 2:
+        year_range = sys.argv[2]
+    
+    # Load data once with specified year range
+    df, available_cols = load_and_clean_data(year_range)
+    if df is None:
+        sys.exit(1)
+    
+    if analysis_type == 'genre':
+        analyze_sales_by_genre(df, available_cols)
+    elif analysis_type == 'regional':
+        analyze_regional_breakdown(df, available_cols)
+    elif analysis_type == 'platform':
+        analyze_platform_performance(df, available_cols)
+    elif analysis_type == 'publisher':
+        analyze_publisher_rankings(df, available_cols)
+    elif analysis_type == 'historical':
+        analyze_historical_trends(df, available_cols)
+    elif analysis_type == 'all':
+        run_all_analysis_with_range(year_range)
     else:
-        run_all_analysis()
+        print(f"Unknown analysis type: {analysis_type}")
+        print("Available types: genre, regional, platform, publisher, historical, all")
