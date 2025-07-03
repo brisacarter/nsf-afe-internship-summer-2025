@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Sales Analytics - About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2::before {
+            content: "🎮";
+            font-size: 0.8em;
+        }
+
+        .card h2:nth-child(1)::before {
+            content: "📊";
+        }
+
+        .about-card h2::before {
+            content: "👩‍💻";
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .about-card {
+            grid-column: 1 / -1;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .author-content {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .author-image {
+            flex-shrink: 0;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .author-text {
+            flex: 1;
+        }
+
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .hobby-item {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+
+            .author-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .profile-photo {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Video Game Sales Analytics</h1>
+            <p>Historical Trends and Predictive Modeling Project</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <h2>Project Overview</h2>
+                <p>This comprehensive data science project analyzes video game sales trends from 2017-2024, exploring how the gaming industry has evolved with the shift from physical to digital distribution, the rise of mobile gaming, and changing consumer preferences across platforms and genres.</p>
+                
+                <p>The project combines <span class="highlight">descriptive analytics</span> to understand historical patterns with <span class="highlight">inferential modeling</span> to forecast future market dynamics. Key insights include genre performance analysis and predictive modeling for sales forecasting through 2029.</p>
+            </div>
+
+            <div class="card">
+                <h2>Technical Implementation</h2>
+                <p>Built using Python's powerful data science ecosystem, this project leverages modern development tools and AI assistance to deliver comprehensive market insights.</p>
+                
+                <p>The analysis employs exploratory data analysis techniques, featuring bar chart visualizations of genre performance and regression models for predictive forecasting.</p>
+                
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Matplotlib</span>
+                    <span class="tech-tag">Scikit-learn</span>
+                    <span class="tech-tag">Replit</span>
+                    <span class="tech-tag">GitHub</span>
+                    <span class="tech-tag">Claude AI</span>
+                    <span class="tech-tag">ChatGPT</span>
+                    <span class="tech-tag">Statista</span>
+                    <span class="tech-tag">Kaggle</span>
+                </div>
+            </div>
+
+            <div class="card about-card">
+                <h2>About the Author</h2>
+                <div class="author-content">
+                    <div class="author-image">
+                        <img src="path/to/your-photo.jpg" alt="Brisa - Product Design and Research Leader" class="profile-photo">
+                    </div>
+                    <div class="author-text">
+                        <p><strong>Brisa</strong> is a Product Design and Research leader with 20+ years of experience in the software design industry and a student at UHMC in the ABIT program.</p>
+                        
+                        <p>Her extensive background in product design brings a unique perspective to data analysis, combining technical expertise with user-centered design thinking to create meaningful insights from complex datasets.</p>
+                        
+                        <p><strong>Personal Interests:</strong></p>
+                        <div class="hobbies">
+                            <span class="hobby-item">⛵ Sailing</span>
+                            <span class="hobby-item">🏄‍♀️ Paddleboarding</span>
+                            <span class="hobby-item">🚣‍♀️ Kayaking</span>
+                            <span class="hobby-item">🏕️ Camping</span>
+                            <span class="hobby-item">🧁 Baking</span>
+                            <span class="hobby-item">🎮 Video Games</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
