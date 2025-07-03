@@ -10,7 +10,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #537791 0%, #c1c0b9 50%, #e7e6e1 100%);
+    background: #537791;
     min-height: 100vh;
 }
 
@@ -107,7 +107,7 @@ body {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #537791, #c1c0b9);
+    background: #537791;
 }
 
 .option-card:hover {
@@ -166,23 +166,23 @@ body {
 }
 
 .btn-analytical {
-    background: linear-gradient(45deg, #537791, #c1c0b9);
+    background: #537791;
     color: white;
 }
 
 .btn-analytical:hover {
-    background: linear-gradient(45deg, #537791, #c1c0b9);
+    background: #c1c0b9;
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(83, 119, 145, 0.3);
 }
 
 .btn-inferential {
-    background: linear-gradient(45deg, #c1c0b9, #e7e6e1);
+    background: #c1c0b9;
     color: #537791;
 }
 
 .btn-inferential:hover {
-    background: linear-gradient(45deg, #537791, #c1c0b9);
+    background: #537791;
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(193, 192, 185, 0.3);
@@ -395,7 +395,7 @@ body {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #537791, #c1c0b9);
+    background: #537791;
 }
 
 .project-card h2, .tech-card h2 {
@@ -452,7 +452,7 @@ body {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #537791, #c1c0b9);
+    background: #537791;
 }
 
 .author-section h2 {
@@ -542,7 +542,7 @@ body {
     left: 0;
     right: 0;
     height: 5px;
-    background: linear-gradient(90deg, #537791, #c1c0b9);
+    background: #537791;
 }
 
 .dataset-section h3 {
