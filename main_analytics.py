@@ -447,19 +447,43 @@ def run_all_analysis():
     
     # Create a combined summary visualization
     plt.figure(figsize=(16, 10))
-    plt.text(0.5, 0.5, 'Comprehensive Video Game Sales Analysis Complete!\n\n' +
-             'Individual analysis charts have been generated:\n' +
-             '• Genre Analysis: genre_analysis.png\n' +
-             '• Regional Breakdown: regional_analysis.png\n' +
-             '• Platform Performance: platform_analysis.png\n' +
-             '• Publisher Rankings: publisher_analysis.png\n' +
-             '• Historical Trends: historical_analysis.png\n\n' +
-             'Check each individual chart for detailed insights.',
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.sans-serif'] = ['Montserrat', 'Arial', 'DejaVu Sans']
+    
+    # Set background color to match app
+    fig = plt.gcf()
+    fig.patch.set_facecolor('#f8f9fa')
+    
+    # Main content with app-style colors
+    main_text = ('Comprehensive Video Game Sales Analysis Complete!\n\n' +
+                'Individual analysis charts have been generated:\n' +
+                '• Genre Analysis: genre_analysis.png\n' +
+                '• Regional Breakdown: regional_analysis.png\n' +
+                '• Platform Performance: platform_analysis.png\n' +
+                '• Publisher Rankings: publisher_analysis.png\n' +
+                '• Historical Trends: historical_analysis.png\n\n' +
+                'Check each individual chart for detailed insights.')
+    
+    plt.text(0.5, 0.5, main_text,
              fontsize=16, ha='center', va='center', 
-             bbox=dict(boxstyle="round,pad=0.5", facecolor="lightblue"))
+             color='#333333', fontweight='normal', linespacing=1.6,
+             bbox=dict(boxstyle="round,pad=30", facecolor="#e3e3e3", 
+                      edgecolor="#455d7a", linewidth=2))
+    
     plt.axis('off')
-    plt.title('Video Game Sales Analysis Summary', fontsize=20, fontweight='bold', pad=20)
-    plt.savefig('all_analysis_summary.png', dpi=300, bbox_inches='tight')
+    
+    # Title with app colors
+    plt.title('Video Game Sales Analysis Summary', 
+              fontsize=24, fontweight='bold', pad=30, 
+              color='#455d7a', fontfamily='sans-serif')
+    
+    # Add subtle branding footer
+    plt.figtext(0.5, 0.05, 'By Brisa Carter | Powered by Python & Machine Learning', 
+                fontsize=12, ha='center', va='bottom', 
+                color='#666666', style='italic')
+    
+    plt.savefig('all_analysis_summary.png', dpi=300, bbox_inches='tight', 
+                facecolor='#f8f9fa', edgecolor='none')
     plt.close()
     
     print("\n" + "="*60)
