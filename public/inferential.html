@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inferential Analysis - Video Game Sales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <button onclick="navigateToAnalytical()" class="nav-btn">← Analytics</button>
+                <h1>Inferential Analysis</h1>
+                <button onclick="goHome()" class="nav-btn">Home →</button>
+            </nav>
+        </header>
+
+        <main class="analysis-page">
+            <div class="analysis-controls">
+                <button id="runPredictionBtn" class="btn btn-inferential" onclick="runAnalysis('inferential')">
+                    Generate Predictions
+                </button>
+                <div id="loadingSpinner" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Building predictive model...</p>
+                </div>
+            </div>
+
+            <div id="resultsSection" class="results-section hidden">
+                <div class="results-header">
+                    <h2>Prediction Results</h2>
+                </div>
+                
+                <div id="outputContainer" class="output-container">
+                    <pre id="analysisOutput"></pre>
+                </div>
+
+                <div id="visualizationContainer" class="visualization-container">
+                    <!-- Prediction charts and graphs will be inserted here -->
+                </div>
+            </div>
+
+            <div class="description-section">
+                <h3>About Inferential Analysis</h3>
+                <p>This analysis uses machine learning models to make predictions about future video game sales trends:</p>
+                <ul>
+                    <li><strong>Linear Regression Model:</strong> Predicts future sales based on historical trends</li>
+                    <li><strong>5-Year Forecasting:</strong> Sales predictions for the next 5 years</li>
+                    <li><strong>Trend Analysis:</strong> Identification of growth or decline patterns</li>
+                    <li><strong>Model Performance:</strong> R-squared scores and accuracy metrics</li>
+                    <li><strong>Statistical Inference:</strong> Confidence intervals and significance testing</li>
+                </ul>
+                <div class="model-info">
+                    <h4>Model Details:</h4>
+                    <p>The model aggregates total global sales per year and uses linear regression to identify trends. The R-squared score indicates how well the model explains the variance in the data.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

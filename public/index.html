@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Game Sales Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Video Game Sales Analysis Dashboard</h1>
+            <p class="subtitle">Explore comprehensive video game sales data through analytical and inferential statistics</p>
+        </header>
+
+        <main class="main-content">
+            <div class="analysis-options">
+                <div class="option-card analytical">
+                    <div class="card-icon">📊</div>
+                    <h2>Analytical Display</h2>
+                    <p>Explore descriptive statistics, visualizations, and data breakdowns of video game sales by genre, platform, and region.</p>
+                    <ul>
+                        <li>Sales by Genre Charts</li>
+                        <li>Platform Performance</li>
+                        <li>Regional Analysis</li>
+                        <li>Top Publishers & Games</li>
+                    </ul>
+                    <button class="btn btn-analytical" onclick="navigateToAnalytical()">
+                        View Analytics
+                    </button>
+                </div>
+
+                <div class="option-card inferential">
+                    <div class="card-icon">🔮</div>
+                    <h2>Inferential Display</h2>
+                    <p>Discover predictive insights and future trends using machine learning models and statistical inference.</p>
+                    <ul>
+                        <li>Sales Predictions</li>
+                        <li>Trend Analysis</li>
+                        <li>Market Forecasting</li>
+                        <li>Growth Patterns</li>
+                    </ul>
+                    <button class="btn btn-inferential" onclick="navigateToInferential()">
+                        View Predictions
+                    </button>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h3>Dataset Information</h3>
+                <div class="dataset-info">
+                    <div class="info-item">
+                        <strong>Records:</strong> 64,000+ video games
+                    </div>
+                    <div class="info-item">
+                        <strong>Time Range:</strong> 1977 - 2024
+                    </div>
+                    <div class="info-item">
+                        <strong>Regions:</strong> North America, Europe, Japan, Others
+                    </div>
+                    <div class="info-item">
+                        <strong>Platforms:</strong> 30+ gaming platforms
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2024 Video Game Sales Analysis | Powered by Python & Machine Learning</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

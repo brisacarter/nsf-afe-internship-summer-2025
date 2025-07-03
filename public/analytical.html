@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytical Analysis - Video Game Sales</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <button onclick="goHome()" class="nav-btn">← Home</button>
+                <h1>Analytical Analysis</h1>
+                <button onclick="navigateToInferential()" class="nav-btn">Predictions →</button>
+            </nav>
+        </header>
+
+        <main class="analysis-page">
+            <div class="analysis-controls">
+                <button id="runAnalysisBtn" class="btn btn-analytical" onclick="runAnalysis('analytical')">
+                    Generate Sales Analysis
+                </button>
+                <div id="loadingSpinner" class="loading hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing data...</p>
+                </div>
+            </div>
+
+            <div id="resultsSection" class="results-section hidden">
+                <div class="results-header">
+                    <h2>Analysis Results</h2>
+                </div>
+                
+                <div id="outputContainer" class="output-container">
+                    <pre id="analysisOutput"></pre>
+                </div>
+
+                <div id="visualizationContainer" class="visualization-container">
+                    <!-- Charts and graphs will be inserted here -->
+                </div>
+            </div>
+
+            <div class="description-section">
+                <h3>About Analytical Analysis</h3>
+                <p>This analysis provides descriptive statistics and visualizations of video game sales data, including:</p>
+                <ul>
+                    <li><strong>Sales by Genre:</strong> Bar charts showing total global sales for each game genre</li>
+                    <li><strong>Regional Breakdown:</strong> Sales distribution across different regions</li>
+                    <li><strong>Platform Performance:</strong> Console and platform sales comparisons</li>
+                    <li><strong>Publisher Rankings:</strong> Top-performing game publishers</li>
+                    <li><strong>Historical Trends:</strong> Sales patterns over time</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
