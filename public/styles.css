@@ -1,4 +1,7 @@
 
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -7,7 +10,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: #333;
     background: #233142;
@@ -282,7 +285,7 @@ body {
 
 .output-container pre {
     white-space: pre-wrap;
-    font-family: 'Courier New', monospace;
+    font-family: 'Courier New', 'Monaco', monospace;
     font-size: 0.9rem;
     line-height: 1.4;
 }
