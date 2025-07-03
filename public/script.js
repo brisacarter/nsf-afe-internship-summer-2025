@@ -39,6 +39,9 @@ async function runSpecificAnalysis(specificType) {
     
     const runBtn = document.getElementById(buttonMap[specificType]);
     
+    // Update active button state
+    setActiveButton(runBtn);
+    
     // Show loading state
     if (loadingSpinner) {
         loadingSpinner.classList.remove('hidden');
@@ -227,8 +230,28 @@ async function runAnalysis(analysisType) {
     }
 }
 
+// Function to set active button
+function setActiveButton(activeBtn) {
+    // Remove active class from all analysis buttons
+    const allAnalysisButtons = document.querySelectorAll('.btn-analytical');
+    allAnalysisButtons.forEach(btn => {
+        btn.classList.remove('btn-active');
+    });
+    
+    // Add active class to clicked button
+    if (activeBtn) {
+        activeBtn.classList.add('btn-active');
+    }
+}
+
 // Add smooth scrolling for better UX
 document.addEventListener('DOMContentLoaded', function() {
+    // Set default active button to Sales by Genre
+    const defaultActiveBtn = document.getElementById('salesByGenreBtn');
+    if (defaultActiveBtn) {
+        setActiveButton(defaultActiveBtn);
+    }
+    
     // Add entrance animations
     const cards = document.querySelectorAll('.option-card');
     cards.forEach((card, index) => {
@@ -240,11 +263,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const buttons = document.querySelectorAll('.btn');
     buttons.forEach(button => {
         button.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.05)';
+            if (!this.classList.contains('btn-active')) {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
+            }
         });
         
         button.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+            if (!this.classList.contains('btn-active')) {
+                this.style.transform = 'translateY(0) scale(1)';
+            }
         });
     });
 });

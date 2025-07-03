@@ -246,12 +246,25 @@ body {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #f44336 0%, #f44336 100%);
+    background: #455d7a;
+    color: white;
     border: none;
     font-weight: bold;
     grid-column: 1 / -1;
     max-width: 300px;
     justify-self: center;
+}
+
+.btn-primary:hover {
+    background: #f95959;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(69, 93, 122, 0.3);
+}
+
+.btn-active {
+    background: #f95959 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(249, 89, 89, 0.3);
 }
 
 .loading {
@@ -295,8 +308,8 @@ body {
 
 .output-container {
     background: #e3e3e3;
-    border-radius: 10px;
-    padding: 20px;
+    border-radius: 15px;
+    padding: 25px;
     margin-bottom: 20px;
     max-height: 400px;
     overflow-y: auto;
@@ -304,9 +317,11 @@ body {
 
 .output-container pre {
     white-space: pre-wrap;
-    font-family: 'Courier New', 'Monaco', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
-    line-height: 1.4;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
 }
 
 .visualization-container {
