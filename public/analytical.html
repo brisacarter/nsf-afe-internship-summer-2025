@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analytical Analysis - Video Game Sales</title>
+    <title>Analytical Insights - Video Game Sales</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <header class="header">
             <nav class="nav">
                 <button onclick="goHome()" class="nav-btn">← Home</button>
-                <h1>Analytical Analysis</h1>
+                <h1>Analytical Insights</h1>
                 <button onclick="navigateToInferential()" class="nav-btn">Predictions →</button>
             </nav>
         </header>
@@ -24,7 +24,7 @@
                     <div class="toggle-container">
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="5" checked>
-                            <span class="toggle-label">Past 5 Years (2019-2024)</span>
+                            <span class="toggle-label">Past 8 Years (2017-2024)</span>
                         </label>
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="44">
@@ -104,7 +104,7 @@
             </div>
 
             <div class="description-section">
-                <h3>About Analytical Analysis</h3>
+                <h3>About Analytical Insights</h3>
                 <p>This analysis provides descriptive statistics and visualizations of video game sales data, including:</p>
                 <ul>
                     <li><strong>Sales by Genre:</strong> Bar charts showing total global sales for each game genre</li>
@@ -112,12 +112,9 @@
                     <li><strong>Publisher Rankings:</strong> Top-performing game publishers</li>
                 </ul>
             </div>
-            <div class="summary-footer">
-                  <!--   <p>Check each individual chart for detailed insights.</p>-->
-                <div class="author-credit">
-                    <span>By Brisa Carter | Powered by Python & Machine Learning</span>
-                </div>
-            </div>
+            <footer class="summary-footer">
+                <p>By Brisa Carter | Powered by Python & Machine Learning | <a href="about.html" style="color: white; text-decoration: underline;">About This Project</a></p>
+            </footer>
         </main>
         <div id="imageModal" class="modal">
             <span class="close" onclick="closeModal()">&times;</span>

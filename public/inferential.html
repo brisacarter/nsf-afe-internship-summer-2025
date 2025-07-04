@@ -23,17 +23,19 @@
                     <div class="toggle-container">
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="5" checked>
-                            <span class="toggle-label">Past 5 Years (2019-2024)</span>
+                            <span class="toggle-label">Past 8 Years (2017-2024)</span>
                         </label>
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="44">
                             <span class="toggle-label">Past 44 Years (1980-2024)</span>
                         </label>
                     </div>
-                </div>
+
+              
 
                 <p>This analysis uses machine learning to predict future video game sales trends based on historical data. The model analyzes patterns and generates forecasts for the next 5 years.</p>
-
+         
+                      </div>
                 <button id="runInferentialBtn" class="btn btn-inferential" onclick="runAnalysis('inferential')">
                     Generate Predictions
                 </button>
@@ -72,12 +74,9 @@
                     <p>The model aggregates total global sales per year and uses linear regression to identify trends. The R-squared score indicates how well the model explains the variance in the data.</p>
                 </div>
             </div>
-            <div class="summary-footer">
-             <!--   <p>Check each individual chart for detailed insights.</p>-->
-                <div class="author-credit">
-                    <span>By Brisa Carter | Powered by Python & Machine Learning</span>
-                </div>
-            </div>
+            <footer class="summary-footer">
+                <p>By Brisa Carter | Powered by Python & Machine Learning | <a href="about.html" style="color: white; text-decoration: underline;">About This Project</a></p>
+            </footer>
         </main>
     </div>
 

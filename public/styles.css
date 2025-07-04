@@ -238,7 +238,7 @@ body {
 .year-range-toggle {
 
     padding: 25px;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
 }
 
 .year-range-toggle h3 {
@@ -538,15 +538,17 @@ body {
     margin-top:30px;
     padding-top: 20px;
     border-top: 2px solid #e3e3e3;
+    color: #333;
 }
 
-.summary-footer p {
-    color: #333;
+.summary-footer p a {
+    color: #333 !important;
     font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 15px;
     line-height: 1.6;
 }
+
 
 .author-credit {
     margin-top: 15px;
@@ -584,6 +586,21 @@ body {
     color: white;
     margin-top: 30px;
     opacity: 0.8;
+}
+.summary-footer {
+    text-align: center;
+    margin-top:30px;
+    padding-top: 20px;
+    border-top: 2px solid #e3e3e3;
+    color: #333;
+}
+
+.summary-footer p a {
+    color: #333 !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
 /* Responsive Design */
