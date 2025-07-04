@@ -292,36 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Add CSS animations
-
-// Navigation functions
-function goHome() {
-    window.location.href = '/';
-}
-
-function goToAbout() {
-    window.location.href = '/about.html';
-}
-
-function navigateToAnalytical() {
-    window.location.href = '/analytical';
-}
-
-function navigateToInferential() {
-    window.location.href = '/inferential';
-}
-
-function navigateToAnalytical() {
-    window.location.href = '/analytical';
-}
-
-function navigateToAbout() {
-    window.location.href = '/about.html';
-}
-
-function goToAbout() {
-    window.location.href = '/about.html';
-}
-
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeInUp {

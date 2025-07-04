@@ -8,9 +8,6 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/css', express.static(path.join(__dirname, 'static/css')));
-app.use('/js', express.static(path.join(__dirname, 'static/js')));
-app.use('/images', express.static(path.join(__dirname, 'static/images')));
 app.use(express.json());
 
 // Routes
@@ -34,10 +31,10 @@ app.post('/api/run-analysis', async (req, res) => {
         let imageName;
 
         if (analysisType === 'analytical') {
-            pythonScript = 'src/python/main_sales.py';
+            pythonScript = 'main_sales.py';
             imageName = 'sales_analysis.png';
         } else if (analysisType === 'inferential') {
-            pythonScript = 'src/python/main.py';
+            pythonScript = 'main.py';
             imageName = 'sales_prediction.png';
         } else {
             return res.json({ success: false, error: 'Invalid analysis type' });
@@ -57,7 +54,7 @@ app.post('/api/run-analysis', async (req, res) => {
 
         if (result.success) {
             // Check if image was created
-            const imagePath = path.join(__dirname, 'src/assets', imageName);
+            const imagePath = path.join(__dirname, imageName);
             const hasImage = fs.existsSync(imagePath);
 
             res.json({
@@ -83,7 +80,7 @@ app.post('/api/run-specific-analysis', async (req, res) => {
         console.log(`Running specific analysis: ${analysisType} with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['src/python/main_analytics.py', analysisType, yearRange || '25']);
+        const pythonProcess = spawn('python3', ['main_analytics.py', analysisType, yearRange || '25']);
 
         let output = '';
         let errorOutput = '';
@@ -105,9 +102,9 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                 else if (analysisType === 'publisher') imageName = 'publisher_analysis.png';
 
                 // Check if image was created
-                const imagePath = path.join(__dirname, 'src/assets', imageName);
+                const imagePath = path.join(__dirname, imageName);
                 const hasImage = fs.existsSync(imagePath);
-
+                
                 res.json({
                     success: true,
                     output: output,
@@ -137,7 +134,7 @@ app.post('/api/run-inferential', async (req, res) => {
         console.log(`Running inferential analysis with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['src/python/main.py', yearRange || '25']);
+        const pythonProcess = spawn('python3', ['main.py', yearRange || '25']);
 
         let output = '';
         let errorOutput = '';
@@ -153,9 +150,9 @@ app.post('/api/run-inferential', async (req, res) => {
         pythonProcess.on('close', (code) => {
             if (code === 0) {
                 // Check if image was created
-                const imagePath = path.join(__dirname, 'src/assets/sales_prediction.png');
+                const imagePath = path.join(__dirname, 'sales_prediction.png');
                 const hasImage = fs.existsSync(imagePath);
-
+                
                 res.json({
                     success: true,
                     output: output,
@@ -181,7 +178,7 @@ app.post('/api/run-inferential', async (req, res) => {
 // Serve generated images
 app.get('/api/image/:filename', (req, res) => {
     const filename = req.params.filename;
-    const imagePath = path.join(__dirname, 'src/assets', filename);
+    const imagePath = path.join(__dirname, filename);
 
     if (fs.existsSync(imagePath)) {
         res.sendFile(imagePath);
@@ -189,14 +186,6 @@ app.get('/api/image/:filename', (req, res) => {
         res.status(404).send('Image not found');
     }
 });
-
-// Serve static files
-app.use(express.static('public'));
-app.use('/js', express.static('static/js'));
-app.use('/css', express.static('static/css'));
-app.use('/images', express.static('static/images'));
-app.use('/assets', express.static('src/assets'));  // For serving generated charts
-app.use(express.static('.'));  // For serving image files in root
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
