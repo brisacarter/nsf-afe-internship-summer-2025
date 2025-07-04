@@ -817,7 +817,7 @@ body {
 
     .author-content {
         flex-direction: column;
-        text-align: center;
+        text-align: center
         gap: 20px;
     }
 
