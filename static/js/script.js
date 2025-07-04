@@ -292,6 +292,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Add CSS animations
+
+// Navigation functions
+function goHome() {
+    window.location.href = '/';
+}
+
+function goToAbout() {
+    window.location.href = '/about.html';
+}
+
+function navigateToAnalytical() {
+    window.location.href = '/analytical';
+}
+
+function navigateToInferential() {
+    window.location.href = '/inferential';
+}
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeInUp {
