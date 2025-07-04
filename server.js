@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const { spawn, exec } = require('child_process');
@@ -108,7 +107,7 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                 // Check if image was created
                 const imagePath = path.join(__dirname, 'src/assets', imageName);
                 const hasImage = fs.existsSync(imagePath);
-                
+
                 res.json({
                     success: true,
                     output: output,
@@ -156,7 +155,7 @@ app.post('/api/run-inferential', async (req, res) => {
                 // Check if image was created
                 const imagePath = path.join(__dirname, 'src/assets/sales_prediction.png');
                 const hasImage = fs.existsSync(imagePath);
-                
+
                 res.json({
                     success: true,
                     output: output,
@@ -190,6 +189,14 @@ app.get('/api/image/:filename', (req, res) => {
         res.status(404).send('Image not found');
     }
 });
+
+// Serve static files
+app.use(express.static('public'));
+app.use('/js', express.static('static/js'));
+app.use('/css', express.static('static/css'));
+app.use('/images', express.static('static/images'));
+app.use('/assets', express.static('src/assets'));  // For serving generated charts
+app.use(express.static('.'));  // For serving image files in root
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);

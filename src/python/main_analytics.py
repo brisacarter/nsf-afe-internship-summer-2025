@@ -17,6 +17,14 @@ def load_data():
                 print(f"Loading data from {file_path}")
                 df = pd.read_csv(file_path)
                 print(f"Data loaded successfully. Shape: {df.shape}")
+                print(f"Columns: {list(df.columns)}")
+                
+                # Handle different column name variations
+                if 'Global_Sales' not in df.columns and 'Global Sales' in df.columns:
+                    df['Global_Sales'] = df['Global Sales']
+                if 'Global_Sales' not in df.columns and 'GlobalSales' in df.columns:
+                    df['Global_Sales'] = df['GlobalSales']
+                
                 return df
         
         print("No data file found!")
