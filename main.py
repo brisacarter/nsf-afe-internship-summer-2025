@@ -29,9 +29,9 @@ def predict_future_sales(year_range='25'):
         elif year_range == '22':
             start_year = 2002
             year_desc = "past 22 years (2002-2024)"
-        else:  # default to 25 years
-            start_year = 1999
-            year_desc = "past 25 years (1999-2024)"
+        else:  # default to 8 years
+            start_year = 2017
+            year_desc = "past 8 years (2017-2024)"
         
         # Filter for selected year range
         df = df[(df['Year'] >= start_year) & (df['Year'] <= 2024)]
@@ -150,7 +150,7 @@ def predict_future_sales(year_range='25'):
 
 # Run the prediction
 if __name__ == "__main__":
-    year_range = '25'  # default
+    year_range = '8'  # default
     
     if len(sys.argv) > 1:
         year_range = sys.argv[1]
@@ -158,8 +158,8 @@ if __name__ == "__main__":
     year_desc = {
         '44': '1980-2024',
         '22': '2002-2024',
-        '25': '1999-2024'
-    }.get(year_range, '1999-2024')
+        '8': '2017-2024'
+    }.get(year_range, '2017-2024')
     
     print(f"Video Game Sales Prediction Analysis ({year_desc})")
     print("=" * 40)

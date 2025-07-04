@@ -34,9 +34,9 @@ def load_and_clean_data(year_range='25'):
         if year_range == '44':
             start_year = 1980
             year_desc = "past 44 years (1980-2024)"
-        else:  # default to 5 years
-            start_year = 2019
-            year_desc = "past 5 years (2019-2024)"
+        else:  # default to 8 years
+            start_year = 2017
+            year_desc = "past 8 years (2017-2024)"
         
         # Filter for selected year range
         if 'Year' in df.columns:
@@ -308,12 +308,12 @@ def analyze_publisher_rankings(df, available_cols):
 
 
 
-def run_all_analysis_with_range(year_range='5'):
+def run_all_analysis_with_range(year_range='8'):
     """Run all analysis types with specified year range"""
     year_desc = {
         '44': '1980-2024',
-        '5': '2019-2024'
-    }.get(year_range, '2019-2024')
+        '8': '2017-2024'
+    }.get(year_range, '2017-2024')
     
     print(f"VIDEO GAME SALES COMPREHENSIVE ANALYSIS ({year_desc})")
     print("=" * 60)
@@ -331,8 +331,8 @@ def run_all_analysis_with_range(year_range='5'):
     analyze_publisher_rankings(df, available_cols)
 
 def run_all_analysis():
-    """Run all analysis types with default 5-year range"""
-    run_all_analysis_with_range('5')
+    """Run all analysis types with default 8-year range"""
+    run_all_analysis_with_range('8')
     
     # Create a combined summary visualization
     plt.figure(figsize=(16, 10))
@@ -381,7 +381,7 @@ def run_all_analysis():
     print("All individual analysis charts have been generated.")
 
 if __name__ == "__main__":
-    year_range = '5'  # default
+    year_range = '8'  # default
     analysis_type = 'all'  # default
     
     if len(sys.argv) > 1:
