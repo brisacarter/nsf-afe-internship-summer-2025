@@ -28,12 +28,9 @@ def visualize_sales_analysis(year_range='25'):
         print(f"Loaded {len(df)} records from {used_file}")
         
         # Determine year range based on parameter
-        if year_range == '40':
-            start_year = 1984
-            year_desc = "past 40 years (1984-2024)"
-        elif year_range == '20':
-            start_year = 2004
-            year_desc = "past 20 years (2004-2024)"
+        if year_range == '44':
+            start_year = 1980
+            year_desc = "past 44 years (1980-2024)"
         else:  # default to 5 years
             start_year = 2019
             year_desc = "past 5 years (2019-2024)"

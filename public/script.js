@@ -26,17 +26,11 @@ async function runSpecificAnalysis(specificType) {
     const analysisOutput = document.getElementById('analysisOutput');
     const visualizationContainer = document.getElementById('visualizationContainer');
 
-    // Get selected year range
-    const selectedYearRange = document.querySelector('input[name="yearRange"]:checked');
-    const yearRange = selectedYearRange ? selectedYearRange.value : '5';
-
     // Get the clicked button
     const buttonMap = {
         'genre': 'salesByGenreBtn',
-        'regional': 'regionalBreakdownBtn',
         'platform': 'platformPerformanceBtn',
         'publisher': 'publisherRankingsBtn',
-        'historical': 'historicalTrendsBtn',
         'all': 'runAllAnalysisBtn'
     };
 
@@ -58,6 +52,10 @@ async function runSpecificAnalysis(specificType) {
     }
 
     try {
+        // Get selected year range if available
+        const selectedYearRange = document.querySelector('input[name="yearRange"]:checked');
+        const yearRange = selectedYearRange ? selectedYearRange.value : '5';
+
         const response = await fetch('/api/run-specific-analysis', {
             method: 'POST',
             headers: {
@@ -141,10 +139,8 @@ async function runSpecificAnalysis(specificType) {
             runBtn.disabled = false;
             const originalTexts = {
                 'genre': 'Sales by Genre',
-                'regional': 'Regional Breakdown',
                 'platform': 'Platform Performance',
                 'publisher': 'Publisher Rankings',
-                'historical': 'Historical Trends',
                 'all': 'Generate All Analysis'
             };
             runBtn.textContent = originalTexts[specificType];
@@ -188,10 +184,10 @@ async function runAnalysis(analysisType) {
         const result = await response.json();
 
         if (result.success) {
-            // Display output
-            if (analysisOutput) {
-                analysisOutput.textContent = result.output;
-            }
+            // Filter out the success message about checking the file
+            let filteredOutput = result.output.replace(/Analysis completed successfully!\s*Check the '[^']*' file for the visualization\s*/gi, '');
+            analysisOutput.textContent = filteredOutput;
+            resultsSection.classList.remove('hidden');
 
             // Display visualization if available
             if (visualizationContainer && result.hasImage) {
@@ -335,3 +331,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+// Code for Modal to display analysis images
+function openModal(imageSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+}
+
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+}

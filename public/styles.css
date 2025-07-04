@@ -174,9 +174,9 @@ body {
 }
 
 .btn-analytical:hover {
-    background: #f95959;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(69, 93, 122, 0.3);
+    background: #8097b2;
+    /*transform: translateY(-2px);*/
+    box-shadow: 0 10px 20px rgba(128, 151, 178, 0.3);
 }
 
 .btn-inferential {
@@ -187,7 +187,7 @@ body {
 .btn-inferential:hover {
     background: #455d7a;
     color: white;
-    transform: translateY(-2px);
+     /*transform: translateY(-2px);*/
     box-shadow: 0 10px 20px rgba(249, 89, 89, 0.3);
 }
 
@@ -236,11 +236,9 @@ body {
 }
 
 .year-range-toggle {
-    background: #e3e3e3;
-    border-radius: 15px;
+
     padding: 25px;
     margin-bottom: 30px;
-    border: 2px solid #455d7a;
 }
 
 .year-range-toggle h3 {
@@ -248,6 +246,13 @@ body {
     margin-bottom: 20px;
     font-size: 1.3rem;
     font-weight: 600;
+}
+.year-range-toggle h2 {
+    color: #455d7a;
+    margin-top: 20px;
+
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .toggle-container {
@@ -262,9 +267,7 @@ body {
     align-items: center;
     cursor: pointer;
     padding: 10px 20px;
-    border-radius: 25px;
-    background: white;
-    border: 2px solid #455d7a;
+      border-radius: 25px;
     transition: all 0.3s ease;
     min-width: 200px;
     justify-content: center;
@@ -273,22 +276,23 @@ body {
 .toggle-option:hover {
     background: #455d7a;
     color: white;
-    transform: translateY(-2px);
+    border-radius: 25px;
+    text-decoration: none;
+
 }
 
 .toggle-option input[type="radio"] {
     margin-right: 10px;
-    accent-color: #455d7a;
+    accent-color: #f95959;
 }
 
 .toggle-option input[type="radio"]:checked + .toggle-label {
-    font-weight: bold;
+   /* text-decoration: underline;
+    text-underline-offset:8px;*/
 }
 
 .toggle-option:has(input:checked) {
-    background: #455d7a;
-    color: white;
-    box-shadow: 0 5px 15px rgba(69, 93, 122, 0.3);
+
 }
 
 .toggle-label {
@@ -301,7 +305,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
     margin-bottom: 1rem;
-    max-width: 800px;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -402,6 +406,7 @@ body {
     padding: 25px;
     border-radius: 15px;
     margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .description-section h3 {
@@ -530,6 +535,7 @@ body {
 
 .summary-footer {
     text-align: center;
+    margin-top:30px;
     padding-top: 20px;
     border-top: 2px solid #e3e3e3;
 }
@@ -549,7 +555,7 @@ body {
 .author-credit span {
     color: #666;
     font-size: 0.95rem;
-    font-style: italic;
+   /* font-style: italic;*/
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -809,6 +815,50 @@ body {
     gap: 20px;
 }
 
+/* Thumbnail */
+.analysis-thumb {
+    width: 100px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+.analysis-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 60px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover {
+    color: #ccc;
+}
+
 @media (max-width: 768px) {
     .content-grid {
         grid-template-columns: 1fr;
@@ -817,7 +867,7 @@ body {
 
     .author-content {
         flex-direction: column;
-        text-align: center
+        text-align: center;
         gap: 20px;
     }
 

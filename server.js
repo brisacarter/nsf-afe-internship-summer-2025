@@ -80,7 +80,7 @@ app.post('/api/run-specific-analysis', async (req, res) => {
         console.log(`Running specific analysis: ${analysisType} with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['main_analytics.py', analysisType, yearRange || '5']);
+        const pythonProcess = spawn('python3', ['main_analytics.py', analysisType, yearRange || '25']);
 
         let output = '';
         let errorOutput = '';
@@ -97,14 +97,14 @@ app.post('/api/run-specific-analysis', async (req, res) => {
             if (code === 0) {
                 // Determine the image name based on analysis type
                 let imageName = 'all_analysis_summary.png';
-                let hasImage = true;
-                
                 if (analysisType === 'genre') imageName = 'genre_analysis.png';
-                else if (analysisType === 'regional') imageName = 'regional_analysis.png';
                 else if (analysisType === 'platform') imageName = 'platform_analysis.png';
                 else if (analysisType === 'publisher') imageName = 'publisher_analysis.png';
-                else if (analysisType === 'historical') imageName = 'historical_analysis.png';
 
+                // Check if image was created
+                const imagePath = path.join(__dirname, imageName);
+                const hasImage = fs.existsSync(imagePath);
+                
                 res.json({
                     success: true,
                     output: output,
@@ -117,14 +117,6 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                     error: errorOutput || 'Analysis failed'
                 });
             }
-        });
-
-        pythonProcess.on('error', (error) => {
-            console.error('Python process error:', error);
-            res.json({
-                success: false,
-                error: 'Failed to start analysis process'
-            });
         });
     } catch (error) {
         console.error('Error running specific analysis:', error);
@@ -142,7 +134,7 @@ app.post('/api/run-inferential', async (req, res) => {
         console.log(`Running inferential analysis with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['main.py', yearRange || '5']);
+        const pythonProcess = spawn('python3', ['main.py', yearRange || '25']);
 
         let output = '';
         let errorOutput = '';
@@ -157,9 +149,14 @@ app.post('/api/run-inferential', async (req, res) => {
 
         pythonProcess.on('close', (code) => {
             if (code === 0) {
+                // Check if image was created
+                const imagePath = path.join(__dirname, 'sales_prediction.png');
+                const hasImage = fs.existsSync(imagePath);
+                
                 res.json({
                     success: true,
                     output: output,
+                    hasImage: hasImage,
                     imageName: 'sales_prediction.png'
                 });
             } else {
@@ -192,11 +189,4 @@ app.get('/api/image/:filename', (req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
-    console.log('Available endpoints:');
-    console.log('  GET  / - Home page');
-    console.log('  GET  /analytical - Analytical page');
-    console.log('  GET  /inferential - Inferential page');
-    console.log('  POST /api/run-specific-analysis - Run specific analysis');
-    console.log('  POST /api/run-inferential - Run inferential analysis');
-    console.log('  GET  /api/image/:filename - Serve images');
 });

@@ -23,15 +23,15 @@ def predict_future_sales(year_range='25'):
         df['Year'] = df['release_date'].dt.year
         
         # Determine year range based on parameter
-        if year_range == '40':
-            start_year = 1984
-            year_desc = "past 40 years (1984-2024)"
-        elif year_range == '20':
-            start_year = 2004
-            year_desc = "past 20 years (2004-2024)"
-        else:  # default to 5 years
-            start_year = 2019
-            year_desc = "past 5 years (2019-2024)"
+        if year_range == '44':
+            start_year = 1980
+            year_desc = "past 44 years (1980-2024)"
+        elif year_range == '22':
+            start_year = 2002
+            year_desc = "past 22 years (2002-2024)"
+        else:  # default to 25 years
+            start_year = 1999
+            year_desc = "past 25 years (1999-2024)"
         
         # Filter for selected year range
         df = df[(df['Year'] >= start_year) & (df['Year'] <= 2024)]
@@ -90,7 +90,7 @@ def predict_future_sales(year_range='25'):
                 linestyle=':', alpha=0.7, color='green', label='Trend Line')
         
         # Customize the plot
-        plt.title(f'Global Video Game Sales Prediction ({year_desc})\n(Historical Data and 5-Year Forecast)', 
+        plt.title('Global Video Game Sales Prediction (1999-2024)\n(Historical Data and 5-Year Forecast)', 
                  fontsize=16, fontweight='bold', pad=20)
         plt.xlabel('Year', fontsize=12, fontweight='bold')
         plt.ylabel('Global Sales (millions of units)', fontsize=12, fontweight='bold')
@@ -150,16 +150,16 @@ def predict_future_sales(year_range='25'):
 
 # Run the prediction
 if __name__ == "__main__":
-    year_range = '5'  # default
+    year_range = '25'  # default
     
     if len(sys.argv) > 1:
         year_range = sys.argv[1]
     
     year_desc = {
-        '40': '1984-2024',
-        '20': '2004-2024',
-        '5': '2019-2024'
-    }.get(year_range, '2019-2024')
+        '44': '1980-2024',
+        '22': '2002-2024',
+        '25': '1999-2024'
+    }.get(year_range, '1999-2024')
     
     print(f"Video Game Sales Prediction Analysis ({year_desc})")
     print("=" * 40)
