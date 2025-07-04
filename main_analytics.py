@@ -181,12 +181,22 @@ def analyze_platform_performance(df, available_cols):
     plt.ylabel('Average Sales (millions)', fontsize=10)
     plt.xticks(range(len(avg_sales_per_platform)), avg_sales_per_platform.index, rotation=45, ha='right')
     
-    # Platform market share (top 10)
+    # Top platforms horizontal bar chart
     plt.subplot(2, 2, 4)
     top_10_platforms = platform_sales.head(10)
-    plt.pie(top_10_platforms.values, labels=top_10_platforms.index, autopct='%1.1f%%',
-           colors=plt.cm.tab20(range(len(top_10_platforms))))
-    plt.title('Market Share - Top 10 Platforms', fontsize=12, fontweight='bold')
+    y_pos = range(len(top_10_platforms))
+    bars = plt.barh(y_pos, top_10_platforms.values, color=plt.cm.tab20(range(len(top_10_platforms))))
+    plt.title('Top 10 Platforms - Total Sales', fontsize=12, fontweight='bold')
+    plt.xlabel('Total Sales (millions)', fontsize=10)
+    plt.ylabel('Platform', fontsize=10)
+    plt.yticks(y_pos, top_10_platforms.index)
+    
+    # Add value labels on bars
+    for i, (bar, value) in enumerate(zip(bars, top_10_platforms.values)):
+        plt.text(value + max(top_10_platforms.values)*0.01, i, f'{value:.0f}M', 
+                va='center', ha='left', fontsize=8, fontweight='bold')
+    
+    plt.gca().invert_yaxis()  # Highest values at top
     
     plt.tight_layout()
     plt.savefig('platform_analysis.png', dpi=300, bbox_inches='tight')
@@ -267,18 +277,25 @@ def analyze_publisher_rankings(df, available_cols):
               [name[:15] + '...' if len(name) > 15 else name for name in qualified_publishers.index], 
               rotation=45, ha='right')
     
-    # Market share pie chart
+    # Top publishers horizontal bar chart
     plt.subplot(2, 2, 4)
-    top_10_publishers = publisher_sales.head(10)
-    others_sales = publisher_sales.iloc[10:].sum()
+    top_12_publishers = publisher_sales.head(12)
+    y_pos = range(len(top_12_publishers))
+    bars = plt.barh(y_pos, top_12_publishers.values, color=plt.cm.tab20(range(len(top_12_publishers))))
+    plt.title('Top 12 Publishers - Total Sales', fontsize=12, fontweight='bold')
+    plt.xlabel('Total Sales (millions)', fontsize=10)
+    plt.ylabel('Publisher', fontsize=10)
     
-    # Add "Others" category
-    pie_data = list(top_10_publishers.values) + [others_sales]
-    pie_labels = list(top_10_publishers.index) + ['Others']
+    # Truncate long publisher names for better display
+    truncated_labels = [name[:20] + '...' if len(name) > 20 else name for name in top_12_publishers.index]
+    plt.yticks(y_pos, truncated_labels)
     
-    plt.pie(pie_data, labels=[label[:12] + '...' if len(label) > 12 else label for label in pie_labels], 
-           autopct='%1.1f%%', colors=plt.cm.tab20(range(len(pie_data))))
-    plt.title('Publisher Market Share', fontsize=12, fontweight='bold')
+    # Add value labels on bars
+    for i, (bar, value) in enumerate(zip(bars, top_12_publishers.values)):
+        plt.text(value + max(top_12_publishers.values)*0.01, i, f'{value:.0f}M', 
+                va='center', ha='left', fontsize=8, fontweight='bold')
+    
+    plt.gca().invert_yaxis()  # Highest values at top
     
     plt.tight_layout()
     plt.savefig('publisher_analysis.png', dpi=300, bbox_inches='tight')
