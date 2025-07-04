@@ -1,4 +1,3 @@
-
 // Navigation functions
 function navigateToAnalytical() {
     window.location.href = '/analytical';
@@ -16,16 +15,8 @@ function goToAbout() {
     window.location.href = '/about.html';
 }
 
-function navigateToInferential() {
-    window.location.href = '/inferential';
-}
-
 function goHome() {
     window.location.href = '/';
-}
-
-function goToAbout() {
-    window.location.href = '/about.html';
 }
 
 // Specific analysis execution function
@@ -35,11 +26,17 @@ async function runSpecificAnalysis(specificType) {
     const analysisOutput = document.getElementById('analysisOutput');
     const visualizationContainer = document.getElementById('visualizationContainer');
 
+    // Get selected year range
+    const selectedYearRange = document.querySelector('input[name="yearRange"]:checked');
+    const yearRange = selectedYearRange ? selectedYearRange.value : '5';
+
     // Get the clicked button
     const buttonMap = {
         'genre': 'salesByGenreBtn',
+        'regional': 'regionalBreakdownBtn',
         'platform': 'platformPerformanceBtn',
         'publisher': 'publisherRankingsBtn',
+        'historical': 'historicalTrendsBtn',
         'all': 'runAllAnalysisBtn'
     };
 
@@ -61,10 +58,6 @@ async function runSpecificAnalysis(specificType) {
     }
 
     try {
-        // Get selected year range if available
-        const selectedYearRange = document.querySelector('input[name="yearRange"]:checked');
-        const yearRange = selectedYearRange ? selectedYearRange.value : '5';
-
         const response = await fetch('/api/run-specific-analysis', {
             method: 'POST',
             headers: {
@@ -134,7 +127,7 @@ async function runSpecificAnalysis(specificType) {
     } catch (error) {
         console.error('Error running analysis:', error);
         if (analysisOutput) {
-            analysisOutput.textContent = 'Error: Failed to connect to server - ' + error.message;
+            analysisOutput.textContent = 'Error: Failed to connect to server';
         }
         if (resultsSection) {
             resultsSection.classList.remove('hidden');
@@ -148,8 +141,10 @@ async function runSpecificAnalysis(specificType) {
             runBtn.disabled = false;
             const originalTexts = {
                 'genre': 'Sales by Genre',
+                'regional': 'Regional Breakdown',
                 'platform': 'Platform Performance',
                 'publisher': 'Publisher Rankings',
+                'historical': 'Historical Trends',
                 'all': 'Generate All Analysis'
             };
             runBtn.textContent = originalTexts[specificType];
@@ -193,10 +188,10 @@ async function runAnalysis(analysisType) {
         const result = await response.json();
 
         if (result.success) {
-            // Filter out the success message about checking the file
-            let filteredOutput = result.output.replace(/Analysis completed successfully!\s*Check the '[^']*' file for the visualization\s*/gi, '');
-            analysisOutput.textContent = filteredOutput;
-            resultsSection.classList.remove('hidden');
+            // Display output
+            if (analysisOutput) {
+                analysisOutput.textContent = result.output;
+            }
 
             // Display visualization if available
             if (visualizationContainer && result.hasImage) {
@@ -236,7 +231,7 @@ async function runAnalysis(analysisType) {
     } catch (error) {
         console.error('Error running analysis:', error);
         if (analysisOutput) {
-            analysisOutput.textContent = 'Error: Failed to connect to server - ' + error.message;
+            analysisOutput.textContent = 'Error: Failed to connect to server';
         }
         if (resultsSection) {
             resultsSection.classList.remove('hidden');
@@ -319,6 +314,11 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Navigation functions
+function navigateToAbout() {
+    window.location.href = 'about.html';
+}
 
 // Error handling for images
 document.addEventListener('DOMContentLoaded', function() {

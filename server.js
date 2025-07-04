@@ -80,7 +80,7 @@ app.post('/api/run-specific-analysis', async (req, res) => {
         console.log(`Running specific analysis: ${analysisType} with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['main_analytics.py', analysisType, yearRange || '25']);
+        const pythonProcess = spawn('python3', ['main_analytics.py', analysisType, yearRange || '5']);
 
         let output = '';
         let errorOutput = '';
@@ -98,22 +98,14 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                 // Determine the image name based on analysis type
                 let imageName = 'all_analysis_summary.png';
                 if (analysisType === 'genre') imageName = 'genre_analysis.png';
+                else if (analysisType === 'regional') imageName = 'regional_analysis.png';
                 else if (analysisType === 'platform') imageName = 'platform_analysis.png';
                 else if (analysisType === 'publisher') imageName = 'publisher_analysis.png';
-
-                // Check if image was created - try both root and src/assets locations
-                let imagePath = path.join(__dirname, imageName);
-                let hasImage = fs.existsSync(imagePath);
-
-                if (!hasImage) {
-                    imagePath = path.join(__dirname, 'src/assets', imageName);
-                    hasImage = fs.existsSync(imagePath);
-                }
+                else if (analysisType === 'historical') imageName = 'historical_analysis.png';
 
                 res.json({
                     success: true,
                     output: output,
-                    hasImage: hasImage,
                     imageName: imageName
                 });
             } else {
@@ -139,7 +131,7 @@ app.post('/api/run-inferential', async (req, res) => {
         console.log(`Running inferential analysis with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['main.py', yearRange || '25']);
+        const pythonProcess = spawn('python3', ['main.py', yearRange || '5']);
 
         let output = '';
         let errorOutput = '';
@@ -154,19 +146,9 @@ app.post('/api/run-inferential', async (req, res) => {
 
         pythonProcess.on('close', (code) => {
             if (code === 0) {
-                // Check if image was created - try both root and src/assets locations
-                let imagePath = path.join(__dirname, 'sales_prediction.png');
-                let hasImage = fs.existsSync(imagePath);
-
-                if (!hasImage) {
-                    imagePath = path.join(__dirname, 'src/assets/sales_prediction.png');
-                    hasImage = fs.existsSync(imagePath);
-                }
-
                 res.json({
                     success: true,
                     output: output,
-                    hasImage: hasImage,
                     imageName: 'sales_prediction.png'
                 });
             } else {

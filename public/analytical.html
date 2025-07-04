@@ -27,8 +27,12 @@
                             <span class="toggle-label">Past 5 Years (2019-2024)</span>
                         </label>
                         <label class="toggle-option">
-                            <input type="radio" name="yearRange" value="44">
-                            <span class="toggle-label">Past 44 Years (1980-2024)</span>
+                            <input type="radio" name="yearRange" value="20">
+                            <span class="toggle-label">Past 20 Years (2004-2024)</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="radio" name="yearRange" value="40">
+                            <span class="toggle-label">Past 40 Years (1984-2024)</span>
                         </label>
                     </div>
                 </div>
@@ -37,11 +41,17 @@
                     <button id="salesByGenreBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('genre')">
                         Sales by Genre
                     </button>
+                    <button id="regionalBreakdownBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('regional')">
+                        Regional Breakdown
+                    </button>
                     <button id="platformPerformanceBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('platform')">
                         Platform Performance
                     </button>
                     <button id="publisherRankingsBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('publisher')">
                         Publisher Rankings
+                    </button>
+                    <button id="historicalTrendsBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('historical')">
+                        Historical Trends
                     </button>
                     <button id="runAllAnalysisBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('all')">
                         Generate All Analysis
@@ -82,6 +92,12 @@
                                 </div>
                                 
                                 <div class="analysis-item">
+                                    <div class="analysis-icon">🌍</div>
+                                    <h3>Regional Breakdown</h3>
+                                    <p>regional_analysis.png</p>
+                                </div>
+                                
+                                <div class="analysis-item">
                                     <div class="analysis-icon">🎯</div>
                                     <h3>Platform Performance</h3>
                                     <p>platform_analysis.png</p>
@@ -91,6 +107,12 @@
                                     <div class="analysis-icon">🏢</div>
                                     <h3>Publisher Rankings</h3>
                                     <p>publisher_analysis.png</p>
+                                </div>
+                                
+                                <div class="analysis-item">
+                                    <div class="analysis-icon">📈</div>
+                                    <h3>Historical Trends</h3>
+                                    <p>historical_analysis.png</p>
                                 </div>
                             </div>
                             
@@ -105,8 +127,10 @@
                 <p>This analysis provides descriptive statistics and visualizations of video game sales data, including:</p>
                 <ul>
                     <li><strong>Sales by Genre:</strong> Bar charts showing total global sales for each game genre</li>
+                    <li><strong>Regional Breakdown:</strong> Sales distribution across different regions</li>
                     <li><strong>Platform Performance:</strong> Console and platform sales comparisons</li>
                     <li><strong>Publisher Rankings:</strong> Top-performing game publishers</li>
+                    <li><strong>Historical Trends:</strong> Sales patterns over time</li>
                 </ul>
             </div>
             <div class="summary-footer">
