@@ -184,10 +184,10 @@ async function runAnalysis(analysisType) {
         const result = await response.json();
 
         if (result.success) {
-            // Display output
-            if (analysisOutput) {
-                analysisOutput.textContent = result.output;
-            }
+            // Filter out the success message about checking the file
+            let filteredOutput = result.output.replace(/Analysis completed successfully!\s*Check the '[^']*' file for the visualization\s*/gi, '');
+            analysisOutput.textContent = filteredOutput;
+            resultsSection.classList.remove('hidden');
 
             // Display visualization if available
             if (visualizationContainer && result.hasImage) {
