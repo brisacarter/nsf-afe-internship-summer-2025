@@ -51,7 +51,6 @@ def load_and_clean_data(year_range='25'):
         
         # Check available columns and adapt accordingly
         available_cols = df.columns.tolist()
-        print(f"Available columns: {available_cols}")
         
         return df, available_cols
         
@@ -308,7 +307,6 @@ def run_all_analysis_with_range(year_range='5'):
         return
     
     print(f"Dataset loaded successfully with {len(df)} records")
-    print(f"Columns available: {', '.join(available_cols)}")
     
     # Run all analyses
     analyze_sales_by_genre(df, available_cols)

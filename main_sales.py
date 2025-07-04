@@ -48,7 +48,6 @@ def visualize_sales_analysis(year_range='25'):
         
         # Check available columns and adapt accordingly
         available_cols = df.columns.tolist()
-        print(f"Available columns: {available_cols}")
         
         # Determine the correct column names based on what's available
         if 'Genre' in available_cols:
