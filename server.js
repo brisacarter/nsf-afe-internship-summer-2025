@@ -98,14 +98,17 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                 // Determine the image name based on analysis type
                 let imageName = 'all_analysis_summary.png';
                 if (analysisType === 'genre') imageName = 'genre_analysis.png';
-                else if (analysisType === 'regional') imageName = 'regional_analysis.png';
                 else if (analysisType === 'platform') imageName = 'platform_analysis.png';
                 else if (analysisType === 'publisher') imageName = 'publisher_analysis.png';
-                else if (analysisType === 'historical') imageName = 'historical_analysis.png';
 
+                // Check if image was created
+                const imagePath = path.join(__dirname, imageName);
+                const hasImage = fs.existsSync(imagePath);
+                
                 res.json({
                     success: true,
                     output: output,
+                    hasImage: hasImage,
                     imageName: imageName
                 });
             } else {

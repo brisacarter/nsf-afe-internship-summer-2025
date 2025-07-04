@@ -29,10 +29,8 @@ async function runSpecificAnalysis(specificType) {
     // Get the clicked button
     const buttonMap = {
         'genre': 'salesByGenreBtn',
-        'regional': 'regionalBreakdownBtn',
         'platform': 'platformPerformanceBtn',
         'publisher': 'publisherRankingsBtn',
-        'historical': 'historicalTrendsBtn',
         'all': 'runAllAnalysisBtn'
     };
 
@@ -54,12 +52,16 @@ async function runSpecificAnalysis(specificType) {
     }
 
     try {
+        // Get selected year range if available
+        const selectedYearRange = document.querySelector('input[name="yearRange"]:checked');
+        const yearRange = selectedYearRange ? selectedYearRange.value : '5';
+
         const response = await fetch('/api/run-specific-analysis', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ analysisType: specificType })
+            body: JSON.stringify({ analysisType: specificType, yearRange: yearRange })
         });
 
         const result = await response.json();
@@ -137,10 +139,8 @@ async function runSpecificAnalysis(specificType) {
             runBtn.disabled = false;
             const originalTexts = {
                 'genre': 'Sales by Genre',
-                'regional': 'Regional Breakdown',
                 'platform': 'Platform Performance',
                 'publisher': 'Publisher Rankings',
-                'historical': 'Historical Trends',
                 'all': 'Generate All Analysis'
             };
             runBtn.textContent = originalTexts[specificType];
@@ -158,7 +158,7 @@ async function runAnalysis(analysisType) {
 
     // Get selected year range if available
     const selectedYearRange = document.querySelector('input[name="yearRange"]:checked');
-    const yearRange = selectedYearRange ? selectedYearRange.value : '25';
+    const yearRange = selectedYearRange ? selectedYearRange.value : '5';
 
     // Show loading state
     if (loadingSpinner) {

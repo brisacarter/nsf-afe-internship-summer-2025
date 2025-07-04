@@ -34,12 +34,9 @@ def load_and_clean_data(year_range='25'):
         if year_range == '44':
             start_year = 1980
             year_desc = "past 44 years (1980-2024)"
-        elif year_range == '22':
-            start_year = 2002
-            year_desc = "past 22 years (2002-2024)"
-        else:  # default to 25 years
-            start_year = 1999
-            year_desc = "past 25 years (1999-2024)"
+        else:  # default to 5 years
+            start_year = 2019
+            year_desc = "past 5 years (2019-2024)"
         
         # Filter for selected year range
         if 'Year' in df.columns:
@@ -118,62 +115,7 @@ def analyze_sales_by_genre(df, available_cols):
     print(f"Total global sales: {genre_sales.sum():.2f} million")
     print(f"Average sales per genre: {genre_sales.mean():.2f} million")
 
-def analyze_regional_breakdown(df, available_cols):
-    """Analyze sales by region"""
-    print("\n" + "="*50)
-    print("REGIONAL BREAKDOWN ANALYSIS")
-    print("="*50)
-    
-    # Look for regional columns
-    regional_cols = [col for col in available_cols if any(region in col for region in ['NA_', 'EU_', 'JP_', 'Other_'])]
-    
-    if not regional_cols:
-        print("No regional sales columns found")
-        return
-    
-    # Clean and sum regional data
-    regional_data = {}
-    for col in regional_cols:
-        region_name = col.replace('_Sales', '').replace('_sales', '')
-        region_sales = pd.to_numeric(df[col], errors='coerce').sum()
-        regional_data[region_name] = region_sales
-    
-    # Create visualization
-    plt.figure(figsize=(10, 8))
-    
-    regions = list(regional_data.keys())
-    sales = list(regional_data.values())
-    colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4']
-    
-    # Create pie chart
-    plt.subplot(2, 1, 1)
-    wedges, texts, autotexts = plt.pie(sales, labels=regions, autopct='%1.1f%%', 
-                                       colors=colors, startangle=90)
-    plt.title('Global Video Game Sales by Region', fontsize=14, fontweight='bold')
-    
-    # Create bar chart
-    plt.subplot(2, 1, 2)
-    bars = plt.bar(regions, sales, color=colors)
-    plt.title('Regional Sales Comparison', fontsize=14, fontweight='bold')
-    plt.xlabel('Region', fontsize=12)
-    plt.ylabel('Sales (millions)', fontsize=12)
-    
-    # Add value labels on bars
-    for bar, value in zip(bars, sales):
-        plt.text(bar.get_x() + bar.get_width()/2, bar.get_height() + max(sales)*0.01,
-                f'{value:.1f}M', ha='center', va='bottom', fontweight='bold')
-    
-    plt.tight_layout()
-    plt.savefig('regional_analysis.png', dpi=300, bbox_inches='tight')
-    plt.close()
-    
-    print(f"\nRegional Sales Breakdown:")
-    total_sales = sum(sales)
-    for region, sale in zip(regions, sales):
-        percentage = (sale / total_sales) * 100
-        print(f"{region:15s}: {sale:8.2f} million ({percentage:5.1f}%)")
-    
-    print(f"\nTotal Global Sales: {total_sales:.2f} million")
+
 
 def analyze_platform_performance(df, available_cols):
     """Analyze sales by gaming platform/console"""
@@ -348,112 +290,14 @@ def analyze_publisher_rankings(df, available_cols):
     print(f"Top publisher: {publisher_sales.index[0]} ({publisher_sales.iloc[0]:.2f}M total sales)")
     print(f"Most prolific publisher: {publisher_counts.index[0]} ({publisher_counts.iloc[0]} games)")
 
-def analyze_historical_trends(df, available_cols):
-    """Analyze sales trends over time"""
-    print("\n" + "="*50)
-    print("HISTORICAL TRENDS ANALYSIS (1999-2024)")
-    print("="*50)
-    
-    # Determine year and sales columns
-    year_col = next((col for col in ['Year', 'year', 'release_date'] if col in available_cols), None)
-    sales_col = next((col for col in ['Global_Sales', 'total_sales', 'global_sales'] if col in available_cols), None)
-    
-    if not year_col or not sales_col:
-        print("Required columns not found for historical analysis")
-        return
-    
-    # Clean the data
-    df_clean = df.dropna(subset=[year_col, sales_col])
-    df_clean[sales_col] = pd.to_numeric(df_clean[sales_col], errors='coerce')
-    df_clean = df_clean.dropna(subset=[sales_col])
-    
-    # Handle different year formats
-    if 'release_date' in year_col:
-        df_clean['release_date'] = pd.to_datetime(df_clean['release_date'], errors='coerce')
-        df_clean = df_clean.dropna(subset=['release_date'])
-        df_clean['Year'] = df_clean['release_date'].dt.year
-        year_col = 'Year'
-    
-    # Filter reasonable years
-    df_clean = df_clean[(df_clean[year_col] >= 1980) & (df_clean[year_col] <= 2024)]
-    
-    # Aggregate by year
-    yearly_sales = df_clean.groupby(year_col)[sales_col].sum().sort_index()
-    yearly_counts = df_clean.groupby(year_col).size().sort_index()
-    yearly_avg = (yearly_sales / yearly_counts).sort_index()
-    
-    print(f"\nHistorical Trends Summary:")
-    print(f"Years covered: {yearly_sales.index.min()} to {yearly_sales.index.max()}")
-    print(f"Peak sales year: {yearly_sales.idxmax()} ({yearly_sales.max():.2f}M)")
-    print(f"Most games released: {yearly_counts.idxmax()} ({yearly_counts.max()} games)")
-    
-    print(f"\nTop 10 Years by Total Sales:")
-    for i, (year, sales) in enumerate(yearly_sales.sort_values(ascending=False).head(10).items(), 1):
-        games = yearly_counts[year]
-        avg = yearly_avg[year]
-        print(f"{i:2d}. {year}: {sales:8.2f}M total | {games:4d} games | {avg:.2f}M avg")
-    
-    # Create visualization
-    plt.figure(figsize=(16, 12))
-    
-    # Total sales over time
-    plt.subplot(2, 2, 1)
-    plt.plot(yearly_sales.index, yearly_sales.values, marker='o', linewidth=2, markersize=4)
-    plt.title('Total Video Game Sales by Year', fontsize=12, fontweight='bold')
-    plt.xlabel('Year', fontsize=10)
-    plt.ylabel('Total Sales (millions)', fontsize=10)
-    plt.grid(True, alpha=0.3)
-    
-    # Number of games released over time
-    plt.subplot(2, 2, 2)
-    plt.plot(yearly_counts.index, yearly_counts.values, marker='s', color='orange', linewidth=2, markersize=4)
-    plt.title('Number of Games Released by Year', fontsize=12, fontweight='bold')
-    plt.xlabel('Year', fontsize=10)
-    plt.ylabel('Number of Games', fontsize=10)
-    plt.grid(True, alpha=0.3)
-    
-    # Average sales per game over time
-    plt.subplot(2, 2, 3)
-    plt.plot(yearly_avg.index, yearly_avg.values, marker='^', color='green', linewidth=2, markersize=4)
-    plt.title('Average Sales per Game by Year', fontsize=12, fontweight='bold')
-    plt.xlabel('Year', fontsize=10)
-    plt.ylabel('Average Sales (millions)', fontsize=10)
-    plt.grid(True, alpha=0.3)
-    
-    # Decade comparison
-    plt.subplot(2, 2, 4)
-    decades = {}
-    for year in yearly_sales.index:
-        decade = (year // 10) * 10
-        if decade not in decades:
-            decades[decade] = 0
-        decades[decade] += yearly_sales[year]
-    
-    decade_labels = [f"{decade}s" for decade in sorted(decades.keys())]
-    decade_values = [decades[decade] for decade in sorted(decades.keys())]
-    
-    bars = plt.bar(decade_labels, decade_values, color=plt.cm.viridis(np.linspace(0, 1, len(decade_labels))))
-    plt.title('Total Sales by Decade', fontsize=12, fontweight='bold')
-    plt.xlabel('Decade', fontsize=10)
-    plt.ylabel('Total Sales (millions)', fontsize=10)
-    plt.xticks(rotation=45)
-    
-    # Add value labels on bars
-    for bar, value in zip(bars, decade_values):
-        plt.text(bar.get_x() + bar.get_width()/2, bar.get_height() + max(decade_values)*0.01,
-                f'{value:.0f}M', ha='center', va='bottom', fontsize=9)
-    
-    plt.tight_layout()
-    plt.savefig('historical_analysis.png', dpi=300, bbox_inches='tight')
-    plt.close()
 
-def run_all_analysis_with_range(year_range='25'):
+
+def run_all_analysis_with_range(year_range='5'):
     """Run all analysis types with specified year range"""
     year_desc = {
         '44': '1980-2024',
-        '22': '2002-2024',
-        '25': '1999-2024'
-    }.get(year_range, '1999-2024')
+        '5': '2019-2024'
+    }.get(year_range, '2019-2024')
     
     print(f"VIDEO GAME SALES COMPREHENSIVE ANALYSIS ({year_desc})")
     print("=" * 60)
@@ -468,14 +312,12 @@ def run_all_analysis_with_range(year_range='25'):
     
     # Run all analyses
     analyze_sales_by_genre(df, available_cols)
-    analyze_regional_breakdown(df, available_cols)
     analyze_platform_performance(df, available_cols)
     analyze_publisher_rankings(df, available_cols)
-    analyze_historical_trends(df, available_cols)
 
 def run_all_analysis():
-    """Run all analysis types with default 25-year range"""
-    run_all_analysis_with_range('25')
+    """Run all analysis types with default 5-year range"""
+    run_all_analysis_with_range('5')
     
     # Create a combined summary visualization
     plt.figure(figsize=(16, 10))
@@ -524,7 +366,7 @@ def run_all_analysis():
     print("All individual analysis charts have been generated.")
 
 if __name__ == "__main__":
-    year_range = '25'  # default
+    year_range = '5'  # default
     analysis_type = 'all'  # default
     
     if len(sys.argv) > 1:
@@ -540,16 +382,12 @@ if __name__ == "__main__":
     
     if analysis_type == 'genre':
         analyze_sales_by_genre(df, available_cols)
-    elif analysis_type == 'regional':
-        analyze_regional_breakdown(df, available_cols)
     elif analysis_type == 'platform':
         analyze_platform_performance(df, available_cols)
     elif analysis_type == 'publisher':
         analyze_publisher_rankings(df, available_cols)
-    elif analysis_type == 'historical':
-        analyze_historical_trends(df, available_cols)
     elif analysis_type == 'all':
         run_all_analysis_with_range(year_range)
     else:
         print(f"Unknown analysis type: {analysis_type}")
-        print("Available types: genre, regional, platform, publisher, historical, all")
+        print("Available types: genre, platform, publisher, all")

@@ -31,12 +31,9 @@ def visualize_sales_analysis(year_range='25'):
         if year_range == '44':
             start_year = 1980
             year_desc = "past 44 years (1980-2024)"
-        elif year_range == '22':
-            start_year = 2002
-            year_desc = "past 22 years (2002-2024)"
-        else:  # default to 25 years
-            start_year = 1999
-            year_desc = "past 25 years (1999-2024)"
+        else:  # default to 5 years
+            start_year = 2019
+            year_desc = "past 5 years (2019-2024)"
         
         # Filter for selected year range
         if 'Year' in df.columns:
