@@ -1,3 +1,4 @@
+
 // Navigation functions
 function navigateToAnalytical() {
     window.location.href = '/analytical';
@@ -13,10 +14,6 @@ function goHome() {
 
 function goToAbout() {
     window.location.href = '/about.html';
-}
-
-function goHome() {
-    window.location.href = '/';
 }
 
 // Specific analysis execution function
@@ -125,7 +122,7 @@ async function runSpecificAnalysis(specificType) {
     } catch (error) {
         console.error('Error running analysis:', error);
         if (analysisOutput) {
-            analysisOutput.textContent = 'Error: Failed to connect to server';
+            analysisOutput.textContent = 'Error: Failed to connect to server - ' + error.message;
         }
         if (resultsSection) {
             resultsSection.classList.remove('hidden');
@@ -227,7 +224,7 @@ async function runAnalysis(analysisType) {
     } catch (error) {
         console.error('Error running analysis:', error);
         if (analysisOutput) {
-            analysisOutput.textContent = 'Error: Failed to connect to server';
+            analysisOutput.textContent = 'Error: Failed to connect to server - ' + error.message;
         }
         if (resultsSection) {
             resultsSection.classList.remove('hidden');
@@ -310,11 +307,6 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-
-// Navigation functions
-function navigateToAbout() {
-    window.location.href = 'about.html';
-}
 
 // Error handling for images
 document.addEventListener('DOMContentLoaded', function() {

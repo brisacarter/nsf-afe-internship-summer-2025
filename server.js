@@ -101,10 +101,15 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                 else if (analysisType === 'platform') imageName = 'platform_analysis.png';
                 else if (analysisType === 'publisher') imageName = 'publisher_analysis.png';
 
-                // Check if image was created
-                const imagePath = path.join(__dirname, imageName);
-                const hasImage = fs.existsSync(imagePath);
-                
+                // Check if image was created - try both root and src/assets locations
+                let imagePath = path.join(__dirname, imageName);
+                let hasImage = fs.existsSync(imagePath);
+
+                if (!hasImage) {
+                    imagePath = path.join(__dirname, 'src/assets', imageName);
+                    hasImage = fs.existsSync(imagePath);
+                }
+
                 res.json({
                     success: true,
                     output: output,
@@ -149,10 +154,15 @@ app.post('/api/run-inferential', async (req, res) => {
 
         pythonProcess.on('close', (code) => {
             if (code === 0) {
-                // Check if image was created
-                const imagePath = path.join(__dirname, 'sales_prediction.png');
-                const hasImage = fs.existsSync(imagePath);
-                
+                // Check if image was created - try both root and src/assets locations
+                let imagePath = path.join(__dirname, 'sales_prediction.png');
+                let hasImage = fs.existsSync(imagePath);
+
+                if (!hasImage) {
+                    imagePath = path.join(__dirname, 'src/assets/sales_prediction.png');
+                    hasImage = fs.existsSync(imagePath);
+                }
+
                 res.json({
                     success: true,
                     output: output,
@@ -190,3 +200,4 @@ app.get('/api/image/:filename', (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
+```
