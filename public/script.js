@@ -16,6 +16,18 @@ function goToAbout() {
     window.location.href = '/about.html';
 }
 
+function navigateToInferential() {
+    window.location.href = '/inferential';
+}
+
+function goHome() {
+    window.location.href = '/';
+}
+
+function goToAbout() {
+    window.location.href = '/about.html';
+}
+
 // Specific analysis execution function
 async function runSpecificAnalysis(specificType) {
     const loadingSpinner = document.getElementById('loadingSpinner');
