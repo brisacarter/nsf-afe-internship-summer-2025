@@ -97,6 +97,8 @@ app.post('/api/run-specific-analysis', async (req, res) => {
             if (code === 0) {
                 // Determine the image name based on analysis type
                 let imageName = 'all_analysis_summary.png';
+                let hasImage = true;
+                
                 if (analysisType === 'genre') imageName = 'genre_analysis.png';
                 else if (analysisType === 'regional') imageName = 'regional_analysis.png';
                 else if (analysisType === 'platform') imageName = 'platform_analysis.png';
@@ -106,6 +108,7 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                 res.json({
                     success: true,
                     output: output,
+                    hasImage: hasImage,
                     imageName: imageName
                 });
             } else {
@@ -114,6 +117,14 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                     error: errorOutput || 'Analysis failed'
                 });
             }
+        });
+
+        pythonProcess.on('error', (error) => {
+            console.error('Python process error:', error);
+            res.json({
+                success: false,
+                error: 'Failed to start analysis process'
+            });
         });
     } catch (error) {
         console.error('Error running specific analysis:', error);
@@ -181,4 +192,11 @@ app.get('/api/image/:filename', (req, res) => {
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
+    console.log('Available endpoints:');
+    console.log('  GET  / - Home page');
+    console.log('  GET  /analytical - Analytical page');
+    console.log('  GET  /inferential - Inferential page');
+    console.log('  POST /api/run-specific-analysis - Run specific analysis');
+    console.log('  POST /api/run-inferential - Run inferential analysis');
+    console.log('  GET  /api/image/:filename - Serve images');
 });
