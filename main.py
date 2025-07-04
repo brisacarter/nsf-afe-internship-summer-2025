@@ -90,7 +90,7 @@ def predict_future_sales(year_range='25'):
                 linestyle=':', alpha=0.7, color='green', label='Trend Line')
         
         # Customize the plot
-        plt.title('Global Video Game Sales Prediction (1999-2024)\n(Historical Data and 5-Year Forecast)', 
+        plt.title(f'Global Video Game Sales Prediction ({start_year}-2024)\n(Historical Data and 5-Year Forecast)', 
                  fontsize=16, fontweight='bold', pad=20)
         plt.xlabel('Year', fontsize=12, fontweight='bold')
         plt.ylabel('Global Sales (millions of units)', fontsize=12, fontweight='bold')
