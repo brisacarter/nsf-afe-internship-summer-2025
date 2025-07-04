@@ -149,9 +149,14 @@ app.post('/api/run-inferential', async (req, res) => {
 
         pythonProcess.on('close', (code) => {
             if (code === 0) {
+                // Check if image was created
+                const imagePath = path.join(__dirname, 'sales_prediction.png');
+                const hasImage = fs.existsSync(imagePath);
+                
                 res.json({
                     success: true,
                     output: output,
+                    hasImage: hasImage,
                     imageName: 'sales_prediction.png'
                 });
             } else {
