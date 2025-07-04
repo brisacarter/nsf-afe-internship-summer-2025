@@ -746,12 +746,16 @@ body {
     color: #455d7a;
     font-size: 1.5rem;
     margin-bottom: 10px;
+    
 }
 
 .author-text p {
     color: #555;
     margin-bottom: 15px;
     line-height: 1.6;
+    text-align: left;
+    
+    
 }
 
 .interests-section {
