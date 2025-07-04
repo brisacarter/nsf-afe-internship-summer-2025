@@ -8,7 +8,17 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
 
 // Routes
 app.get('/', (req, res) => {
@@ -21,6 +31,10 @@ app.get('/analytical', (req, res) => {
 
 app.get('/inferential', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'inferential.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'about.html'));
 });
 
 // API endpoint to run analysis
@@ -75,12 +89,20 @@ app.post('/api/run-analysis', async (req, res) => {
 // API endpoint for specific analysis types
 app.post('/api/run-specific-analysis', async (req, res) => {
     try {
+        if (!req.body) {
+            return res.status(400).json({ success: false, error: 'Request body is required' });
+        }
+        
         const { analysisType, yearRange } = req.body;
+        
+        if (!analysisType) {
+            return res.status(400).json({ success: false, error: 'Analysis type is required' });
+        }
 
         console.log(`Running specific analysis: ${analysisType} with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['main_analytics.py', analysisType, yearRange || '25']);
+        const pythonProcess = spawn('python', ['main_analytics.py', analysisType, yearRange || '5']);
 
         let output = '';
         let errorOutput = '';
@@ -130,11 +152,15 @@ app.post('/api/run-specific-analysis', async (req, res) => {
 // API endpoint for running inferential analysis
 app.post('/api/run-inferential', async (req, res) => {
     try {
+        if (!req.body) {
+            return res.status(400).json({ success: false, error: 'Request body is required' });
+        }
+        
         const { yearRange } = req.body;
         console.log(`Running inferential analysis with year range: ${yearRange}`);
 
         const { spawn } = require('child_process');
-        const pythonProcess = spawn('python3', ['main.py', yearRange || '25']);
+        const pythonProcess = spawn('python', ['main.py', yearRange || '5']);
 
         let output = '';
         let errorOutput = '';
