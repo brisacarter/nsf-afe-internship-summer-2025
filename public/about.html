@@ -5,14 +5,19 @@ Author: Brisa Carter
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Video Game Sales Analysis</title>
+    <!-- External CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main container wrapper -->
     <div class="container">
+        <!-- Header section with navigation -->
         <header class="header">
+            <!-- Navigation bar with page links -->
             <nav class="nav">
                 <button onclick="goHome()" class="nav-btn">← Home</button>
                 <h1>About This Project</h1>
@@ -20,22 +25,28 @@ Author: Brisa Carter
             </nav>
         </header>
 
+        <!-- Main content area -->
         <main class="main-content">
             <div class="analysis-page">
+                <!-- Two-column content grid for project overview and technical details -->
                 <div class="content-grid">
+                    <!-- Project overview card -->
                     <div class="project-card">
                         <h2>📊 Project Overview</h2>
                         <p>This data science project analyzes video game sales trends from 1977-2024, exploring how the gaming industry has evolved with the shift from physical to digital distribution, the rise of mobile gaming, and changing consumer preferences across platforms and genres.</p>
 
+                        <!-- Links to analysis pages with special styling -->
                         <p>The project combines <a href="analytical.html" class="highlight" style="text-decoration: none; border-bottom: 2px solid #537791;">descriptive analytics</a> to understand historical patterns with <a href="inferential.html" class="highlight" style="text-decoration: none; border-bottom: 2px solid #537791;">inferential modeling</a> to forecast future market dynamics. Key insights include genre performance analysis and predictive modeling for sales forecasting through 2029.</p>
                     </div>
 
+                    <!-- Technical implementation card -->
                     <div class="tech-card">
                         <h2>⚙️ Technical Implementation</h2>
                         <p>Built using Python's powerful data science ecosystem, this project leverages modern development tools and AI assistance to deliver comprehensive market insights.</p>
 
                         <p>The analysis employs exploratory data analysis techniques, featuring bar chart visualizations of genre performance and regression models for predictive forecasting.</p>
 
+                        <!-- Technology stack tags -->
                         <div class="tech-stack">
                             <span class="tech-tag">Python</span>
                             <span class="tech-tag">Pandas</span>
@@ -52,12 +63,15 @@ Author: Brisa Carter
                     </div>
                 </div>
 
+                <!-- Author information section -->
                 <div class="author-section">
                     <h2>👩‍💻 About the Author</h2>
                     <div class="author-content">
+                        <!-- Author profile image -->
                         <div class="author-image">
                             <img src="pictures/bri_waikoloa_hat_cropped.jpeg" alt="Brisa Carter - Product Design and Research Leader" class="profile-photo">
                         </div>
+                        <!-- Author text content -->
                         <div class="author-text">
                             <h3>Brisa Carter</h3>
                             <p><strong>Product Design and Research Leader</strong> with 20+ years of experience in the software design industry and a student at UHMC in the ABIT program.</p>
@@ -66,8 +80,10 @@ Author: Brisa Carter
 
                             <p>This project was developed as part of the <strong>Summer 2025 NSF-AFE Internship</strong>, demonstrating the application of statistical analysis and machine learning techniques to real-world industry data.</p>
 
+                            <!-- Personal interests section -->
                             <div class="interests-section">
                                 <p><strong>Personal Interests:</strong></p>
+                                <!-- Hobby tags -->
                                 <div class="hobbies">
                                     <span class="hobby-item">⛵ Sailing</span>
                                     <span class="hobby-item">🏄‍♀️ Paddleboarding</span>
@@ -81,8 +97,10 @@ Author: Brisa Carter
                     </div>
                 </div>
 
+                <!-- Dataset information section -->
                 <div class="dataset-section">
                     <h3>Dataset Information</h3>
+                    <!-- Grid of dataset details -->
                     <div class="dataset-details">
                         <div class="info-item">
                             <strong>Primary Source:</strong> VGChartz 2024 Dataset
@@ -107,11 +125,13 @@ Author: Brisa Carter
             </div>
         </main>
 
+        <!-- Footer with author information -->
         <footer class="footer">
             <p>By Brisa Carter | Powered by Python & Machine Learning | <b>About This Project</b></p>
         </footer>
     </div>
 
+    <!-- JavaScript file for interactive functionality -->
     <script src="script.js"></script>
 </body>
 </html>

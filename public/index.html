@@ -5,57 +5,73 @@ Author: Brisa Carter
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Game Sales Analysis</title>
+    <!-- External CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main container wrapper -->
     <div class="container">
+        <!-- Header section with navigation and title -->
         <header class="header header-home">
+            <!-- Navigation bar with page links -->
             <nav class="nav">
                 <button onclick="goHome()" class="nav-btn">Home</button>
                 <h1>Video Game Sales Analysis Dashboard</h1>
                 <button onclick="goToAbout()" class="nav-btn">About This Project</button>
             </nav>
+            <!-- Page subtitle/description -->
             <p class="subtitle">Explore comprehensive sales data through analytical and inferential statistics</p>
         </header>
 
+        <!-- Main content area -->
         <main class="main-content">
+            <!-- Analysis options grid - two main analysis types -->
             <div class="analysis-options">
+                <!-- Analytical Analysis Option Card -->
                 <div class="option-card analytical">
                     <div class="card-icon">📊</div>
                     <h2>Analytical Display</h2>
                     <p>Explore descriptive statistics, visualizations, and data breakdowns of video game sales by genre, platform, and more.</p>
+                    <!-- List of analytical features -->
                     <ul>
                         <li>Sales by Genre Charts</li>
                         <li>Platform Performance</li>
                         <li>Regional Analysis</li>
                         <li>Top Publishers & Games</li>
                     </ul>
+                    <!-- Button to navigate to analytical page -->
                     <button class="btn btn-analytical" onclick="navigateToAnalytical()">
                         View Analytics
                     </button>
                 </div>
 
+                <!-- Inferential Analysis Option Card -->
                 <div class="option-card inferential">
                     <div class="card-icon">🔮</div>
                     <h2>Inferential Display</h2>
                     <p>Discover predictive insights and future trends using machine learning models and statistical inference.</p>
+                    <!-- List of inferential features -->
                     <ul>
                         <li>Sales Predictions</li>
                         <li>Trend Analysis</li>
                         <li>Market Forecasting</li>
                         <li>Growth Patterns</li>
                     </ul>
+                    <!-- Button to navigate to inferential page -->
                     <button class="btn btn-inferential" onclick="navigateToInferential()">
                         View Predictions
                     </button>
                 </div>
             </div>
 
+            <!-- Dataset information section -->
             <div class="features-section">
                 <h3>Dataset Information</h3>
+                <!-- Grid of dataset statistics -->
                 <div class="dataset-info">
                     <div class="info-item">
                         <strong>Records:</strong> 64,000+ video games
@@ -73,11 +89,13 @@ Author: Brisa Carter
             </div>
         </main>
 
+        <!-- Footer with author information and project links -->
         <footer class="footer">
             <p>By Brisa Carter | Powered by Python & Machine Learning | <a href="about.html" style="color: white; text-decoration: underline;">About This Project</a></p>
         </footer>
     </div>
 
+    <!-- JavaScript file for interactive functionality -->
     <script src="script.js"></script>
 </body>
 </html>

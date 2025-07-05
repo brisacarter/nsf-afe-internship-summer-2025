@@ -5,14 +5,19 @@ Author: Brisa Carter
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inferential Analysis - Video Game Sales</title>
+    <!-- External CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main container wrapper -->
     <div class="container">
+        <!-- Header section with navigation -->
         <header class="header">
+            <!-- Navigation bar with page links -->
             <nav class="nav">
                 <button onclick="navigateToAnalytical()" class="nav-btn">← Analytics</button>
                 <h1>Inferential Analysis</h1>
@@ -20,52 +25,66 @@ Author: Brisa Carter
             </nav>
         </header>
 
+        <!-- Main analysis page content -->
         <main class="analysis-page">
+            <!-- Analysis controls section -->
             <div class="analysis-controls">
+                <!-- Year range selection toggle -->
                 <div class="year-range-toggle">
                     <h3>Select Analysis Time Period</h3>
+                    <!-- Radio button container for year range options -->
                     <div class="toggle-container">
+                        <!-- 8 year range option (default) -->
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="8" checked>
                             <span class="toggle-label">Past 8 Years (2017-2024)</span>
                         </label>
+                        <!-- 44 year range option -->
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="44">
                             <span class="toggle-label">Past 44 Years (1980-2024)</span>
                         </label>
                     </div>
-
-              
-
-                <p>This analysis uses machine learning to predict future video game sales trends based on historical data. The model analyzes patterns and generates forecasts for the next 5 years.</p>
-         
-                      </div>
+                    
+                    <!-- Description of inferential analysis -->
+                    <p>This analysis uses machine learning to predict future video game sales trends based on historical data. The model analyzes patterns and generates forecasts for the next 5 years.</p>
+                </div>
+                
+                <!-- Main prediction generation button -->
                 <button id="runInferentialBtn" class="btn btn-inferential" onclick="runAnalysis('inferential')">
                     Generate Predictions
                 </button>
+                
+                <!-- Loading spinner (hidden by default) -->
                 <div id="loadingSpinner" class="loading hidden">
                     <div class="spinner"></div>
                     <p>Building predictive model...</p>
                 </div>
             </div>
 
+            <!-- Results section (hidden by default until analysis is run) -->
             <div id="resultsSection" class="results-section hidden">
+                <!-- Results header -->
                 <div class="results-header">
                     <h2>Prediction Results</h2>
                 </div>
 
+                <!-- Text output container for prediction results -->
                 <div id="outputContainer" class="output-container">
                     <pre id="analysisOutput"></pre>
                 </div>
 
+                <!-- Visualization container for prediction charts and graphs -->
                 <div id="visualizationContainer" class="visualization-container">
-                    <!-- Prediction charts and graphs will be inserted here -->
+                    <!-- Prediction charts and graphs will be inserted here dynamically -->
                 </div>
             </div>
 
+            <!-- Description section explaining the inferential analysis -->
             <div class="description-section">
                 <h3>About Inferential Analysis</h3>
                 <p>This analysis uses machine learning models to make predictions about future video game sales trends:</p>
+                <!-- List of analysis features -->
                 <ul>
                     <li><strong>Linear Regression Model:</strong> Predicts future sales based on historical trends</li>
                     <li><strong>5-Year Forecasting:</strong> Sales predictions for the next 5 years</li>
@@ -73,17 +92,21 @@ Author: Brisa Carter
                     <li><strong>Model Performance:</strong> R-squared scores and accuracy metrics</li>
                     <li><strong>Statistical Inference:</strong> Confidence intervals and significance testing</li>
                 </ul>
+                <!-- Model details box -->
                 <div class="model-info">
                     <h4>Model Details:</h4>
                     <p>The model aggregates total global sales per year and uses linear regression to identify trends. The R-squared score indicates how well the model explains the variance in the data.</p>
                 </div>
             </div>
+            
+            <!-- Footer with author information -->
             <footer class="summary-footer">
                 <p>By Brisa Carter | Powered by Python & Machine Learning | <a href="about.html" style="color: white; text-decoration: underline;">About This Project</a></p>
             </footer>
         </main>
     </div>
 
+    <!-- JavaScript file for interactive functionality -->
     <script src="script.js"></script>
 </body>
 </html>

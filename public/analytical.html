@@ -5,14 +5,19 @@ Author: Brisa Carter
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character encoding and responsive design -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytical Insights - Video Game Sales</title>
+    <!-- External CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main container wrapper -->
     <div class="container">
+        <!-- Header section with navigation -->
         <header class="header">
+            <!-- Navigation bar with page links -->
             <nav class="nav">
                 <button onclick="goHome()" class="nav-btn">← Home</button>
                 <h1>Analytical Insights</h1>
@@ -20,24 +25,33 @@ Author: Brisa Carter
             </nav>
         </header>
 
+        <!-- Main analysis page content -->
         <main class="analysis-page">
+            <!-- Analysis controls section -->
             <div class="analysis-controls">
+                <!-- Year range selection toggle -->
                 <div class="year-range-toggle">
                     <h3>Select Analysis Time Period</h3>
+                    <!-- Radio button container for year range options -->
                     <div class="toggle-container">
+                        <!-- 8 year range option (default) -->
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="8" checked>
                             <span class="toggle-label">Past 8 Years (2017-2024)</span>
                         </label>
+                        <!-- 44 year range option -->
                         <label class="toggle-option">
                             <input type="radio" name="yearRange" value="44">
                             <span class="toggle-label">Past 44 Years (1980-2024)</span>
                         </label>
                     </div>
+                    <!-- User instruction text -->
                     <h2> Click on a button to genereate the analysis</h2>
                 </div>
                 
+                <!-- Analysis buttons grid for different analysis types -->
                 <div class="analysis-buttons-grid">
+                    <!-- Individual analysis buttons -->
                     <button id="salesByGenreBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('genre')">
                         Sales by Genre
                     </button>
@@ -47,65 +61,74 @@ Author: Brisa Carter
                     <button id="publisherRankingsBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('publisher')">
                         Publisher Rankings
                     </button>
+                    <!-- Generate all analysis button -->
                     <button id="runAllAnalysisBtn" class="btn btn-analytical" onclick="runSpecificAnalysis('all')">
                         Generate All Analysis
                     </button>
                 </div>
+                <!-- Loading spinner (hidden by default) -->
                 <div id="loadingSpinner" class="loading hidden">
                     <div class="spinner"></div>
                     <p>Analyzing data...</p>
                 </div>
             </div>
     
-
+            <!-- Results section (hidden by default until analysis is run) -->
             <div id="resultsSection" class="results-section hidden">
+                <!-- Results header -->
                 <div class="results-header">
                     <h2>Analysis Results</h2>
                 </div>
                 
+                <!-- Text output container for analysis results -->
                 <div id="outputContainer" class="output-container">
                     <pre id="analysisOutput"></pre>
                 </div>
 
+                <!-- Visualization container for charts and graphs -->
                 <div id="visualizationContainer" class="visualization-container">
-                    <!-- Charts and graphs will be inserted here -->
+                    <!-- Charts and graphs will be inserted here dynamically -->
                 </div>
 
+                <!-- Analysis summary container (hidden by default) -->
                 <div id="analysisSummaryContainer" class="analysis-summary-container hidden">
                     <div class="summary-card">
+                        <!-- Summary header -->
                         <div class="summary-header">
                             <h2>🎮 Video Game Sales Analysis Summary</h2>
                             <p class="summary-subtitle">Comprehensive Analysis Complete!</p>
                         </div>
                         
+                        <!-- Summary content grid -->
                         <div class="summary-content">
                             <div class="analysis-grid">
+                                <!-- Genre analysis thumbnail -->
                                 <div class="analysis-item">
                                     <div class="analysis-icon">📊</div>
                                     <h3>Genre Analysis</h3>
                                     <img src="/api/image/genre_analysis.png" alt="Genre Analysis" class="analysis-thumb" onclick="openModal(this.src)">
                                 </div>
 
+                                <!-- Platform performance thumbnail -->
                                 <div class="analysis-item">
                                     <div class="analysis-icon">🎯</div>
                                     <h3>Platform Performance</h3>
                                     <img src="/api/image/platform_analysis.png" alt="Platform Analysis" class="analysis-thumb" onclick="openModal(this.src)">
                                 </div>
 
+                                <!-- Publisher rankings thumbnail -->
                                 <div class="analysis-item">
                                     <div class="analysis-icon">🏢</div>
                                     <h3>Publisher Rankings</h3>
                                     <img src="/api/image/publisher_analysis.png" alt="Publisher Analysis" class="analysis-thumb" onclick="openModal(this.src)">
                                 </div>
                             </div>
-
-                            
-                         
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Description section explaining the analytical insights -->
             <div class="description-section">
                 <h3>About Analytical Insights</h3>
                 <p>This analysis provides descriptive statistics and visualizations of video game sales data, including:</p>
@@ -115,17 +138,20 @@ Author: Brisa Carter
                     <li><strong>Publisher Rankings:</strong> Top-performing game publishers</li>
                 </ul>
             </div>
+            <!-- Footer with author information -->
             <footer class="summary-footer">
                 <p>By Brisa Carter | Powered by Python & Machine Learning | <a href="about.html" style="color: white; text-decoration: underline;">About This Project</a></p>
             </footer>
         </main>
+        
+        <!-- Image modal for enlarged chart viewing -->
         <div id="imageModal" class="modal">
             <span class="close" onclick="closeModal()">&times;</span>
             <img class="modal-content" id="modalImage">
         </div>
-
     </div>
 
+    <!-- JavaScript file for interactive functionality -->
     <script src="script.js"></script>
 </body>
 </html>
