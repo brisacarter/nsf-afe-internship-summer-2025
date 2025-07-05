@@ -6,8 +6,13 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Define base paths for the new structure
+const publicPath = path.join(__dirname, '../../../public');
+const pythonPath = path.join(__dirname, '../../python');
+const analysisImagesPath = path.join(__dirname, '../../../public/analysis');
+
 // Middleware
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(publicPath));
 app.use(express.json({ limit: '10mb' }));
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -20,21 +25,21 @@ app.use((req, res, next) => {
     }
 });
 
-// Routes
+// Routes - serve from public folder
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(publicPath, 'index.html'));
 });
 
 app.get('/analytical', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'analytical.html'));
+    res.sendFile(path.join(publicPath, 'analytical.html'));
 });
 
 app.get('/inferential', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'inferential.html'));
+    res.sendFile(path.join(publicPath, 'inferential.html'));
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'about.html'));
+    res.sendFile(path.join(publicPath, 'about.html'));
 });
 
 // API endpoint to run analysis
@@ -45,18 +50,18 @@ app.post('/api/run-analysis', async (req, res) => {
         let imageName;
 
         if (analysisType === 'analytical') {
-            pythonScript = 'main_sales.py';
+            pythonScript = path.join(pythonPath, 'main_sales.py');
             imageName = 'sales_analysis.png';
         } else if (analysisType === 'inferential') {
-            pythonScript = 'main.py';
+            pythonScript = path.join(pythonPath, 'main.py');
             imageName = 'sales_prediction.png';
         } else {
             return res.json({ success: false, error: 'Invalid analysis type' });
         }
 
-        // Execute Python script
+        // Execute Python script from the python directory
         const result = await new Promise((resolve, reject) => {
-            exec(`python ${pythonScript}`, (error, stdout, stderr) => {
+            exec(`python "${pythonScript}"`, { cwd: pythonPath }, (error, stdout, stderr) => {
                 if (error) {
                     console.error('Python execution error:', error);
                     resolve({ success: false, error: error.message, output: stderr });
@@ -67,8 +72,8 @@ app.post('/api/run-analysis', async (req, res) => {
         });
 
         if (result.success) {
-            // Check if image was created
-            const imagePath = path.join(__dirname, imageName);
+            // Check if image was created in the analysis folder
+            const imagePath = path.join(analysisImagesPath, imageName);
             const hasImage = fs.existsSync(imagePath);
 
             res.json({
@@ -92,17 +97,17 @@ app.post('/api/run-specific-analysis', async (req, res) => {
         if (!req.body) {
             return res.status(400).json({ success: false, error: 'Request body is required' });
         }
-        
+
         const { analysisType, yearRange } = req.body;
-        
+
         if (!analysisType) {
             return res.status(400).json({ success: false, error: 'Analysis type is required' });
         }
 
         console.log(`Running specific analysis: ${analysisType} with year range: ${yearRange}`);
 
-        const { spawn } = require('child_process');
-        const pythonProcess = spawn('python', ['main_analytics.py', analysisType, yearRange || '5']);
+        const pythonScript = path.join(pythonPath, 'main_analytics.py');
+        const pythonProcess = spawn('python', [pythonScript, analysisType, yearRange || '5'], { cwd: pythonPath });
 
         let output = '';
         let errorOutput = '';
@@ -123,10 +128,10 @@ app.post('/api/run-specific-analysis', async (req, res) => {
                 else if (analysisType === 'platform') imageName = 'platform_analysis.png';
                 else if (analysisType === 'publisher') imageName = 'publisher_analysis.png';
 
-                // Check if image was created
-                const imagePath = path.join(__dirname, imageName);
+                // Check if image was created in the analysis folder
+                const imagePath = path.join(analysisImagesPath, imageName);
                 const hasImage = fs.existsSync(imagePath);
-                
+
                 res.json({
                     success: true,
                     output: output,
@@ -155,12 +160,12 @@ app.post('/api/run-inferential', async (req, res) => {
         if (!req.body) {
             return res.status(400).json({ success: false, error: 'Request body is required' });
         }
-        
+
         const { yearRange } = req.body;
         console.log(`Running inferential analysis with year range: ${yearRange}`);
 
-        const { spawn } = require('child_process');
-        const pythonProcess = spawn('python', ['main.py', yearRange || '5']);
+        const pythonScript = path.join(pythonPath, 'main.py');
+        const pythonProcess = spawn('python', [pythonScript, yearRange || '5'], { cwd: pythonPath });
 
         let output = '';
         let errorOutput = '';
@@ -175,10 +180,10 @@ app.post('/api/run-inferential', async (req, res) => {
 
         pythonProcess.on('close', (code) => {
             if (code === 0) {
-                // Check if image was created
-                const imagePath = path.join(__dirname, 'sales_prediction.png');
+                // Check if image was created in the analysis folder
+                const imagePath = path.join(analysisImagesPath, 'sales_prediction.png');
                 const hasImage = fs.existsSync(imagePath);
-                
+
                 res.json({
                     success: true,
                     output: output,
@@ -201,10 +206,10 @@ app.post('/api/run-inferential', async (req, res) => {
     }
 });
 
-// Serve generated images
+// Serve generated images from the analysis folder
 app.get('/api/image/:filename', (req, res) => {
     const filename = req.params.filename;
-    const imagePath = path.join(__dirname, filename);
+    const imagePath = path.join(analysisImagesPath, filename);
 
     if (fs.existsSync(imagePath)) {
         res.sendFile(imagePath);
@@ -213,6 +218,10 @@ app.get('/api/image/:filename', (req, res) => {
     }
 });
 
+// Start server
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
+    console.log(`Public path: ${publicPath}`);
+    console.log(`Python path: ${pythonPath}`);
+    console.log(`Analysis images path: ${analysisImagesPath}`);
 });

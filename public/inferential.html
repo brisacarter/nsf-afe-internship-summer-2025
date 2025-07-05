@@ -9,8 +9,8 @@ Author: Brisa Carter
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inferential Analysis - Video Game Sales</title>
-    <!-- External CSS stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- External CSS stylesheet - updated path -->
+    <link rel="stylesheet" href="../src/web/css/styles.css">
 </head>
 <body>
     <!-- Main container wrapper -->
@@ -45,16 +45,16 @@ Author: Brisa Carter
                             <span class="toggle-label">Past 44 Years (1980-2024)</span>
                         </label>
                     </div>
-                    
+
                     <!-- Description of inferential analysis -->
                     <p>This analysis uses machine learning to predict future video game sales trends based on historical data. The model analyzes patterns and generates forecasts for the next 5 years.</p>
                 </div>
-                
+
                 <!-- Main prediction generation button -->
                 <button id="runInferentialBtn" class="btn btn-inferential" onclick="runAnalysis('inferential')">
                     Generate Predictions
                 </button>
-                
+
                 <!-- Loading spinner (hidden by default) -->
                 <div id="loadingSpinner" class="loading hidden">
                     <div class="spinner"></div>
@@ -98,15 +98,3 @@ Author: Brisa Carter
                     <p>The model aggregates total global sales per year and uses linear regression to identify trends. The R-squared score indicates how well the model explains the variance in the data.</p>
                 </div>
             </div>
-            
-            <!-- Footer with author information -->
-            <footer class="summary-footer">
-                <p>By Brisa Carter | Powered by Python & Machine Learning | <a href="about.html" style="color: white; text-decoration: underline;">About This Project</a></p>
-            </footer>
-        </main>
-    </div>
-
-    <!-- JavaScript file for interactive functionality -->
-    <script src="script.js"></script>
-</body>
-</html>
