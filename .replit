@@ -1,8 +1,10 @@
-entrypoint = "main.py"
+
+run = "node src/web/js/server.js"
+entrypoint = "src/web/js/server.js"
 modules = ["python-3.11", "nodejs-20"]
 
 [nix]
-channel = "stable-24_05"
+channel = "stable-22_11"
 packages = ["cairo", "ffmpeg-full", "freetype", "ghostscript", "glibcLocales", "gobject-introspection", "gtk3", "pkg-config", "qhull", "tcl", "tk", "pick"]
 
 [unitTest]
@@ -12,7 +14,7 @@ language = "python3"
 requiredFiles = [".replit", "replit.nix"]
 
 [deployment]
-run = ["sh", "-c", "node server.js"]
+run = ["sh", "-c", "node src/web/js/server.js"]
 deploymentTarget = "cloudrun"
 
 [workflows]
@@ -33,4 +35,3 @@ args = "node server.js"
 
 [[ports]]
 localPort = 5000
-externalPort = 80
