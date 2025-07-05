@@ -221,7 +221,11 @@ app.get('/api/image/:filename', (req, res) => {
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on http://0.0.0.0:${PORT}`);
+    console.log(`Server accessible at: http://localhost:${PORT}`);
     console.log(`Public path: ${publicPath}`);
     console.log(`Python path: ${pythonPath}`);
     console.log(`Analysis images path: ${analysisImagesPath}`);
+    
+    // Log if files exist
+    console.log(`Index.html exists: ${require('fs').existsSync(path.join(publicPath, 'index.html'))}`);
 });
