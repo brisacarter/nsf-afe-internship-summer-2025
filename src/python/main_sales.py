@@ -10,7 +10,7 @@ import os
 def visualize_sales_analysis(year_range='25'):
     try:
         # Try different possible file paths
-        possible_files = ['vgchartz-2024.csv', 'vgsales.csv']
+        possible_files = ['../../data/raw/vgchartz-2024.csv', '../../data/raw/vgsales.csv']
         df = None
         used_file = None
         
@@ -22,7 +22,7 @@ def visualize_sales_analysis(year_range='25'):
                 break
         
         if df is None:
-            print("Error: No CSV file found. Please ensure vgchartz-2024.csv or vgsales.csv exists.")
+            print("Error: No CSV file found. Please ensure ../../data/raw/vgchartz-2024.csv or ../../data/raw/vgsales.csv exists.")
             return
         
         print(f"Loaded {len(df)} records from {used_file}")
@@ -109,8 +109,8 @@ def visualize_sales_analysis(year_range='25'):
         plt.tight_layout()
         
         # Save the plot
-        plt.savefig('sales_analysis.png', dpi=300, bbox_inches='tight')
-        print("Plot saved as 'sales_analysis.png'")
+        plt.savefig('../../public/analysis/sales_analysis.png', dpi=300, bbox_inches='tight')
+        print("Plot saved as '../../public/analysis/sales_analysis.png'")
         
         # Additional analysis
         print("\nSummary Statistics:")

@@ -12,7 +12,7 @@ def load_and_clean_data(year_range='25'):
     """Load and clean the video game sales data"""
     try:
         # Try different possible file paths
-        possible_files = ['vgchartz-2024.csv', 'vgsales.csv']
+        possible_files = ['../../data/raw/vgchartz-2024.csv', '../../data/raw/vgsales.csv']
         df = None
         used_file = None
         
@@ -24,7 +24,7 @@ def load_and_clean_data(year_range='25'):
                 break
         
         if df is None:
-            raise FileNotFoundError("No CSV file found. Please ensure vgchartz-2024.csv or vgsales.csv exists.")
+            raise FileNotFoundError("No CSV file found. Please ensure ../../data/raw/vgchartz-2024.csv or ../../data/raw/vgsales.csv exists.")
         
         print(f"Loaded {len(df)} records from {used_file}")
         
@@ -104,7 +104,7 @@ def analyze_sales_by_genre(df, available_cols):
     plt.gca().spines['right'].set_visible(False)
     plt.tight_layout()
     
-    plt.savefig('genre_analysis.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../../public/analysis/genre_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
     print("\nGenre Analysis Summary:")
@@ -197,7 +197,7 @@ def analyze_platform_performance(df, available_cols):
     plt.gca().invert_yaxis()  # Highest values at top
     
     plt.tight_layout()
-    plt.savefig('platform_analysis.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../../public/analysis/platform_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
     print("\nPlatform Analysis Summary:")
@@ -296,7 +296,7 @@ def analyze_publisher_rankings(df, available_cols):
     plt.gca().invert_yaxis()  # Highest values at top
     
     plt.tight_layout()
-    plt.savefig('publisher_analysis.png', dpi=300, bbox_inches='tight')
+    plt.savefig('../../public/analysis/publisher_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
     print("\nPublisher Analysis Summary:")
@@ -369,7 +369,7 @@ def run_all_analysis():
                 fontsize=12, ha='center', va='bottom', 
                 color='#666666', style='italic')
     
-    plt.savefig('all_analysis_summary.png', dpi=300, bbox_inches='tight', 
+    plt.savefig('../../public/analysis/all_analysis_summary.png', dpi=300, bbox_inches='tight', 
                 facecolor='#f8f9fa', edgecolor='none')
     plt.close()
     

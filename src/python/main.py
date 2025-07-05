@@ -12,8 +12,8 @@ import sys
 def predict_future_sales(year_range='25'):
     try:
         # Load and clean data from the existing CSV file
-        df = pd.read_csv('vgchartz-2024.csv')
-        print(f"Loaded {len(df)} records from vgchartz-2024.csv")
+        df = pd.read_csv('../../data/raw/vgchartz-2024.csv')
+        print(f"Loaded {len(df)} records from ../../data/raw/vgchartz-2024.csv")
         
         # Clean the data - remove rows with missing release_date or total_sales
         df = df.dropna(subset=['release_date', 'total_sales'])
@@ -117,8 +117,8 @@ def predict_future_sales(year_range='25'):
         plt.tight_layout()
         
         # Save the plot as an image file so it can be viewed in Replit
-        plt.savefig('sales_prediction.png', dpi=300, bbox_inches='tight')
-        print("\nPlot saved as 'sales_prediction.png'")
+        plt.savefig('../../public/analysis/sales_prediction.png', dpi=300, bbox_inches='tight')
+        print("\nPlot saved as '../../public/analysis/sales_prediction.png'")
         
         # Don't display plot in web interface - just save it
         plt.close()  # Close the figure to free memory
@@ -143,7 +143,7 @@ def predict_future_sales(year_range='25'):
         return model, sales_by_year, future_years, future_sales
         
     except FileNotFoundError:
-        print("Error: vgchartz-2024.csv file not found in the current directory.")
+        print("Error: ../../data/raw/vgchartz-2024.csv file not found.")
         return None, None, None, None
     except Exception as e:
         print(f"An error occurred: {str(e)}")
@@ -168,4 +168,4 @@ if __name__ == "__main__":
     
     if model is not None:
         print("\nAnalysis completed successfully!")
-        print("Check the 'sales_prediction.png' file for the visualization.")
+        print("Check the '../../public/analysis/sales_prediction.png' file for the visualization.")
