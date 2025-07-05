@@ -1,5 +1,5 @@
 
-# Video Game Sales Analysis
+# Video Game Sales Analysis Dashboard
 
 by Brisa Carter
 for Summer 2025 NSF-AFE Internship
