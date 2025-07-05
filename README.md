@@ -2,7 +2,7 @@
 # Video Game Sales Analysis Dashboard
 
 by Brisa Carter
-for Summer 2025 NSF-AFE Internship
+for Summer 2025 NSF-ATE Internship
 
 ## Project Overview
 
@@ -23,5 +23,5 @@ The analysis employs exploratory data analysis techniques, featuring bar chart v
 Product Design and Research Leader with 20+ years of experience in the software design industry and a student at UHMC in the ABIT program.
 Her background in product design brings a unique perspective to data analysis, combining technical expertise with user-centered design thinking to create meaningful insights from complex datasets.
 
-This project was developed as part of the **Summer 2025 NSF-AFE Internship**, demonstrating the application of statistical analysis and machine learning techniques to real-world industry data.
+This project was developed as part of the **Summer 2025 NSF-ATE Internship**, demonstrating the application of statistical analysis and machine learning techniques to real-world industry data.
 

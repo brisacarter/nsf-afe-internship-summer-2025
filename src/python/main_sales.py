@@ -1,4 +1,4 @@
-# NSF-AFE Internship Summer 2025
+# NSF-ATE Internship Summer 2025
 #Author: Brisa Carter
 
 import pandas as pd
