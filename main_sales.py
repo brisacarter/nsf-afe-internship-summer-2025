@@ -1,10 +1,10 @@
-# Author: Brisa Carter
+# NSF-AFE Internship Summer 2025
+#Author: Brisa Carter
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
-import sys
 import os
 
 def visualize_sales_analysis(year_range='25'):
@@ -113,7 +113,7 @@ def visualize_sales_analysis(year_range='25'):
         print("Plot saved as 'sales_analysis.png'")
         
         # Additional analysis
-        print(f"\nSummary Statistics:")
+        print("\nSummary Statistics:")
         print(f"Total genres analyzed: {len(genre_sales)}")
         print(f"Total global sales: {genre_sales.sum():.2f} million")
         print(f"Average sales per genre: {genre_sales.mean():.2f} million")
@@ -123,7 +123,7 @@ def visualize_sales_analysis(year_range='25'):
             platform_col = next((col for col in ['Platform', 'platform', 'console'] if col in available_cols), None)
             if platform_col:
                 platform_sales = df.groupby(platform_col)[sales_col].sum().sort_values(ascending=False)
-                print(f"\nTop 10 Platforms by Global Sales:")
+                print("\nTop 10 Platforms by Global Sales:")
                 for platform, sales in platform_sales.head(10).items():
                     print(f"{platform}: {sales:.2f} million")
         
@@ -132,7 +132,7 @@ def visualize_sales_analysis(year_range='25'):
             publisher_col = next((col for col in ['Publisher', 'publisher'] if col in available_cols), None)
             if publisher_col:
                 publisher_sales = df.groupby(publisher_col)[sales_col].sum().sort_values(ascending=False)
-                print(f"\nTop 10 Publishers by Global Sales:")
+                print("\nTop 10 Publishers by Global Sales:")
                 for publisher, sales in publisher_sales.head(10).items():
                     print(f"{publisher}: {sales:.2f} million")
         

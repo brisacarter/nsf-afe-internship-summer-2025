@@ -1,14 +1,12 @@
-
-# Author: Brisa Carter
+# NSF-AFE Internship Summer 2025
+#Author: Brisa Carter
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
-import numpy as np
 import sys
 import os
-from collections import Counter
 
 def load_and_clean_data(year_range='25'):
     """Load and clean the video game sales data"""
@@ -80,7 +78,7 @@ def analyze_sales_by_genre(df, available_cols):
     # Group by Genre and sum sales
     genre_sales = df_clean.groupby(genre_col)[sales_col].sum().sort_values(ascending=False)
     
-    print(f"\nTop 10 Genres by Global Sales:")
+    print("\nTop 10 Genres by Global Sales:")
     for i, (genre, sales) in enumerate(genre_sales.head(10).items(), 1):
         print(f"{i:2d}. {genre:20s}: {sales:8.2f} million")
     
@@ -109,7 +107,7 @@ def analyze_sales_by_genre(df, available_cols):
     plt.savefig('genre_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print(f"\nGenre Analysis Summary:")
+    print("\nGenre Analysis Summary:")
     print(f"Total genres analyzed: {len(genre_sales)}")
     print(f"Total global sales: {genre_sales.sum():.2f} million")
     print(f"Average sales per genre: {genre_sales.mean():.2f} million")
@@ -139,7 +137,7 @@ def analyze_platform_performance(df, available_cols):
     platform_sales = df_clean.groupby(platform_col)[sales_col].sum().sort_values(ascending=False)
     platform_counts = df_clean.groupby(platform_col).size().sort_values(ascending=False)
     
-    print(f"\nTop 15 Platforms by Global Sales:")
+    print("\nTop 15 Platforms by Global Sales:")
     for i, (platform, sales) in enumerate(platform_sales.head(15).items(), 1):
         games_count = platform_counts[platform]
         avg_sales = sales / games_count
@@ -202,7 +200,7 @@ def analyze_platform_performance(df, available_cols):
     plt.savefig('platform_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print(f"\nPlatform Analysis Summary:")
+    print("\nPlatform Analysis Summary:")
     print(f"Total platforms analyzed: {len(platform_sales)}")
     print(f"Most successful platform: {platform_sales.index[0]} ({platform_sales.iloc[0]:.2f}M)")
     print(f"Platform with most games: {platform_counts.index[0]} ({platform_counts.iloc[0]} games)")
@@ -230,7 +228,7 @@ def analyze_publisher_rankings(df, available_cols):
     publisher_sales = df_clean.groupby(publisher_col)[sales_col].sum().sort_values(ascending=False)
     publisher_counts = df_clean.groupby(publisher_col).size().sort_values(ascending=False)
     
-    print(f"\nTop 20 Publishers by Global Sales:")
+    print("\nTop 20 Publishers by Global Sales:")
     for i, (publisher, sales) in enumerate(publisher_sales.head(20).items(), 1):
         games_count = publisher_counts[publisher]
         avg_sales = sales / games_count
@@ -301,7 +299,7 @@ def analyze_publisher_rankings(df, available_cols):
     plt.savefig('publisher_analysis.png', dpi=300, bbox_inches='tight')
     plt.close()
     
-    print(f"\nPublisher Analysis Summary:")
+    print("\nPublisher Analysis Summary:")
     print(f"Total publishers analyzed: {len(publisher_sales)}")
     print(f"Top publisher: {publisher_sales.index[0]} ({publisher_sales.iloc[0]:.2f}M total sales)")
     print(f"Most prolific publisher: {publisher_counts.index[0]} ({publisher_counts.iloc[0]} games)")

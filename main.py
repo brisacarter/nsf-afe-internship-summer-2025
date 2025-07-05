@@ -1,11 +1,12 @@
-# Author: Brisa Carter
+# NSF-AFE Internship Summer 2025
+#Author: Brisa Carter
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend
 from sklearn.linear_model import LinearRegression
-import numpy as np
 import sys
 
 def predict_future_sales(year_range='25'):
@@ -68,7 +69,7 @@ def predict_future_sales(year_range='25'):
         future_years = pd.DataFrame({'Year': range(last_year + 1, last_year + 6)})
         future_sales = model.predict(future_years)
         
-        print(f"\nPredictions for the next 5 years:")
+        print("\nPredictions for the next 5 years:")
         for year, sales in zip(future_years['Year'], future_sales):
             print(f"{year}: {sales:.2f} million units")
         
@@ -117,24 +118,24 @@ def predict_future_sales(year_range='25'):
         
         # Save the plot as an image file so it can be viewed in Replit
         plt.savefig('sales_prediction.png', dpi=300, bbox_inches='tight')
-        print(f"\nPlot saved as 'sales_prediction.png'")
+        print("\nPlot saved as 'sales_prediction.png'")
         
         # Don't display plot in web interface - just save it
         plt.close()  # Close the figure to free memory
         
         # Print summary statistics
-        print(f"\nSummary Statistics:")
+        print("\nSummary Statistics:")
         print(f"Average historical sales per year: {sales_by_year['total_sales'].mean():.2f} million")
         print(f"Predicted average for next 5 years: {future_sales.mean():.2f} million")
         print(f"Trend: {'Increasing' if model.coef_[0] > 0 else 'Decreasing'} by {abs(model.coef_[0]):.2f} million units per year")
         
         # Additional analysis with console breakdown
-        print(f"\nTop 10 Consoles by Total Sales:")
+        print("\nTop 10 Consoles by Total Sales:")
         console_sales = df.groupby('console')['total_sales'].sum().sort_values(ascending=False).head(10)
         for console, sales in console_sales.items():
             print(f"{console}: {sales:.2f} million")
         
-        print(f"\nTop 10 Publishers by Total Sales:")
+        print("\nTop 10 Publishers by Total Sales:")
         publisher_sales = df.groupby('publisher')['total_sales'].sum().sort_values(ascending=False).head(10)
         for publisher, sales in publisher_sales.items():
             print(f"{publisher}: {sales:.2f} million")
