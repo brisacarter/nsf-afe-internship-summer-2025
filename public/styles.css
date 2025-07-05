@@ -450,7 +450,7 @@ body {
     border-radius: 15px;
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border: 2px solid #455d7a;
+  /*  border: 2px solid #455d7a;*/
     position: relative;
     overflow: hidden;
 }
@@ -507,7 +507,7 @@ body {
 }
 
 .analysis-item:hover {
-    border-color: #455d7a;
+  /*  border-color: #455d7a;*/
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(69, 93, 122, 0.15);
 }
