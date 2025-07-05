@@ -234,13 +234,13 @@ body {
 .analysis-page {
     background: white;
     border-radius: 10px;
-    padding: 30px;
+    padding: 0 30px 30px 30px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     margin-bottom: 30px;
 }
 
 .analysis-controls {
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     text-align: center;
 }
 
