@@ -31,7 +31,7 @@ args = "npm install"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "node server.js"
+args = "node src/web/js/server.js"
 
 [[ports]]
 localPort = 5000
