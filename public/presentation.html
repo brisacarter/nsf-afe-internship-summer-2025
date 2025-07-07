@@ -1,693 +1,1162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Game Sales Analytics - NSF Internship</title>
-      <link rel="stylesheet" href="preso.css">
-
-</head>
-<body>
-    <div class="presentation-container">
-        <!-- Slide 1: Title -->
-        <div class="slide active title-slide">
-            <h1>🎮 Video Game Sales Analytics</h1>
-            <div class="subtitle">Historical Trends and Predictive Modeling</div>
-            <div class="author">Brisa Carter</div>
-            <div class="title-slide-1">NSF-ATE Summer Internship 2025</div>
-            <div class="title-slide-1">Supervised by Prof. Blamey</div>
-        </div>
-
-        <!-- Slide 2: Project Overview -->
-        <div class="slide">
-            <h2>📊 Project Overview</h2>
-            <div class="two-column">
-                <div class="column">
-                    <h3>Objective</h3>
-                    <p>Analyze video game sales data from 2017-2024 to identify market trends and develop predictive models for future sales performance.</p>
-                    
-                    <h3>Key Goals</h3>
-                    <ul>
-                        <li>Create comprehensive data visualizations</li>
-                        <li>Identify genre-based sales patterns</li>
-                        <li>Develop regression models for sales prediction</li>
-                        <li>Provide actionable market insights</li>
-                    </ul>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Video Game Sales Analytics - NSF Internship</title>
+        <link rel="stylesheet" href="preso.css" />
+    </head>
+    <body>
+        <div class="presentation-container">
+            <!-- Slide 1: Title -->
+            <div class="slide active title-slide">
+                <h1>🎮 Video Game Sales Analytics</h1>
+                <div class="subtitle">
+                    Historical Trends and Predictive Modeling
                 </div>
-                <div class="column">
-                    <h3>Methodology</h3>
-                    <ul>
-                        <li><strong>Descriptive Analytics:</strong> Historical pattern analysis</li>
-                        <li><strong>Inferential Modeling:</strong> Predictive forecasting</li>
-                        <li><strong>Time Period:</strong> 2017-2024 historical data</li>
-                        <li><strong>Forecast:</strong> 5-year predictions through 2029</li>
-                    </ul>
-                    
-                    <div class="tech-stack">
-                        <span class="tech-item">Python</span>
-                        <span class="tech-item">Pandas</span>
-                        <span class="tech-item">Matplotlib</span>
-                        <span class="tech-item">Scikit-learn</span>
-                        <span class="tech-item">GitHub</span>
-                        <span class="tech-item">Replit</span>
+                <div class="author">Brisa Carter</div>
+                <div class="title-slide-1">NSF-ATE Summer Internship 2025</div>
+                <div class="title-slide-1">Supervised by Prof. Blamey</div>
+            </div>
+
+            <!-- Slide 2: Project Overview -->
+            <div class="slide">
+                <h2>📊 Project Overview</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Objective</h3>
+                        <p>
+                            Analyze video game sales data from 2017-2024 to
+                            identify market trends and develop predictive models
+                            for future sales performance.
+                        </p>
+
+                        <h3>Key Goals</h3>
+                        <ul>
+                            <li>Create comprehensive data visualizations</li>
+                            <li>Identify genre-based sales patterns</li>
+                            <li>
+                                Develop regression models for sales prediction
+                            </li>
+                            <li>Provide actionable market insights</li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <div class="column">
+                        <h3>Methodology</h3>
+                        <ul>
+                            <li>
+                                <strong>Descriptive Analytics:</strong>
+                                Historical pattern analysis
+                            </li>
+                            <li>
+                                <strong>Inferential Modeling:</strong>
+                                Predictive forecasting
+                            </li>
+                            <li>
+                                <strong>Time Period:</strong> 2017-2024
+                                historical data
+                            </li>
+                            <li>
+                                <strong>Forecast:</strong> 5-year predictions
+                                through 2029
+                            </li>
+                        </ul>
 
-        <!-- Slide 3: Project Timeline - First Half -->
-        <div class="slide">
-            <h2>📅 Project Timeline - Weeks 1-4</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h4>Week 1</h4>
-                    <p>Jun 2-8</p>
-                    <small>Setup & Planning</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Week 2</h4>
-                    <p>Jun 9-15</p>
-                    <small>Data Research</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Week 3</h4>
-                    <p>Jun 16-22</p>
-                    <small>Proposal & Coding</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Week 4</h4>
-                    <p>Jun 23-29</p>
-                    <small>Development</small>
-                </div>
-            </div>
-
-            <h3>Key Milestones - Phase 1</h3>
-            <ul>
-                <li>✅ <strong>Week 1:</strong> Project management environment setup with GitHub Projects</li>
-                <li>✅ <strong>Week 1:</strong> Data source identification (Kaggle, Statista access via UHMC)</li>
-                <li>✅ <strong>Week 2:</strong> AI-assisted development workflow established</li>
-                <li>✅ <strong>Week 3:</strong> Complete coding environment setup (Local + Replit)</li>
-                <li>✅ <strong>Week 3:</strong> Project theme refined to video game sales analytics</li>
-                <li>✅ <strong>Week 4:</strong> Final project proposal delivered on time</li>
-            </ul>
-
-            <div class="highlight-box insight">
-                <h4>Phase 1 Focus: Foundation & Planning</h4>
-                <p>Establishing project infrastructure, data sources, and development environment while adapting scope based on data availability constraints.</p>
-            </div>
-        </div>
-
-        <!-- Slide 4: Project Timeline - Second Half -->
-        <div class="slide">
-            <h2>📅 Project Timeline - Weeks 5-8</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h4>Week 5</h4>
-                    <p>Jun 30-Jul 6</p>
-                    <small>QA & Repository</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Week 6</h4>
-                    <p>Jul 7-13</p>
-                    <small>Code Review</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Week 7</h4>
-                    <p>Jul 14-20</p>
-                    <small>Documentation</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Week 8</h4>
-                    <p>Jul 21-27</p>
-                    <small>Final Delivery</small>
-                </div>
-            </div>
-
-            <h3>Key Milestones - Phase 2</h3>
-            <ul>
-                <li>✅ <strong>Week 5:</strong> GitHub repository with complete folder structure</li>
-                <li>✅ <strong>Week 5:</strong> Interactive dashboard with analytical and inferential displays</li>
-                <li>✅ <strong>Week 6:</strong> Code review and live server deployment</li>
-                <li>✅ <strong>Week 6:</strong> Repository organization and professional presentation</li>
-                <li>✅ <strong>Week 7:</strong> Final presentation and project documentation completed</li>
-                <li>✅ <strong>Week 8:</strong> Successful internship completion and delivery to Prof. Blamey</li>
-            </ul>
-
-            <div class="highlight-box success">
-                <h4>Phase 2 Focus: Implementation & Delivery</h4>
-                <p>Building analytics dashboard, ensuring code quality, and delivering comprehensive project documentation and final deliverables.</p>
-            </div>
-        </div>
-
-        <!-- Slide 5: GitHub Project Management -->
-        <div class="slide">
-            <h2>📋 Project Management with GitHub Projects</h2>
-            
-         <div style="text-align: center; margin: 30px 0;">
-                <img src="/Users/brisa/Desktop/Github_Project.png" alt="GitHub Project Board Timeline View" style="width: 100%;  object-fit: contain;">
-                <p style="font-style: italic; color: #666; margin-top: 10px;">GitHub Project Board: Timeline view showing 8-week internship progression</p>
-            </div>
-
-            <div class="highlight-box long-term success ">
-                <h4>Project Management Tool Selection</h4>
-                <p>GitHub Projects was chosen as the primary project management tool for this internship, combining powerful task tracking with seamless code repository integration.</p>
-            </div>
-        </div>
-
-        <!-- Slide 6: GitHub Projects Benefits & Advantages -->
-        <div class="slide">
-            <h2>🎯 Why GitHub Projects?</h2>
-
-            <div class="highlight-box insight">
-                <h4>Tool Selection Rationale</h4>
-                <p>Selected GitHub Projects for its seamless integration with version control, free access for academic use, and adequate timeline visualization capabilities. This choice enabled comprehensive project tracking while maintaining direct connection to code repository.</p>
-            </div>
-
-            <div class="two-column">
-                <div class="column">
-                    <h3>Project Organization Benefits</h3>
-                    <ul>
-                        <li><strong>Visual Timeline:</strong> Clear progression across 8-week internship</li>
-                        <li><strong>Task Dependencies:</strong> Logical workflow from planning to delivery</li>
-                        <li><strong>Academic Integration:</strong> Perfect for university-supervised projects</li>
-                        <li><strong>Professional Development:</strong> Industry-standard project management experience</li>
-                    </ul>
-                </div>
-                <div class="column">
-                    <h3>Workflow Advantages</h3>
-                    <ul>
-                        <li><strong>Repository Connection:</strong> Direct link between tasks and code changes</li>
-                        <li><strong>Status Tracking:</strong> Real-time updates on completion progress</li>
-                        <li><strong>Stakeholder Visibility:</strong> Professor and team can monitor progress</li>
-                        <li><strong>Documentation:</strong> Built-in history of project evolution</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="highlight-box success">
-                <h4>Academic vs. Industry Tools</h4>
-                <p>While exploring alternatives like Asana and ClickUp, GitHub Projects proved ideal for academic projects requiring both version control integration and professional project management capabilities without subscription costs.</p>
-            </div>
-        </div>
-
-        <!-- Slide 7: Project Management Implementation -->
-        <div class="slide">
-            <h2>⚡ Project Management Implementation</h2>
-
-            <div class="two-column">
-                <div class="column">
-                    <h3>Project Management Features Used</h3>
-                    <ul>
-                        <li><strong>Timeline View:</strong> Visual progression across 8 weeks</li>
-                        <li><strong>Task Organization:</strong> 19 structured tasks from kickoff to delivery</li>
-                        <li><strong>Milestone Tracking:</strong> Clear deliverable dates</li>
-                        <li><strong>Integration:</strong> Seamless connection with GitHub repository</li>
-                        <li><strong>Progress Monitoring:</strong> Real-time status updates and completion tracking</li>
-                    </ul>
-
-                    <div class="highlight-box insight">
-                        <h4>Task Management Strategy</h4>
-                        <p>Each task was carefully planned with specific deliverable and deadlines to ensure smooth project flow and stakeholder alignment.</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <h3>Key Project Tasks Tracked</h3>
-                    <ul>
-                        <li>Kickoff meeting with Prof. Blamey</li>
-                        <li>Research and define project management tools</li>
-                        <li>Data source identification and access</li>
-                        <li>Project proposal development and delivery</li>
-                        <li>Code development and testing</li>
-                        <li>Repository creation and organization</li>
-                        <li>Final documentation and deliverables</li>
-                    </ul>
-
-                    <div class="highlight-box success">
-                        <p><strong>GitHub Projects Advantage:</strong> Free tool with excellent repository integration, perfect for academic projects requiring version control and task management.</p>
+                        <div class="tech-stack">
+                            <span class="tech-item">Python</span>
+                            <span class="tech-item">Pandas</span>
+                            <span class="tech-item">Matplotlib</span>
+                            <span class="tech-item">Scikit-learn</span>
+                            <span class="tech-item">GitHub</span>
+                            <span class="tech-item">Replit</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <h3>Project Management Impact</h3>
-            <div class="timeline" style="margin-top: 30px;">
-                <div class="timeline-item">
-                    <h4>Planning</h4>
-                    <small>Structured approach</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Tracking</h4>
-                    <small>19 tasks monitored</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Integration</h4>
-                    <small>Code & tasks linked</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>Delivery</h4>
-                    <small>On-time completion</small>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 8: Technical Implementation -->
-        <div class="slide">
-            <h2>⚙️ Technical Implementation</h2>
-            <div class="two-column">
-                <div class="column">
-                    <h3>Data Sources</h3>
-                    <ul>
-                        <li><strong>Primary:</strong> Video game sales datasets (2017-2024)</li>
-                        <li><strong>Records:</strong> 16,000+ video games</li>
-                        <li><strong>Platforms:</strong> 30+ gaming platforms</li>
-                        <li><strong>Regions:</strong> North America, Europe, Japan, Others</li>
-                    </ul>
-
-                    <h3>Analysis Components</h3>
-                    <ul>
-                        <li><strong>Sales by Genre:</strong> Bar charts showing genre performance</li>
-                        <li><strong>Platform Performance:</strong> Console vs platform comparisons</li>
-                        <li><strong>Publisher Rankings:</strong> Top performing publishers</li>
-                        <li><strong>Regional Analysis:</strong> Geographic sales patterns</li>
-                    </ul>
-                </div>
-                <div class="column">
-                    <h3>Predictive Modeling</h3>
-                    <ul>
-                        <li><strong>Linear Regression:</strong> Sales forecasting model</li>
-                        <li><strong>5-Year Forecasting:</strong> Predictions for 2025-2029</li>
-                        <li><strong>Trend Analysis:</strong> Growth vs declining patterns</li>
-                        <li><strong>Statistical Inference:</strong> Confidence intervals and significance testing</li>
-                    </ul>
-
-                    <h3>Dashboard Features</h3>
-                    <ul>
-                        <li>Interactive time period selection</li>
-                        <li>Multiple visualization types</li>
-                        <li>Analytical and inferential displays</li>
-                        <li>Comprehensive results summary</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 9: Repository Organization -->
-        <div class="slide">
-            <h2>🗂️ Repository Structure Evolution</h2>
-            
-            <div class="two-column">
-                <div class="column">
-                    <h3>Initial Repository (Week 5)</h3>
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 0.9em; border-left: 4px solid #f39c12;">
-                        <div>root/</div>
-                        <div>├── public/</div>
-                        <div>│   ├── pictur_public/</div>
-                        <div>│   │   └── bri_waikoloa_hat_cropped.jpeg</div>
-                        <div>│   ├── about.html</div>
-                        <div>│   ├── analytical.html</div>
-                        <div>│   ├── index.html</div>
-                        <div>│   ├── inferential.html</div>
-                        <div>│   ├── script.js</div>
-                        <div>│   └── styles.css</div>
-                        <div>├── all_analysis_summary.png</div>
-                        <div>├── genre_analysis.png</div>
-                        <div>├── historical_analysis.png</div>
-                        <div>├── main_analytics.py</div>
-                        <div>├── main_sales.py</div>
-                        <div>├── main.py</div>
-                        <div>├── vgchartz-2024.csv</div>
-                        <div>├── vgsales.csv</div>
-                        <div>└── README.md</div>
+            <!-- Slide 3: Project Timeline - First Half -->
+            <div class="slide">
+                <h2>📅 Project Timeline - Weeks 1-4</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Week 1</h4>
+                        <p>Jun 2-8</p>
+                        <small>Setup & Planning</small>
                     </div>
-                    
-                    <div class="highlight-box challenge">
-                        <p><strong>Issues:</strong> Flat structure, mixed file types, poor organization, difficult navigation</p>
+                    <div class="timeline-item">
+                        <h4>Week 2</h4>
+                        <p>Jun 9-15</p>
+                        <small>Data Research</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 3</h4>
+                        <p>Jun 16-22</p>
+                        <small>Proposal & Coding</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 4</h4>
+                        <p>Jun 23-29</p>
+                        <small>Development</small>
                     </div>
                 </div>
-                
-                <div class="column">
-                    <h3>Organized Repository (Week 6+)</h3>
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 0.9em; border-left: 4px solid #27ae60;">
-                        <div>root/</div>
-                        <div>├── README.md</div>
-                        <div>├── data/</div>
-                        <div>│   ├── raw/</div>
-                        <div>│   │   ├── vgchartz-2024.csv</div>
-                        <div>│   │   └── vgsales.csv</div>
-                        <div>│   └── processed/</div>
-                        <div>├── src/</div>
-                        <div>│   ├── python/</div>
-                        <div>│   │   ├── main.py</div>
-                        <div>│   │   ├── main_analytics.py</div>
-                        <div>│   │   └── main_sales.py</div>
-                        <div>│   └── web/</div>
-                        <div>│       ├── js/script.js</div>
-                        <div>│       └── css/styles.css</div>
-                        <div>├── public/</div>
-                        <div>│   ├── index.html</div>
-                        <div>│   ├── about.html</div>
-                        <div>│   ├── analytical.html</div>
-                        <div>│   ├── inferential.html</div>
-                        <div>│   └── assets/</div>
-                        <div>│       ├── images/</div>
-                        <div>│       └── analysis/</div>
-                        <div>├── docs/</div>
-                        <div>└── config/</div>
-                    </div>
-                    
-                    <div class="highlight-box success">
-                        <p><strong>Improvements:</strong> Clear separation of concerns, logical hierarchy, professional structure, easy maintenance</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Slide 10: Key Findings -->
-        <div class="slide">
-            <h2>🔍 Key Findings & Insights</h2>
-            
-            <h3>Top Performing Genres (Global Sales)</h3>
-            <div class="highlight-box">
+                <h3>Key Milestones - Phase 1</h3>
                 <ul>
-                    <li><strong>Shooter:</strong> $63.9M (Leading genre)</li>
-                    <li><strong>Action:</strong> $62.2M (Close second)</li>
-                    <li><strong>Sports:</strong> $48.2M (Consistent performer)</li>
-                    <li><strong>Misc:</strong> $36.7M (Diverse category)</li>
-                    <li><strong>Racing:</strong> $35.9M (Stable market)</li>
+                    <li>
+                        ✅ <strong>Week 1:</strong> Project management
+                        environment setup with GitHub Projects
+                    </li>
+                    <li>
+                        ✅ <strong>Week 1:</strong> Data source identification
+                        (Kaggle, Statista access via UHMC)
+                    </li>
+                    <li>
+                        ✅ <strong>Week 2:</strong> AI-assisted development
+                        workflow established
+                    </li>
+                    <li>
+                        ✅ <strong>Week 3:</strong> Complete coding environment
+                        setup (Local + Replit)
+                    </li>
+                    <li>
+                        ✅ <strong>Week 3:</strong> Project theme refined to
+                        video game sales analytics
+                    </li>
+                    <li>
+                        ✅ <strong>Week 4:</strong> Final project proposal
+                        delivered on time
+                    </li>
                 </ul>
+
+                <div class="highlight-box insight">
+                    <h4>Phase 1 Focus: Foundation & Planning</h4>
+                    <p>
+                        Establishing project infrastructure, data sources, and
+                        development environment while adapting scope based on
+                        data availability constraints.
+                    </p>
+                </div>
             </div>
 
-            <div class="two-column">
-                <div class="column">
-                    <h3>Platform Insights</h3>
-                    <div class="highlight-box insight">
+            <!-- Slide 4: Project Timeline - Second Half -->
+            <div class="slide">
+                <h2>📅 Project Timeline - Weeks 5-8</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>Week 5</h4>
+                        <p>Jun 30-Jul 6</p>
+                        <small>QA & Repository</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 6</h4>
+                        <p>Jul 7-13</p>
+                        <small>Code Review</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 7</h4>
+                        <p>Jul 14-20</p>
+                        <small>Documentation</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Week 8</h4>
+                        <p>Jul 21-27</p>
+                        <small>Final Delivery</small>
+                    </div>
+                </div>
+
+                <h3>Key Milestones - Phase 2</h3>
+                <ul>
+                    <li>
+                        ✅ <strong>Week 5:</strong> GitHub repository with
+                        complete folder structure
+                    </li>
+                    <li>
+                        ✅ <strong>Week 5:</strong> Interactive dashboard with
+                        analytical and inferential displays
+                    </li>
+                    <li>
+                        ✅ <strong>Week 6:</strong> Code review and live server
+                        deployment
+                    </li>
+                    <li>
+                        ✅ <strong>Week 6:</strong> Repository organization and
+                        professional presentation
+                    </li>
+                    <li>
+                        ✅ <strong>Week 7:</strong> Final presentation and
+                        project documentation completed
+                    </li>
+                    <li>
+                        ✅ <strong>Week 8:</strong> Successful internship
+                        completion and delivery to Prof. Blamey
+                    </li>
+                </ul>
+
+                <div class="highlight-box success">
+                    <h4>Phase 2 Focus: Implementation & Delivery</h4>
+                    <p>
+                        Building analytics dashboard, ensuring code quality, and
+                        delivering comprehensive project documentation and final
+                        deliverables.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 5: GitHub Project Management -->
+            <div class="slide">
+                <h2>📋 Project Management with GitHub Projects</h2>
+
+                <div style="text-align: center; margin: 30px 0">
+                    <img
+                        src="/pictures/Github_Project.png"
+                        alt="GitHub Project Board Timeline View"
+                        style="width: 100%; object-fit: contain"
+                    />
+                    <p
+                        style="
+                            font-style: italic;
+                            color: #666;
+                            margin-top: 10px;
+                        "
+                    >
+                        GitHub Project Board: Timeline view showing 8-week
+                        internship progression
+                    </p>
+                </div>
+
+                <div class="highlight-box long-term success">
+                    <h4>Project Management Tool Selection</h4>
+                    <p>
+                        GitHub Projects was chosen as the primary project
+                        management tool for this internship, combining powerful
+                        task tracking with seamless code repository integration.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 6: GitHub Projects Benefits & Advantages -->
+            <div class="slide">
+                <h2>🎯 Why GitHub Projects?</h2>
+
+                <div class="highlight-box insight">
+                    <h4>Tool Selection Rationale</h4>
+                    <p>
+                        Selected GitHub Projects for its seamless integration
+                        with version control, free access for academic use, and
+                        adequate timeline visualization capabilities. This
+                        choice enabled comprehensive project tracking while
+                        maintaining direct connection to code repository.
+                    </p>
+                </div>
+
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Project Organization Benefits</h3>
                         <ul>
-                            <li>PS4 leads with 539.3M total sales</li>
-                            <li>Xbox One: 289.8M total sales</li>
-                            <li>Nintendo Switch showing strong growth</li>
-                            <li>PC gaming maintains consistent performance</li>
+                            <li>
+                                <strong>Visual Timeline:</strong> Clear
+                                progression across 8-week internship
+                            </li>
+                            <li>
+                                <strong>Task Dependencies:</strong> Logical
+                                workflow from planning to delivery
+                            </li>
+                            <li>
+                                <strong>Academic Integration:</strong> Perfect
+                                for university-supervised projects
+                            </li>
+                            <li>
+                                <strong>Professional Development:</strong>
+                                Industry-standard project management experience
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Workflow Advantages</h3>
+                        <ul>
+                            <li>
+                                <strong>Repository Connection:</strong> Direct
+                                link between tasks and code changes
+                            </li>
+                            <li>
+                                <strong>Status Tracking:</strong> Real-time
+                                updates on completion progress
+                            </li>
+                            <li>
+                                <strong>Stakeholder Visibility:</strong>
+                                Professor and team can monitor progress
+                            </li>
+                            <li>
+                                <strong>Documentation:</strong> Built-in history
+                                of project evolution
+                            </li>
                         </ul>
                     </div>
                 </div>
-                <div class="column">
-                    <h3>Market Trends</h3>
-                    <div class="highlight-box insight">
+
+                <div class="highlight-box success">
+                    <h4>Academic vs. Industry Tools</h4>
+                    <p>
+                        While exploring alternatives like Asana and ClickUp,
+                        GitHub Projects proved ideal for academic projects
+                        requiring both version control integration and
+                        professional project management capabilities without
+                        subscription costs.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 7: Project Management Implementation -->
+            <div class="slide">
+                <h2>⚡ Project Management Implementation</h2>
+
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Project Management Features Used</h3>
                         <ul>
-                            <li>Shooter and Action genres dominate sales</li>
-                            <li>Regional preferences vary significantly</li>
-                            <li>Digital distribution impact visible</li>
-                            <li>Mobile gaming influence on traditional platforms</li>
+                            <li>
+                                <strong>Timeline View:</strong> Visual
+                                progression across 8 weeks
+                            </li>
+                            <li>
+                                <strong>Task Organization:</strong> 19
+                                structured tasks from kickoff to delivery
+                            </li>
+                            <li>
+                                <strong>Milestone Tracking:</strong> Clear
+                                deliverable dates
+                            </li>
+                            <li>
+                                <strong>Integration:</strong> Seamless
+                                connection with GitHub repository
+                            </li>
+                            <li>
+                                <strong>Progress Monitoring:</strong> Real-time
+                                status updates and completion tracking
+                            </li>
+                        </ul>
+
+                        <div class="highlight-box insight">
+                            <h4>Task Management Strategy</h4>
+                            <p>
+                                Each task was carefully planned with specific
+                                deliverable and deadlines to ensure smooth
+                                project flow and stakeholder alignment.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h3>Key Project Tasks Tracked</h3>
+                        <ul>
+                            <li>Kickoff meeting with Prof. Blamey</li>
+                            <li>
+                                Research and define project management tools
+                            </li>
+                            <li>Data source identification and access</li>
+                            <li>Project proposal development and delivery</li>
+                            <li>Code development and testing</li>
+                            <li>Repository creation and organization</li>
+                            <li>Final documentation and deliverables</li>
+                        </ul>
+
+                        <div class="highlight-box success">
+                            <p>
+                                <strong>GitHub Projects Advantage:</strong> Free
+                                tool with excellent repository integration,
+                                perfect for academic projects requiring version
+                                control and task management.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Project Management Impact</h3>
+                <div class="timeline" style="margin-top: 30px">
+                    <div class="timeline-item">
+                        <h4>Planning</h4>
+                        <small>Structured approach</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Tracking</h4>
+                        <small>19 tasks monitored</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Integration</h4>
+                        <small>Code & tasks linked</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>Delivery</h4>
+                        <small>On-time completion</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Technical Implementation -->
+            <div class="slide">
+                <h2>⚙️ Technical Implementation</h2>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Data Sources</h3>
+                        <ul>
+                            <li>
+                                <strong>Primary:</strong> Video game sales
+                                datasets (2017-2024)
+                            </li>
+                            <li>
+                                <strong>Records:</strong> 16,000+ video games
+                            </li>
+                            <li>
+                                <strong>Platforms:</strong> 30+ gaming platforms
+                            </li>
+                            <li>
+                                <strong>Regions:</strong> North America, Europe,
+                                Japan, Others
+                            </li>
+                        </ul>
+
+                        <h3>Analysis Components</h3>
+                        <ul>
+                            <li>
+                                <strong>Sales by Genre:</strong> Bar charts
+                                showing genre performance
+                            </li>
+                            <li>
+                                <strong>Platform Performance:</strong> Console
+                                vs platform comparisons
+                            </li>
+                            <li>
+                                <strong>Publisher Rankings:</strong> Top
+                                performing publishers
+                            </li>
+                            <li>
+                                <strong>Regional Analysis:</strong> Geographic
+                                sales patterns
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Predictive Modeling</h3>
+                        <ul>
+                            <li>
+                                <strong>Linear Regression:</strong> Sales
+                                forecasting model
+                            </li>
+                            <li>
+                                <strong>5-Year Forecasting:</strong> Predictions
+                                for 2025-2029
+                            </li>
+                            <li>
+                                <strong>Trend Analysis:</strong> Growth vs
+                                declining patterns
+                            </li>
+                            <li>
+                                <strong>Statistical Inference:</strong>
+                                Confidence intervals and significance testing
+                            </li>
+                        </ul>
+
+                        <h3>Dashboard Features</h3>
+                        <ul>
+                            <li>Interactive time period selection</li>
+                            <li>Multiple visualization types</li>
+                            <li>Analytical and inferential displays</li>
+                            <li>Comprehensive results summary</li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 11: Challenges & Solutions -->
-        <div class="slide">
-            <h2>🛠️ Challenges & Solutions</h2>
-            
-            <div class="two-column">
-                <div class="column">
-                    <h3>Major Challenges</h3>
-                    <div class="highlight-box challenge">
-                        <h4>Data Availability</h4>
-                        <p>Finding free, recent datasets with comprehensive gaming information proved difficult.</p>
+            <!-- Slide 9: Repository Organization -->
+            <div class="slide">
+                <h2>🗂️ Repository Structure Evolution</h2>
+
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Initial Repository (Week 5)</h3>
+                        <div
+                            style="
+                                background: #f8f9fa;
+                                padding: 20px;
+                                border-radius: 10px;
+                                font-family: monospace;
+                                font-size: 0.9em;
+                                border-left: 4px solid #f39c12;
+                            "
+                        >
+                            <div>root/</div>
+                            <div>├── public/</div>
+                            <div>│ ├── pictur_public/</div>
+                            <div>│ │ └── bri_waikoloa_hat_cropped.jpeg</div>
+                            <div>│ ├── about.html</div>
+                            <div>│ ├── analytical.html</div>
+                            <div>│ ├── index.html</div>
+                            <div>│ ├── inferential.html</div>
+                            <div>│ ├── script.js</div>
+                            <div>│ └── styles.css</div>
+                            <div>├── all_analysis_summary.png</div>
+                            <div>├── genre_analysis.png</div>
+                            <div>├── historical_analysis.png</div>
+                            <div>├── main_analytics.py</div>
+                            <div>├── main_sales.py</div>
+                            <div>├── main.py</div>
+                            <div>├── vgchartz-2024.csv</div>
+                            <div>├── vgsales.csv</div>
+                            <div>└── README.md</div>
+                        </div>
+
+                        <div class="highlight-box challenge">
+                            <p>
+                                <strong>Issues:</strong> Flat structure, mixed
+                                file types, poor organization, difficult
+                                navigation
+                            </p>
+                        </div>
                     </div>
-                    
-                    <div class="highlight-box challenge">
-                        <h4>Technical Integration</h4>
-                        <p>Syncing between GitHub, Replit, and local repositories presented workflow challenges.</p>
-                    </div>
-                    
-                    <div class="highlight-box challenge">
-                        <h4>Scope Refinement</h4>
-                        <p>Original focus on local co-op games had to be adjusted due to data limitations.</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <h3>Solutions Implemented</h3>
-                    <div class="highlight-box success">
-                        <h4>Librarian Collaboration</h4>
-                        <p>UHMC librarian Carmen provided access to Statista database for reliable data sources.</p>
-                    </div>
-                    
-                    <div class="highlight-box success">
-                        <h4>AI-Assisted Development</h4>
-                        <p>Leveraged AI tools for rapid prototyping, debugging, and code optimization.</p>
-                    </div>
-                    
-                    <div class="highlight-box success">
-                        <h4>Iterative Planning</h4>
-                        <p>Adopted agile methodology with weekly adjustments and continuous stakeholder feedback.</p>
+
+                    <div class="column">
+                        <h3>Organized Repository (Week 6+)</h3>
+                        <div
+                            style="
+                                background: #f8f9fa;
+                                padding: 20px;
+                                border-radius: 10px;
+                                font-family: monospace;
+                                font-size: 0.9em;
+                                border-left: 4px solid #27ae60;
+                            "
+                        >
+                            <div>root/</div>
+                            <div>├── README.md</div>
+                            <div>├── data/</div>
+                            <div>│ ├── raw/</div>
+                            <div>│ │ ├── vgchartz-2024.csv</div>
+                            <div>│ │ └── vgsales.csv</div>
+                            <div>│ └── processed/</div>
+                            <div>├── src/</div>
+                            <div>│ ├── python/</div>
+                            <div>│ │ ├── main.py</div>
+                            <div>│ │ ├── main_analytics.py</div>
+                            <div>│ │ └── main_sales.py</div>
+                            <div>│ └── web/</div>
+                            <div>│ ├── js/script.js</div>
+                            <div>│ └── css/styles.css</div>
+                            <div>├── public/</div>
+                            <div>│ ├── index.html</div>
+                            <div>│ ├── about.html</div>
+                            <div>│ ├── analytical.html</div>
+                            <div>│ ├── inferential.html</div>
+                            <div>│ └── assets/</div>
+                            <div>│ ├── images/</div>
+                            <div>│ └── analysis/</div>
+                            <div>├── docs/</div>
+                            <div>└── config/</div>
+                        </div>
+
+                        <div class="highlight-box success">
+                            <p>
+                                <strong>Improvements:</strong> Clear separation
+                                of concerns, logical hierarchy, professional
+                                structure, easy maintenance
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 12: Technical Skills & Development -->
-        <div class="slide">
-            <h2>💻 Technical Skills & Professional Development</h2>
-            
-            <div class="two-column">
-                <div class="column">
-                    <h3>Technical Skills Developed</h3>
+            <!-- Slide 10: Key Findings -->
+            <div class="slide">
+                <h2>🔍 Key Findings & Insights</h2>
+
+                <h3>Top Performing Genres (Global Sales)</h3>
+                <div class="highlight-box">
                     <ul>
-                        <li><strong>Data Science:</strong> Advanced Python libraries (Pandas, Matplotlib, Scikit-learn)</li>
-                        <li><strong>Project Management:</strong> GitHub Projects, agile methodology</li>
-                        <li><strong>Data Visualization:</strong> Interactive dashboard development</li>
-                        <li><strong>Statistical Analysis:</strong> Regression modeling and forecasting</li>
-                        <li><strong>Version Control:</strong> Git workflows and repository management</li>
-                        <li><strong>Code Organization:</strong> Repository restructuring and optimization</li>
-                        <li><strong>Deployment:</strong> Live server deployment and sharing</li>
+                        <li>
+                            <strong>Shooter:</strong> $63.9M (Leading genre)
+                        </li>
+                        <li><strong>Action:</strong> $62.2M (Close second)</li>
+                        <li>
+                            <strong>Sports:</strong> $48.2M (Consistent
+                            performer)
+                        </li>
+                        <li>
+                            <strong>Misc:</strong> $36.7M (Diverse category)
+                        </li>
+                        <li><strong>Racing:</strong> $35.9M (Stable market)</li>
                     </ul>
                 </div>
-                <div class="column">
-                    <h3>Professional Development</h3>
-                    <ul>
-                        <li><strong>Academic Collaboration:</strong> Working with Prof. Blamey and UHMC resources</li>
-                        <li><strong>Iterative Planning:</strong> Weekly adjustments and continuous improvement</li>
-                        <li><strong>Stakeholder Communication:</strong> Regular status updates and reporting</li>
-                        <li><strong>Problem-Solving:</strong> Overcoming technical and resource constraints</li>
-                        <li><strong>Time Management:</strong> Balancing internship with work commitments</li>
-                        <li><strong>Documentation:</strong> Creating comprehensive project records</li>
-                        <li><strong>Presentation Skills:</strong> Developing professional deliverables</li>
-                    </ul>
-                </div>
-            </div>
 
-            <h3>Development Environment</h3>
-            <div class="tech-stack">
-                <span class="tech-item">Python</span>
-                <span class="tech-item">Pandas</span>
-                <span class="tech-item">Matplotlib</span>
-                <span class="tech-item">Scikit-learn</span>
-                <span class="tech-item">GitHub</span>
-                <span class="tech-item">Replit</span>
-                <span class="tech-item">HTML/CSS/JS</span>
-                <span class="tech-item">Git</span>
-                     <span class="tech-item">Node</span>
-                          <span class="tech-item">Express</span>
-            </div>
-        </div>
-
-        <!-- Slide 13: Key Insights & Learning Outcomes -->
-        <div class="slide">
-            <h2>🎯 Key Insights & Learning Outcomes</h2>
-            
-            <h3>Major Insights Gained</h3>
-            <div class="highlight-box insight">
-                <h4>AI as a Productivity Multiplier</h4>
-                <p>AI tools significantly accelerated development and debugging processes, but required critical thinking for quality results. Learning to perfect AI usage through effective prompting is a valuable long-term investment.</p>
-            </div>
-            
-            <div class="highlight-box insight">
-                <h4>Adaptability is Essential</h4>
-                <p>Project requirements evolved throughout the internship, demonstrating the importance of flexible planning and iterative adjustments. "Flexibility is the name of the game."</p>
-            </div>
-            
-            <div class="highlight-box insight">
-                <h4>Human Skills Still Critical</h4>
-                <p>Despite AI's remarkable capabilities, human expertise remains essential for guidance through prompts, error identification, hallucination detection, and outcome adjustment. "Humans are still needed."</p>
-            </div>
-
-            <div class="highlight-box insight">
-                <h4>Repository Organization Matters</h4>
-                <p>Restructuring code repositories for professionalism is challenging but crucial for project presentation and long-term maintenance.</p>
-            </div>
-        </div>
-
-        <!-- Slide 14: Future Applications & Impact -->
-        <div class="slide">
-            <h2>🚀 Future Applications & Impact</h2>
-            
-            <div class="two-column">
-                <div class="column">
-                    <h3>Portfolio Enhancement</h3>
-                    <div class="highlight-box success">
-                        <h4>Professional Data Science Showcase</h4>
-                        <p>Complete end-to-end project demonstrating data collection, analysis, visualization, and predictive modeling capabilities.</p>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Platform Insights</h3>
+                        <div class="highlight-box insight">
+                            <ul>
+                                <li>PS4 leads with 539.3M total sales</li>
+                                <li>Xbox One: 289.8M total sales</li>
+                                <li>Nintendo Switch showing strong growth</li>
+                                <li>
+                                    PC gaming maintains consistent performance
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    
-                    <div class="highlight-box success">
-                        <h4>GitHub Portfolio Piece</h4>
-                        <p>Well-organized repository showcasing best practices in code organization, documentation, and project management.</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <h3>Career Applications</h3>
-                    <div class="highlight-box insight">
-                        <h4>Industry Readiness</h4>
-                        <p>Professional development skills directly applicable to tech careers, particularly in data science and analytics roles.</p>
-                    </div>
-                    
-                    <div class="highlight-box insight">
-                        <h4>AI Integration Strategy</h4>
-                        <p>Proven framework for leveraging AI tools effectively while maintaining human oversight and quality control.</p>
+                    <div class="column">
+                        <h3>Market Trends</h3>
+                        <div class="highlight-box insight">
+                            <ul>
+                                <li>
+                                    Shooter and Action genres dominate sales
+                                </li>
+                                <li>Regional preferences vary significantly</li>
+                                <li>Digital distribution impact visible</li>
+                                <li>
+                                    Mobile gaming influence on traditional
+                                    platforms
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <h3>Future Project Opportunities</h3>
-            <ul>
-                <li><strong>Advanced Analytics:</strong> Foundation for machine learning and AI projects</li>
-                <li><strong>Real-World Applications:</strong> Practical knowledge of data challenges and solutions</li>
-                <li><strong>Research Extensions:</strong> Deeper analysis of gaming industry trends and predictions</li>
-                <li><strong>Technology Integration:</strong> Experience combining multiple development environments</li>
-            </ul>
+            <!-- Slide 11: Challenges & Solutions -->
+            <div class="slide">
+                <h2>🛠️ Challenges & Solutions</h2>
 
-            <div class="highlight-box">
-                <h4>Long-term Impact</h4>
-                <p>This internship has established a solid foundation for continued growth in data science, demonstrated the value of AI-assisted development, and created a professional portfolio piece that showcases both technical skills and project management capabilities.</p>
-            </div>
-        </div>
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Major Challenges</h3>
+                        <div class="highlight-box challenge">
+                            <h4>Data Availability</h4>
+                            <p>
+                                Finding free, recent datasets with comprehensive
+                                gaming information proved difficult.
+                            </p>
+                        </div>
 
-        <!-- Slide 15: Deliverables & Next Steps -->
-        <div class="slide">
-            <h2>📦 Deliverables & Next Steps</h2>
-            
-            <h3>Project Deliverables</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h4>✅ Proposal</h4>
-                    <small>Completed 06/29</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>✅ Repository</h4>
-                    <small>Completed 07/06</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>✅ Dashboard</h4>
-                    <small>Interactive Analytics</small>
-                </div>
-                <div class="timeline-item">
-                    <h4>✅ Documentation</h4>
-                    <small>Weekly Reports</small>
-                </div>
-            </div>
+                        <div class="highlight-box challenge">
+                            <h4>Technical Integration</h4>
+                            <p>
+                                Syncing between GitHub, Replit, and local
+                                repositories presented workflow challenges.
+                            </p>
+                        </div>
 
-            <div class="two-column">
-                <div class="column">
-                    <h3>Repository Contents</h3>
-                    <ul>
-                        <li><strong>GitHub Repository:</strong> nsf-ate-internship-summer-2025</li>
-                        <li><strong>Interactive Dashboard:</strong> Analytical and inferential displays</li>
-                        <li><strong>Data Analysis Scripts:</strong> Python implementation</li>
-                        <li><strong>Documentation:</strong> Weekly status reports and insights</li>
-                        <li><strong>Predictive Models:</strong> 5-year forecasting algorithms</li>
-                    </ul>
-                </div>
-                <div class="column">
-                    <h3>Future Enhancements</h3>
-                    <ul>
-                        <li>Real-time data integration</li>
-                        <li>Machine learning model optimization</li>
-                        <li>Expanded genre and platform analysis</li>
-                        <li>International market deep-dive</li>
-                        <li>Game development lifecycle correlation</li>
-                    </ul>
-                    
-                    <div class="highlight-box">
-                        <p><strong>Repository:</strong> <a href="https://github.com/brisacarter/nsf-ate-internship-summer-2025" target="_blank">github.com/brisacarter/nsf-ate-internship-summer-2025</a></p>
+                        <div class="highlight-box challenge">
+                            <h4>Scope Refinement</h4>
+                            <p>
+                                Original focus on local co-op games had to be
+                                adjusted due to data limitations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h3>Solutions Implemented</h3>
+                        <div class="highlight-box success">
+                            <h4>Librarian Collaboration</h4>
+                            <p>
+                                UHMC librarian Carmen provided access to
+                                Statista database for reliable data sources.
+                            </p>
+                        </div>
+
+                        <div class="highlight-box success">
+                            <h4>AI-Assisted Development</h4>
+                            <p>
+                                Leveraged AI tools for rapid prototyping,
+                                debugging, and code optimization.
+                            </p>
+                        </div>
+
+                        <div class="highlight-box success">
+                            <h4>Iterative Planning</h4>
+                            <p>
+                                Adopted agile methodology with weekly
+                                adjustments and continuous stakeholder feedback.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Slide 16: Project Links & Resources -->
-        <div class="slide">
-            <h2>🔗 Project Links & Resources</h2>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-                <div class="highlight-box" style="padding: 15px; border-left: 4px solid #3498db;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1em; color: #3498db;">📁 GitHub Repository</h4>
-                    <p style="margin: 8px 0; font-size: 0.9em;">
-                        <a href="https://github.com/brisacarter/nsf-ate-internship-summer-2025" target="_blank" style="color: #3498db; text-decoration: none;">
-                            github.com/brisacarter/nsf-ate-internship-summer-2025
-                        </a>
+            <!-- Slide 12: Technical Skills & Development -->
+            <div class="slide">
+                <h2>💻 Technical Skills & Professional Development</h2>
+
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Technical Skills Developed</h3>
+                        <ul>
+                            <li>
+                                <strong>Data Science:</strong> Advanced Python
+                                libraries (Pandas, Matplotlib, Scikit-learn)
+                            </li>
+                            <li>
+                                <strong>Project Management:</strong> GitHub
+                                Projects, agile methodology
+                            </li>
+                            <li>
+                                <strong>Data Visualization:</strong> Interactive
+                                dashboard development
+                            </li>
+                            <li>
+                                <strong>Statistical Analysis:</strong>
+                                Regression modeling and forecasting
+                            </li>
+                            <li>
+                                <strong>Version Control:</strong> Git workflows
+                                and repository management
+                            </li>
+                            <li>
+                                <strong>Code Organization:</strong> Repository
+                                restructuring and optimization
+                            </li>
+                            <li>
+                                <strong>Deployment:</strong> Live server
+                                deployment and sharing
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Professional Development</h3>
+                        <ul>
+                            <li>
+                                <strong>Academic Collaboration:</strong> Working
+                                with Prof. Blamey and UHMC resources
+                            </li>
+                            <li>
+                                <strong>Iterative Planning:</strong> Weekly
+                                adjustments and continuous improvement
+                            </li>
+                            <li>
+                                <strong>Stakeholder Communication:</strong>
+                                Regular status updates and reporting
+                            </li>
+                            <li>
+                                <strong>Problem-Solving:</strong> Overcoming
+                                technical and resource constraints
+                            </li>
+                            <li>
+                                <strong>Time Management:</strong> Balancing
+                                internship with work commitments
+                            </li>
+                            <li>
+                                <strong>Documentation:</strong> Creating
+                                comprehensive project records
+                            </li>
+                            <li>
+                                <strong>Presentation Skills:</strong> Developing
+                                professional deliverables
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Development Environment</h3>
+                <div class="tech-stack">
+                    <span class="tech-item">Python</span>
+                    <span class="tech-item">Pandas</span>
+                    <span class="tech-item">Matplotlib</span>
+                    <span class="tech-item">Scikit-learn</span>
+                    <span class="tech-item">GitHub</span>
+                    <span class="tech-item">Replit</span>
+                    <span class="tech-item">HTML/CSS/JS</span>
+                    <span class="tech-item">Git</span>
+                    <span class="tech-item">Node</span>
+                    <span class="tech-item">Express</span>
+                </div>
+            </div>
+
+            <!-- Slide 13: Key Insights & Learning Outcomes -->
+            <div class="slide">
+                <h2>🎯 Key Insights & Learning Outcomes</h2>
+
+                <h3>Major Insights Gained</h3>
+                <div class="highlight-box insight">
+                    <h4>AI as a Productivity Multiplier</h4>
+                    <p>
+                        AI tools significantly accelerated development and
+                        debugging processes, but required critical thinking for
+                        quality results. Learning to perfect AI usage through
+                        effective prompting is a valuable long-term investment.
                     </p>
-                    <p style="color: #666; font-size: 0.8em; margin: 5px 0 0 0;">Complete source code, data files, and documentation</p>
                 </div>
-                
-                <div class="highlight-box" style="padding: 15px; border-left: 4px solid #27ae60;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1em; color: #27ae60;">📋 GitHub Project Board</h4>
-                    <p style="margin: 8px 0; font-size: 0.9em;">
-                        <a href="https://github.com/users/brisacarter/projects/6/views/4" target="_blank" style="color: #27ae60; text-decoration: none;">
-                            Project Management Timeline
-                        </a>
+
+                <div class="highlight-box insight">
+                    <h4>Adaptability is Essential</h4>
+                    <p>
+                        Project requirements evolved throughout the internship,
+                        demonstrating the importance of flexible planning and
+                        iterative adjustments. "Flexibility is the name of the
+                        game."
                     </p>
-                    <p style="color: #666; font-size: 0.8em; margin: 5px 0 0 0;">8-week task tracking and milestone management</p>
                 </div>
-                
-                <div class="highlight-box" style="padding: 15px; border-left: 4px solid #e74c3c;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1em; color: #e74c3c;">🌐 Live Dashboard</h4>
-                    <p style="margin: 8px 0; font-size: 0.9em;">
-                        <a href="https://nsf-ate-internship-summer-2025-brisacarter.replit.app/" target="_blank" style="color: #e74c3c; text-decoration: none;">
-                            Interactive Analytics Dashboard
-                        </a>
+
+                <div class="highlight-box insight">
+                    <h4>Human Skills Still Critical</h4>
+                    <p>
+                        Despite AI's remarkable capabilities, human expertise
+                        remains essential for guidance through prompts, error
+                        identification, hallucination detection, and outcome
+                        adjustment. "Humans are still needed."
                     </p>
-                    <p style="color: #666; font-size: 0.8em; margin: 5px 0 0 0;">Live deployment with analytical and inferential displays</p>
                 </div>
-                
-                <div class="highlight-box" style="padding: 15px; border-left: 4px solid #f39c12;">
-                    <h4 style="margin: 0 0 10px 0; font-size: 1.1em; color: #f39c12;">📄 Project Documentation</h4>
-                    <p style="margin: 8px 0; font-size: 0.9em;">
-                        <a href="https://docs.google.com/document/d/185Ew4IQu8YPjbpY-dL52ynGcGCcAz7zUXL-mdsXLl1w/edit?usp=sharing" target="_blank" style="color: #f39c12; text-decoration: none;">
-                            Complete Project Report
-                        </a>
+
+                <div class="highlight-box insight">
+                    <h4>Repository Organization Matters</h4>
+                    <p>
+                        Restructuring code repositories for professionalism is
+                        challenging but crucial for project presentation and
+                        long-term maintenance.
                     </p>
-                    <p style="color: #666; font-size: 0.8em; margin: 5px 0 0 0;">Comprehensive documentation and weekly reports</p>
                 </div>
             </div>
-            
-            <div style="margin-top: 30px; text-align: center;">
-                <p style="color: #888; font-size: 0.9em;">Click any link above to access the corresponding project resource</p>
+
+            <!-- Slide 14: Future Applications & Impact -->
+            <div class="slide">
+                <h2>🚀 Future Applications & Impact</h2>
+
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Portfolio Enhancement</h3>
+                        <div class="highlight-box success">
+                            <h4>Professional Data Science Showcase</h4>
+                            <p>
+                                Complete end-to-end project demonstrating data
+                                collection, analysis, visualization, and
+                                predictive modeling capabilities.
+                            </p>
+                        </div>
+
+                        <div class="highlight-box success">
+                            <h4>GitHub Portfolio Piece</h4>
+                            <p>
+                                Well-organized repository showcasing best
+                                practices in code organization, documentation,
+                                and project management.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h3>Career Applications</h3>
+                        <div class="highlight-box insight">
+                            <h4>Industry Readiness</h4>
+                            <p>
+                                Professional development skills directly
+                                applicable to tech careers, particularly in data
+                                science and analytics roles.
+                            </p>
+                        </div>
+
+                        <div class="highlight-box insight">
+                            <h4>AI Integration Strategy</h4>
+                            <p>
+                                Proven framework for leveraging AI tools
+                                effectively while maintaining human oversight
+                                and quality control.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Future Project Opportunities</h3>
+                <ul>
+                    <li>
+                        <strong>Advanced Analytics:</strong> Foundation for
+                        machine learning and AI projects
+                    </li>
+                    <li>
+                        <strong>Real-World Applications:</strong> Practical
+                        knowledge of data challenges and solutions
+                    </li>
+                    <li>
+                        <strong>Research Extensions:</strong> Deeper analysis of
+                        gaming industry trends and predictions
+                    </li>
+                    <li>
+                        <strong>Technology Integration:</strong> Experience
+                        combining multiple development environments
+                    </li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Long-term Impact</h4>
+                    <p>
+                        This internship has established a solid foundation for
+                        continued growth in data science, demonstrated the value
+                        of AI-assisted development, and created a professional
+                        portfolio piece that showcases both technical skills and
+                        project management capabilities.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 15: Deliverables & Next Steps -->
+            <div class="slide">
+                <h2>📦 Deliverables & Next Steps</h2>
+
+                <h3>Project Deliverables</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4>✅ Proposal</h4>
+                        <small>Completed 06/29</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>✅ Repository</h4>
+                        <small>Completed 07/06</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>✅ Dashboard</h4>
+                        <small>Interactive Analytics</small>
+                    </div>
+                    <div class="timeline-item">
+                        <h4>✅ Documentation</h4>
+                        <small>Weekly Reports</small>
+                    </div>
+                </div>
+
+                <div class="two-column">
+                    <div class="column">
+                        <h3>Repository Contents</h3>
+                        <ul>
+                            <li>
+                                <strong>GitHub Repository:</strong>
+                                nsf-ate-internship-summer-2025
+                            </li>
+                            <li>
+                                <strong>Interactive Dashboard:</strong>
+                                Analytical and inferential displays
+                            </li>
+                            <li>
+                                <strong>Data Analysis Scripts:</strong> Python
+                                implementation
+                            </li>
+                            <li>
+                                <strong>Documentation:</strong> Weekly status
+                                reports and insights
+                            </li>
+                            <li>
+                                <strong>Predictive Models:</strong> 5-year
+                                forecasting algorithms
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="column">
+                        <h3>Future Enhancements</h3>
+                        <ul>
+                            <li>Real-time data integration</li>
+                            <li>Machine learning model optimization</li>
+                            <li>Expanded genre and platform analysis</li>
+                            <li>International market deep-dive</li>
+                            <li>Game development lifecycle correlation</li>
+                        </ul>
+
+                        <div class="highlight-box">
+                            <p>
+                                <strong>Repository:</strong>
+                                <a
+                                    href="https://github.com/brisacarter/nsf-ate-internship-summer-2025"
+                                    target="_blank"
+                                    >github.com/brisacarter/nsf-ate-internship-summer-2025</a
+                                >
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 16: Project Links & Resources -->
+            <div class="slide">
+                <h2>🔗 Project Links & Resources</h2>
+
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 20px;
+                        margin-top: 20px;
+                    "
+                >
+                    <div
+                        class="highlight-box"
+                        style="padding: 15px; border-left: 4px solid #3498db"
+                    >
+                        <h4
+                            style="
+                                margin: 0 0 10px 0;
+                                font-size: 1.1em;
+                                color: #3498db;
+                            "
+                        >
+                            📁 GitHub Repository
+                        </h4>
+                        <p style="margin: 8px 0; font-size: 0.9em">
+                            <a
+                                href="https://github.com/brisacarter/nsf-ate-internship-summer-2025"
+                                target="_blank"
+                                style="color: #3498db; text-decoration: none"
+                            >
+                                github.com/brisacarter/nsf-ate-internship-summer-2025
+                            </a>
+                        </p>
+                        <p
+                            style="
+                                color: #666;
+                                font-size: 0.8em;
+                                margin: 5px 0 0 0;
+                            "
+                        >
+                            Complete source code, data files, and documentation
+                        </p>
+                    </div>
+
+                    <div
+                        class="highlight-box"
+                        style="padding: 15px; border-left: 4px solid #27ae60"
+                    >
+                        <h4
+                            style="
+                                margin: 0 0 10px 0;
+                                font-size: 1.1em;
+                                color: #27ae60;
+                            "
+                        >
+                            📋 GitHub Project Board
+                        </h4>
+                        <p style="margin: 8px 0; font-size: 0.9em">
+                            <a
+                                href="https://github.com/users/brisacarter/projects/6/views/4"
+                                target="_blank"
+                                style="color: #27ae60; text-decoration: none"
+                            >
+                                Project Management Timeline
+                            </a>
+                        </p>
+                        <p
+                            style="
+                                color: #666;
+                                font-size: 0.8em;
+                                margin: 5px 0 0 0;
+                            "
+                        >
+                            8-week task tracking and milestone management
+                        </p>
+                    </div>
+
+                    <div
+                        class="highlight-box"
+                        style="padding: 15px; border-left: 4px solid #e74c3c"
+                    >
+                        <h4
+                            style="
+                                margin: 0 0 10px 0;
+                                font-size: 1.1em;
+                                color: #e74c3c;
+                            "
+                        >
+                            🌐 Live Dashboard
+                        </h4>
+                        <p style="margin: 8px 0; font-size: 0.9em">
+                            <a
+                                href="https://nsf-ate-internship-summer-2025-brisacarter.replit.app/"
+                                target="_blank"
+                                style="color: #e74c3c; text-decoration: none"
+                            >
+                                Interactive Analytics Dashboard
+                            </a>
+                        </p>
+                        <p
+                            style="
+                                color: #666;
+                                font-size: 0.8em;
+                                margin: 5px 0 0 0;
+                            "
+                        >
+                            Live deployment with analytical and inferential
+                            displays
+                        </p>
+                    </div>
+
+                    <div
+                        class="highlight-box"
+                        style="padding: 15px; border-left: 4px solid #f39c12"
+                    >
+                        <h4
+                            style="
+                                margin: 0 0 10px 0;
+                                font-size: 1.1em;
+                                color: #f39c12;
+                            "
+                        >
+                            📄 Project Documentation
+                        </h4>
+                        <p style="margin: 8px 0; font-size: 0.9em">
+                            <a
+                                href="https://docs.google.com/document/d/185Ew4IQu8YPjbpY-dL52ynGcGCcAz7zUXL-mdsXLl1w/edit?usp=sharing"
+                                target="_blank"
+                                style="color: #f39c12; text-decoration: none"
+                            >
+                                Complete Project Report
+                            </a>
+                        </p>
+                        <p
+                            style="
+                                color: #666;
+                                font-size: 0.8em;
+                                margin: 5px 0 0 0;
+                            "
+                        >
+                            Comprehensive documentation and weekly reports
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; text-align: center">
+                    <p style="color: #888; font-size: 0.9em">
+                        Click any link above to access the corresponding project
+                        resource
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 17: Thank You -->
+            <div class="slide title-slide">
+                <h1>🙏 Thank You</h1>
+                <div class="subtitle">Questions & Discussion</div>
+                <div class="author">Brisa Carter</div>
+                <div class="title-slide-1">
+                    Product Design and Research Leader
+                </div>
+                <br />
+                <div class="title-slide-1">Special thanks to:</div>
+                <div class="title-slide-1">
+                    • Professor Blamey (Project Supervision)
+                </div>
+                <div class="title-slide-1">
+                    • Deboarah McNutty (Project Facilitator )
+                </div>
+                <div class="title-slide-1">
+                    • Professor Debasis Bhattacharya, JD, DBA
+                </div>
+                <div class="title-slide-1">
+                    • Carmen (UHMC Librarian - Data Access)
+                </div>
+                <div class="title-slide-1">• NSF-ATE Program</div>
             </div>
         </div>
 
-        <!-- Slide 17: Thank You -->
-        <div class="slide title-slide">
-            <h1>🙏 Thank You</h1>
-       <div class="subtitle">Questions & Discussion</div>
-            <div class="author">Brisa Carter</div>
-            <div class="title-slide-1">Product Design and Research Leader</div>
-            <br>
-            <div class="title-slide-1">Special thanks to:</div>
-            <div class="title-slide-1">• Professor Blamey (Project Supervision)</div>
-             <div class="title-slide-1">• Deboarah McNutty (Project Facilitator )</div>
-            <div class="title-slide-1">• Professor Debasis Bhattacharya, JD, DBA</div>
-            <div class="title-slide-1">• Carmen (UHMC Librarian - Data Access)</div>
-            <div class="title-slide-1">• NSF-ATE Program</div>
+        <div class="controls">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">
+                ← Previous
+            </button>
+            <span class="slide-counter">
+                <span id="currentSlide">1</span> /
+                <span id="totalSlides">17</span>
+            </span>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+                Next →
+            </button>
         </div>
-    </div>
-
-    <div class="controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
-        <span class="slide-counter">
-            <span id="currentSlide">1</span> / <span id="totalSlides">17</span>
-        </span>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
-    </div>
-    <!-- JavaScript file for interactive functionality - updated path -->
-    <script src="preso.js"></script>
-</body>
+        <!-- JavaScript file for interactive functionality - updated path -->
+        <script src="preso.js"></script>
+    </body>
 </html>
